@@ -304,6 +304,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    private void OnDestroy()
+    {
+        if (_recording)
+        {
+            _controller.stopRecording();
+        }
+    }
+
     #endregion
 
 
