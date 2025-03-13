@@ -83,6 +83,17 @@ public class SmoothMovementSettings
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Sombras")]
+    [SerializeField] bool _recording;
+
+    [SerializeField]
+    SombraStorage _storage;
+
+    double _startTime = 0;
+
+
+
+
     [Header("Movimiento")]
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
@@ -118,14 +129,31 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+
+    private void Start()
+    {
+        _startTime = Time.time;
+    }
+
     // Método para manejar el movimiento (llamado por el Input System)
     public void OnMove(InputAction.CallbackContext context) {
-        OnMove(SombraStorage.convertCallbackContext(context));
+        var customContext = SombraStorage.convertCallbackContext(context);
+
+        if (_recording)
+        {
+            record(customContext,SombraStorage.ActionType.MOVE);
+        }
+        OnMove(customContext);
     }
 
     // Método para manejar el salto (llamado por el Input System)
     public void OnJump(InputAction.CallbackContext context) {
-        OnJump(SombraStorage.convertCallbackContext(context));
+        var customContext = SombraStorage.convertCallbackContext(context);
+        if (_recording)
+        {
+            record(customContext, SombraStorage.ActionType.JUMP);
+        }
+        OnJump(customContext);
     }
 
     // Método para manejar el movimiento (custom para guardar los callbacks)
@@ -151,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
                 JumpCut();
             }
         }
-    }
+    }   
 
     // Aplica el salto variable: si el jugador suelta el botón mientras sube, reduce la velocidad vertical.
     private void JumpCut() {
@@ -251,4 +279,34 @@ public class PlayerMovement : MonoBehaviour
 
         return hit.collider != null;
     }
+
+
+    #region Sombras
+
+
+    public void setRecording(bool value) { 
+    
+        _recording = value;
+    }
+
+
+    void record(SombraStorage.CustomCallbackContext callback,SombraStorage.ActionType type)
+    {
+        SombraStorage.SombraAction sombraAction = new SombraStorage.SombraAction();
+
+        sombraAction.callback = callback;
+        sombraAction.time = Time.time - _startTime;
+        sombraAction.type = type;
+
+
+        _storage._currentRecord.Add(sombraAction);
+        //print(_storage._record.Count);
+        //print(_storage.gameObject.name);
+
+    }
+
+
+    #endregion
+
+
 }
