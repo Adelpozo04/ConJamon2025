@@ -15,14 +15,7 @@ public class MovingPlatformController : Activable
     private bool _inverse;
     public override void Activar(bool state)
     {
-        if (state)
-        {
-            _activado = true;
-        }
-        else
-        {
-            _activado = false;
-        }
+        _activado = state;
     }
     
     private void Start()
