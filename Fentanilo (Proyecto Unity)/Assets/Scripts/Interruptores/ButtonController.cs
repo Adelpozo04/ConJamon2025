@@ -18,7 +18,10 @@ public class ButtonController : Activador
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {        
+    {
+
+        Debug.Log("BotonTocado");
+
         if(other.gameObject.GetComponent<PlayerMovement>() != null)
         {
             SendToActivables(true);

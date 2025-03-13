@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6894274301127876570}
   - component: {fileID: 209408391421006905}
   - component: {fileID: 4302308492795378788}
-  - component: {fileID: 3337959759135021592}
   m_Layer: 0
   m_Name: Perk Impulso
   m_TagString: Untagged
@@ -125,7 +124,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.145
+  m_Radius: 0.8
 --- !u!114 &4302308492795378788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,16 +137,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2625bf01431c64744905568c5c500755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3337959759135021592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584094506472080849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4512e34a4b00df4fa94de427300cbd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attractTime: 0.3
+  perkType: 2
