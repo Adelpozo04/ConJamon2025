@@ -112,9 +112,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpForce: 15
-  fallMultiplier: 2
-  coyoteTime: 0.1
+  jumpForce: 20
+  fallMultiplierSettings:
+    enabled: 1
+    fallMultiplier: 2
+  fallControlSettings:
+    enabled: 1
+    maxFallSpeed: 50
+  jumpBufferSettings:
+    enabled: 1
+    jumpBufferTime: 0.1
+  jumpCutSettings:
+    enabled: 1
+    jumpCutMultiplier: 0.5
+  coyoteJumpSettings:
+    enabled: 1
+    coyoteTime: 0.1
+  smoothMovementSettings:
+    enabled: 1
+    accelerationTime: 0.1
+    decelerationTime: 0.1
+    instantTurn: 0
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckDistance: 0.1
+  groundCheckOffset: {x: 0, y: 0}
 --- !u!1 &4108862221003653235
 GameObject:
   m_ObjectHideFlags: 0
