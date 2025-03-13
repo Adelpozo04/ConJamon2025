@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     public bool _recording;
 
     [SerializeField]
-    SombrasController _controller;
+    public SombrasController _controller;
 
     double _startTime = 0;
 
