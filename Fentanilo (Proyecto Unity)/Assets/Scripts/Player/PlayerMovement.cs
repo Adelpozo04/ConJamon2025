@@ -179,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
                 JumpCut();
             }
         }
-    }
+    }   
 
     // Aplica el salto variable: si el jugador suelta el botón mientras sube, reduce la velocidad vertical.
     private void JumpCut() {
