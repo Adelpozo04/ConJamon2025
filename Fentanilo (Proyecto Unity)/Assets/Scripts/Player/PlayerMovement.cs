@@ -38,18 +38,33 @@ public class PlayerMovement : MonoBehaviour
 
     // M�todo para manejar el movimiento (llamado por el Input System)
     public void OnMove(InputAction.CallbackContext context) {
-        moveInput = context.ReadValue<Vector2>();
+        OnMove(SombraStorage.convertCallbackContext(context));
     }
 
     // M�todo para gestionar el salto (llamado por el Input System)
     public void OnJump(InputAction.CallbackContext context) {
+
+        OnJump(SombraStorage.convertCallbackContext(context));
+    }
+
+    // M�todo para manejar el movimiento 
+    public void OnMove(SombraStorage.CustomCallbackContext context)
+    {
+        moveInput = context.valueVector2;
+    }
+
+    // M�todo para gestionar el salto 
+    public void OnJump(SombraStorage.CustomCallbackContext context)
+    {
         // Permite saltar si está en el suelo o dentro del tiempo de "Coyote Jump"
-        if (context.started && (onGround || coyoteTimeCounter > 0)) {
+        if (context.started && (onGround || coyoteTimeCounter > 0))
+        {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             // Resetea el contador para evitar saltos múltiples sin tocar el suelo
             coyoteTimeCounter = 0;
         }
     }
+
 
     private void Update() {
         // Mientras el jugador esté en el suelo, reiniciamos el contador de coyoteTime
