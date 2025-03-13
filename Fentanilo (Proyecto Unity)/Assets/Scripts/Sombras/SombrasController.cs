@@ -78,8 +78,11 @@ public class SombrasController : MonoBehaviour
     {
         if (callback.started)
         {
-            SombraStorage.Instance._records.Add(new List<SombraStorage.SombraAction>(_currentRecord));
-            _currentRecord.Clear();
+            if(SombraStorage.Instance._records.Count < _maxRecords)
+            {
+                SombraStorage.Instance._records.Add(new List<SombraStorage.SombraAction>(_currentRecord));
+                _currentRecord.Clear();
+            }
             reloadScene();
         }
     }
