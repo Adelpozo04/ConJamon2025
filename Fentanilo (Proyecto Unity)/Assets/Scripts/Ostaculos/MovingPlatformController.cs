@@ -5,7 +5,7 @@ public class MovingPlatformController : Activable
 {
     private Rigidbody2D rb;
     //La platadorma debe desplazarse de un punto a otro.
-    [SerializeField] private Vector3[] points;
+    [SerializeField] private Transform[] points;
     [SerializeField] private float speed;
     
     private bool _activado;
@@ -28,9 +28,9 @@ public class MovingPlatformController : Activable
     {
         if (_activado)
         {
-            rb.MovePosition(Vector3.MoveTowards(transform.position, points[_current], speed * Time.deltaTime));
+            rb.MovePosition(Vector3.MoveTowards(transform.position, points[_current].position, speed * Time.deltaTime));
             //Si ha llegado al current point
-            if ((points[_current] - transform.position).magnitude <= 1)
+            if ((points[_current].position - transform.position).magnitude <= 1)
             {
                 Next();
             }
