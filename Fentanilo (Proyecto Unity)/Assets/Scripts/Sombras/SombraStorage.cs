@@ -5,15 +5,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 public class SombraStorage : MonoBehaviour
 {
-
     //singleton para manejar una sola instancia
     public static SombraStorage Instance = null;
 
 
-
     //grabacion actual
     public List<SombraAction> _currentRecord = new List<SombraAction>();
-
 
     //lista de todas las grabaciones
     public List<List<SombraAction>> _records = new List<List<SombraAction>>();
@@ -63,7 +60,6 @@ public class SombraStorage : MonoBehaviour
             //para conservar entre escenas
             DontDestroyOnLoad(gameObject);
 
-            SceneManager.sceneLoaded += onSceneLoaded;
         }   
         else
         {
@@ -78,7 +74,7 @@ public class SombraStorage : MonoBehaviour
         _runningShadow = true;
     }
 
-    // Update is called once per frame
+    //controller
     void Update()
     {
 
@@ -96,6 +92,7 @@ public class SombraStorage : MonoBehaviour
         }
     }
 
+    //controller
     void runAction(SombraAction sombraAction,PlayerMovement target)
     {
         //if else con todas las funciones
@@ -119,6 +116,7 @@ public class SombraStorage : MonoBehaviour
     }
 
 
+    //controller
     public void startShadow(InputAction.CallbackContext callback)
     {
         print("starrrrt");
@@ -148,6 +146,7 @@ public class SombraStorage : MonoBehaviour
     }
 
 
+    //controller
     public void stopRecording(InputAction.CallbackContext callback)
     {
         if (callback.started) {
@@ -157,23 +156,21 @@ public class SombraStorage : MonoBehaviour
         }
     }
 
+    //controller/boton llama aqui, ambos sitios
     public void clearRecords()
     {
         _records.Clear();
         _currentRecord.Clear();
     }
 
+    //controller
     void reloadScene()
     {
         SceneManager.UnloadSceneAsync("SombrasScene");
         SceneManager.LoadScene("SombrasScene");
     }
 
-    void onSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        //crear y ejecutar todas las sombras
 
-    }
 
 
 }
