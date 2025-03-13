@@ -113,6 +113,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundCheckDistance = 0.1f;
     [Tooltip("Posición desde donde se lanza el Raycast (relativa al jugador)")]
     [SerializeField] Vector2 groundCheckOffset = Vector2.zero;
+    [Header("Audio")]
+    [SerializeField] private PlayerAudio playerAudio;
 
 
     private Rigidbody2D rb;
@@ -225,6 +227,8 @@ public class PlayerMovement : MonoBehaviour
             // Reseteamos Coyote Jump y Jump Buffer al saltar
             coyoteTimeCounter = 0;
             jumpBufferCounter = 0;
+
+            playerAudio.PlayJump();
         }
 
         // Si el jugador está cayendo y el multiplicador de caída está activo, se aplica mayor gravedad.
