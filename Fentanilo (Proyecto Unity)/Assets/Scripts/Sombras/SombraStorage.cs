@@ -32,7 +32,7 @@ public class SombraStorage : MonoBehaviour
     }
 
     [SerializeField]
-    SombraTest _sombraTarget;
+    PlayerMovement _sombraTarget;
 
 
     double _startTime = 0;
@@ -59,7 +59,6 @@ public class SombraStorage : MonoBehaviour
 
         if (_runningShadow)
         {
-            print(_record.Count);
             if (_record.Count > 0)
             {
                 double currTime = Time.time - _startTime;
@@ -78,8 +77,20 @@ public class SombraStorage : MonoBehaviour
         if (sombraAction.type == ActionType.TEST) {
 
             print("replicando accion, time:" + sombraAction.time + "  callback started:" + sombraAction.callback.started);
-            _sombraTarget.test(sombraAction.callback);
+            //_sombraTarget.test(sombraAction.callback);
         }
+
+        if (sombraAction.type == ActionType.JUMP)
+        {
+            _sombraTarget.OnJump(sombraAction.callback);
+        }
+        if (sombraAction.type == ActionType.MOVE)
+        {
+
+            _sombraTarget.OnMove(sombraAction.callback);
+        }
+
+
         //...
     }
 
