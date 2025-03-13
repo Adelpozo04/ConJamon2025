@@ -1,0 +1,42 @@
+using UnityEngine;
+
+public class ExplosionBehaviour : PerkBehaviour
+{
+    [Header("Explosion Settings")]
+    [Tooltip("Radio de la explosión")]
+    [SerializeField] float explosionRadius = 5f;
+
+    [Tooltip("Prefab del efecto visual de la explosión (opcional)")]
+    [SerializeField] GameObject explosionEffectPrefab;
+
+    public override void ActivateEffect() {
+        // Instanciamos el efecto visual de la explosión, si se ha asignado
+        if (explosionEffectPrefab != null) {
+            Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        // Obtenemos todos los colliders dentro del radio de la explosión en las capas definidas
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
+        foreach (Collider2D col in colliders) {
+            //// Si el collider tiene el componente Enemy, llamamos a Die()
+            //Enemy enemy = col.GetComponent<Enemy>();
+            //if (enemy != null) {
+            //    enemy.Die();
+            //} else {
+            //    // Si tiene el componente ExplosionDestructible, llamamos a Destruct()
+            //    ExplosionDestructible destructible = col.GetComponent<ExplosionDestructible>();
+            //    if (destructible != null) {
+            //        destructible.Destruct();
+            //    }
+            //}
+        }
+    }
+
+    // Dibujar la esfera de explosión en el editor para visualizar el área de efecto
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+}
+
