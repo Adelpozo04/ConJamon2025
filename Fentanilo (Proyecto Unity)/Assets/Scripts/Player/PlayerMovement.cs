@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
     double _startTime = 0;
 
-
+    public GameObject colliderOnDead;
 
 
     [Header("Movimiento")]

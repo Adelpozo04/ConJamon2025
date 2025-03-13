@@ -416,6 +416,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player y sombras
       objectReference: {fileID: 0}
+    - target: {fileID: 6378089840511117427, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
+      propertyPath: m_Size.y
+      value: 0.07685423
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378089840511117427, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.4615729
+      objectReference: {fileID: 0}
     - target: {fileID: 6457466719948743055, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.97
@@ -455,6 +463,14 @@ PrefabInstance:
     - target: {fileID: 6457466719948743055, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226389057419423327, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324510544234325889, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.532
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

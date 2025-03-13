@@ -50,12 +50,9 @@ public class SombrasController : MonoBehaviour
         for(int i = 0; i < SombraStorage.Instance._records.Count; i++)
         {
             print(i);
-            print("sombraStorage size:" +SombraStorage.Instance._records.Count);
-            print("sombras indices size:" +_sombrasIndices.Count);
 
             if(SombraStorage.Instance._records[i].Count >  _sombrasIndices[i])
             {
-                print("sombraa: " +SombraStorage.Instance._records[i].Count );
 
                 double currTime = Time.time - _startTime;
                 double actionTime = SombraStorage.Instance._records[i][_sombrasIndices[i]].time;
@@ -69,6 +66,14 @@ public class SombrasController : MonoBehaviour
                     _sombrasIndices[i]++;
                 }
             }
+            else if (SombraStorage.Instance._records[i].Count ==  _sombrasIndices[i])
+            {
+                _sombrasActivas[i].colliderOnDead.SetActive(true);
+                _sombrasIndices[i]++;
+            }
+
+
+
         }
       
     }
