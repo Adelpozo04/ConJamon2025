@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8407047750420327450}
   - component: {fileID: 5725547134616731898}
   - component: {fileID: 1149719708052113280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3eb926b5539f147abc88d129ac6f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _recording: 1
+  _storage: {fileID: 0}
   moveSpeed: 10
   jumpForce: 20
   fallMultiplierSettings:
@@ -148,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8948253370013070246}
   - component: {fileID: 7642938239527298099}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
