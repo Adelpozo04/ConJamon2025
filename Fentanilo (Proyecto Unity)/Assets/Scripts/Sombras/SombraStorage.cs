@@ -29,7 +29,7 @@ public class SombraStorage : MonoBehaviour
     //tipos de acciones que almacenamos
     public enum ActionType
     {
-        MOVE,JUMP,SHOOT
+        MOVE,JUMP,SHOOT,AIM
     }
 
     //guarda el callback original, el momento en que se ejecutó y el tipo de accion que fue
@@ -45,8 +45,9 @@ public class SombraStorage : MonoBehaviour
     {
         if(Instance == null)
         {
-            Instance = this;    
+            Instance = this;
             //para conservar entre escenas
+            gameObject.transform.parent = null;
             DontDestroyOnLoad(gameObject);
         }   
         else
@@ -68,6 +69,14 @@ public class SombraStorage : MonoBehaviour
         else if (sombraAction.type == ActionType.MOVE)
         {
             target.OnMove(sombraAction.callback);
+        }
+        else if (sombraAction.type == ActionType.SHOOT)
+        {
+            target.gameObject.GetComponentInChildren<Shoot>().OnShoot(sombraAction.callback);
+        }
+        else if (sombraAction.type == ActionType.AIM)
+        {
+            target.gameObject.GetComponentInChildren<Shoot>().OnAim(sombraAction.callback);
         }
 
         //...

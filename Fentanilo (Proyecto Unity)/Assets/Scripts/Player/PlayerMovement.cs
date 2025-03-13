@@ -84,7 +84,7 @@ public class SmoothMovementSettings
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Sombras")]
-    [SerializeField] bool _recording;
+    public bool _recording;
 
     [SerializeField]
     SombrasController _controller;
@@ -290,7 +290,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void record(SombraStorage.CustomCallbackContext callback,SombraStorage.ActionType type)
+    public void record(SombraStorage.CustomCallbackContext callback,SombraStorage.ActionType type)
     {
         SombraStorage.SombraAction sombraAction = new SombraStorage.SombraAction();
 

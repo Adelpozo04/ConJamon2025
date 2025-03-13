@@ -37,43 +37,87 @@ public class Shoot : MonoBehaviour
     private int activeBullets = 0;
     private Vector2 aimDirection = Vector2.right;
 
+
+    [SerializeField]
+    private PlayerMovement playerMovement;
+
+
     private void Awake() {
         playerRb = GetComponent<Rigidbody2D>();
     }
 
     public void OnShoot(InputAction.CallbackContext context) {
-        if (context.started) {
+        var customContext = SombraStorage.convertCallbackContext(context);
+        if (playerMovement._recording)
+        {
+            playerMovement.record(customContext, SombraStorage.ActionType.SHOOT);
+        }
+        OnShoot(customContext);
+    }
+
+    public void OnAim(InputAction.CallbackContext context) {
+
+        var customContext = SombraStorage.convertCallbackContext(context);
+        if (playerMovement._recording)
+        {
+            playerMovement.record(customContext, SombraStorage.ActionType.AIM);
+        }
+        OnAim(customContext);
+    }
+
+
+    public void OnShoot(SombraStorage.CustomCallbackContext context)
+    {
+        if (context.started)
+        {
             TryShoot();
         }
     }
 
-    public void OnAim(InputAction.CallbackContext context) {
+    public void OnAim(SombraStorage.CustomCallbackContext context)
+    {
         // Lee la dirección del input del joystick o teclas
-        Vector2 inputDirection = context.ReadValue<Vector2>();
+        Vector2 inputDirection = context.valueVector2;
 
         // Solo se cambia la dirección si hay suficiente input
-        if (inputDirection.sqrMagnitude > 0.1f) {
+        if (inputDirection.sqrMagnitude > 0.1f)
+        {
             // Compara las magnitudes absolutas para elegir la dirección dominante
-            if (Mathf.Abs(inputDirection.x) >= Mathf.Abs(inputDirection.y)) {
+            if (Mathf.Abs(inputDirection.x) >= Mathf.Abs(inputDirection.y))
+            {
                 // Dominio horizontal
                 aimDirection = (inputDirection.x > 0) ? Vector2.right : Vector2.left;
-            } else {
+            }
+            else
+            {
                 // Dominio vertical
                 aimDirection = (inputDirection.y > 0) ? Vector2.up : Vector2.down;
             }
 
             // Actualiza la rotación de firePoint para reflejar la dirección cardinal
-            if (aimDirection == Vector2.right) {
+            if (aimDirection == Vector2.right)
+            {
                 firePoint.rotation = Quaternion.Euler(0, 0, 0);
-            } else if (aimDirection == Vector2.left) {
+            }
+            else if (aimDirection == Vector2.left)
+            {
                 firePoint.rotation = Quaternion.Euler(0, 0, 180);
-            } else if (aimDirection == Vector2.up) {
+            }
+            else if (aimDirection == Vector2.up)
+            {
                 firePoint.rotation = Quaternion.Euler(0, 0, 90);
-            } else if (aimDirection == Vector2.down) {
+            }
+            else if (aimDirection == Vector2.down)
+            {
                 firePoint.rotation = Quaternion.Euler(0, 0, -90);
             }
         }
     }
+
+
+
+
+
 
 
     private void TryShoot() {
