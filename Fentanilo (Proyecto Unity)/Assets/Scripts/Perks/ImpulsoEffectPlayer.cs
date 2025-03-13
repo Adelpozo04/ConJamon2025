@@ -7,6 +7,7 @@ public class ImpulsoEffectPlayer : MonoBehaviour
 
     public ImpulsoEffect impulsoEffect;
     public bool active;
+    private bool shooting = false;
     public void onAim(InputAction.CallbackContext context)
     {
         var customContext = SombraStorage.convertCallbackContext(context);
@@ -19,27 +20,24 @@ public class ImpulsoEffectPlayer : MonoBehaviour
     }
     public void OnAim(SombraStorage.CustomCallbackContext context)
     {
-        if (active && context.started)
-        {
-            TryAim(context.valueVector2);
-        }
+        TryAim(context.valueVector2);
     }
 
     private void TryAim(Vector2 inputDirection)
     {
-        if (inputDirection.sqrMagnitude > 0.1f)
-        {
-            impulsoEffect.Aim(inputDirection);
-        }
+        impulsoEffect.Aim(inputDirection);
     }
 
     public void ActivateAiming(ImpulsoEffect comp)
     {
         impulsoEffect = comp;
+        playerMovement.enabled = false;
         active = true;
     }
     public void DeactivateAiming()
     {
+        //playerMovement.enabled = true;
+        shooting = true;
         active = false;
     }
 
@@ -48,9 +46,12 @@ public class ImpulsoEffectPlayer : MonoBehaviour
         playerMovement = GetComponentInParent<PlayerMovement>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (shooting && LayerMask.LayerToName(collision.gameObject.layer) == "Ground")
+        {
+            playerMovement.enabled = true;
+            shooting = false;
+        }
     }
 }

@@ -96,6 +96,8 @@ public class SombraStorage : MonoBehaviour
         //si el callback es de tipo vector2
         if (callback.valueType == typeof(Vector2)) { 
             customCallbackContext.valueVector2 = callback.ReadValue<Vector2>();
+
+            customCallbackContext.valueVector2.Normalize();
         }
 
         //mas copias de valores si fuera necesario

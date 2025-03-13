@@ -4,15 +4,26 @@ using UnityEngine.UIElements.Experimental;
 
 public class ImpulsoEffect : MonoBehaviour
 {
+    [Header("Ajustes de atracción inicial al interactuar")]
     [SerializeField] float attractTime;
+    [Header("Ajustes de atracción al estar enganchado")]
     [SerializeField] float maxDistance;
     [SerializeField] float minDistance;
+    [SerializeField] float moveForce;
+    [SerializeField] float attractForce;
+    [Header("Ajustes de vibración")]
+    [SerializeField] private float vibrationIntensity = 0.1f;
+    [SerializeField] private float vibrationSpeed = 50f;
+    [Header("Ajustes de lanzamiento")]
+    [SerializeField] private float shootingSpeed;
 
     private Rigidbody2D playerRB;
     private Transform playerTR;
     bool active = false;
 
     private Vector2 aimDirection;
+
+    bool canShoot = false;
     public void ActivateEffect()
     {
         // desactivar gravedad y anular linearVelocity
@@ -53,22 +64,50 @@ public class ImpulsoEffect : MonoBehaviour
 
     private void StartAim()
     {
+        playerTR.GetComponentInChildren<ImpulsoEffectPlayer>().ActivateAiming(this);
         playerRB.linearVelocity = new Vector2(0, 0);
 
-        playerTR.GetComponentInChildren<ImpulsoEffectPlayer>().ActivateAiming(this);
-
         active = true;
+        canShoot = true;
     }
 
     private void FixedUpdate()
     {
-        if (active && Vector3.Distance(transform.position, playerTR.position) > minDistance)
+        if (active)
         {
-            Debug.Log(Vector2.Distance(transform.position, playerTR.position));
-            Vector3 direccion = transform.position - playerTR.position;
+            Vector3 direction = playerTR.position - transform.position;
+            float distance = direction.magnitude;
 
-            //playerRB.AddForce(direccion.normalized, ForceMode2D.Impulse);
-            playerRB.AddForce(aimDirection.normalized, ForceMode2D.Force);
+            if (distance < maxDistance)
+            {
+                // Calcular el factor de reducción de velocidad según la distancia
+                float speedFactor = Mathf.InverseLerp(maxDistance, 0.2f, distance); // 1 lejos, 0 cerca
+                float currentMoveForce = moveForce * speedFactor;
+                float currentAttractForce = attractForce * speedFactor;
+
+                // Aplicar movimiento con la fuerza ajustada
+                playerRB.AddForce(aimDirection.normalized * currentMoveForce, ForceMode2D.Force);
+
+                // Aplicar fuerza de atracción si está fuera del rango mínimo
+                if (distance > minDistance)
+                    playerRB.AddForce(-direction.normalized * currentAttractForce, ForceMode2D.Force);
+
+                // vibracion
+                float offsetX = Mathf.Sin(Time.time * vibrationSpeed) * vibrationIntensity;
+                float offsetY = Mathf.Cos(Time.time * vibrationSpeed) * vibrationIntensity;
+
+                playerTR.position += new Vector3(offsetX, offsetY, 0);
+            }
+            else if (canShoot)
+            {
+                playerRB.linearVelocity = new Vector2(0,0);
+
+                playerTR.GetComponentInChildren<ImpulsoEffectPlayer>().DeactivateAiming();
+                playerRB.gravityScale = 1;
+
+                playerRB.AddForce(aimDirection.normalized * shootingSpeed, ForceMode2D.Impulse);
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -81,16 +120,5 @@ public class ImpulsoEffect : MonoBehaviour
             ActivateEffect();
             active = true;
         }
-    }
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
