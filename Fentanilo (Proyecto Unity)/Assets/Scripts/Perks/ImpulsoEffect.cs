@@ -11,6 +11,8 @@ public class ImpulsoEffect : MonoBehaviour
     private Rigidbody2D playerRB;
     private Transform playerTR;
     bool active = false;
+
+    private Vector2 aimDirection;
     public void ActivateEffect()
     {
         // desactivar gravedad y anular linearVelocity
@@ -41,6 +43,19 @@ public class ImpulsoEffect : MonoBehaviour
         }
 
         playerTr.position = endPos;
+        StartAim();
+    }
+
+    public void Aim(Vector2 directionInput)
+    {
+        aimDirection = directionInput;
+    }
+
+    private void StartAim()
+    {
+        playerRB.linearVelocity = new Vector2(0, 0);
+
+        playerTR.GetComponentInChildren<ImpulsoEffectPlayer>().ActivateAiming(this);
 
         active = true;
     }
@@ -49,12 +64,12 @@ public class ImpulsoEffect : MonoBehaviour
     {
         if (active && Vector3.Distance(transform.position, playerTR.position) > minDistance)
         {
-            Debug.Log(Vector3.Distance(transform.position, playerTR.position));
+            Debug.Log(Vector2.Distance(transform.position, playerTR.position));
             Vector3 direccion = transform.position - playerTR.position;
 
-            playerRB.AddForce(direccion.normalized, ForceMode2D.Impulse);
+            //playerRB.AddForce(direccion.normalized, ForceMode2D.Impulse);
+            playerRB.AddForce(aimDirection.normalized, ForceMode2D.Force);
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -34,6 +34,53 @@ Transform:
   - {fileID: 7158467238163932736}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8270905112512153635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5711392823005864375}
+  - component: {fileID: 1207605168287316587}
+  m_Layer: 7
+  m_Name: PerksSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5711392823005864375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8270905112512153635}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.97, y: -1.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7146295817256670000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1207605168287316587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8270905112512153635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddced4b792c5f8349856c50764c53a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 1933054219702416732}
+  impulsoEffect: {fileID: 0}
+  active: 0
 --- !u!1001 &1524197347970052828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49,6 +96,30 @@ PrefabInstance:
     - target: {fileID: 1388279535486550557, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1207605168287316587}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: onAim
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ImpulsoEffectPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -96,7 +167,10 @@ PrefabInstance:
       objectReference: {fileID: 1933054219702416732}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5711392823005864375}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba4572d907251ab4085c97176416578e, type: 3}
 --- !u!114 &1933054219702416732 stripped
