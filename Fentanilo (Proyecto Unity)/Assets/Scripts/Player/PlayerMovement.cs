@@ -284,6 +284,12 @@ public class PlayerMovement : MonoBehaviour
     #region Sombras
 
 
+    public void setRecording(bool value) { 
+    
+        _recording = value;
+    }
+
+
     void record(SombraStorage.CustomCallbackContext callback,SombraStorage.ActionType type)
     {
         SombraStorage.SombraAction sombraAction = new SombraStorage.SombraAction();
@@ -293,7 +299,7 @@ public class PlayerMovement : MonoBehaviour
         sombraAction.type = type;
 
 
-        _storage._record.Add(sombraAction);
+        _storage._currentRecord.Add(sombraAction);
         //print(_storage._record.Count);
         //print(_storage.gameObject.name);
 
