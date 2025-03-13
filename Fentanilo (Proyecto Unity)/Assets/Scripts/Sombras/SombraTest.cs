@@ -44,8 +44,8 @@ public class SombraTest : MonoBehaviour
         sombraAction.callback = callback;
         sombraAction.time = Time.time - _startTime;
 
-        _storage._record.Add(sombraAction);
-        print(_storage._record.Count);
+        _storage._currentRecord.Add(sombraAction);
+        print(_storage._currentRecord.Count);
         print(_storage.gameObject.name);
 
     }
