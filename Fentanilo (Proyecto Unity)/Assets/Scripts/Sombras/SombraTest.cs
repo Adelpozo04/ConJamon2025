@@ -26,34 +26,26 @@ public class SombraTest : MonoBehaviour
 
      */
 
+    bool _recording = true;
+    double _startTime = 0;
+
+    SombraStorage _storage;
 
 
-    [System.Serializable]
-    public struct FentaAction
+
+    void record(InputAction.CallbackContext callback)
     {
-       public UnityEvent _event;
+        SombraStorage.SombraAction sombraAction = new SombraStorage.SombraAction();
 
+        sombraAction.callback = callback;
+        sombraAction.time = Time.time - _startTime;
 
+        _storage._record.Add(sombraAction);
     }
-
-    [System.Serializable]
-    public struct FentaCallbackContext
-    {
-        public bool _started;
-        public bool _performed;
-        public bool _canceled;
-    }
-
-    public FentaAction _action;
-
-    public FentaCallbackContext _fentaContext;
-
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        _startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -62,12 +54,14 @@ public class SombraTest : MonoBehaviour
 
     }
 
-    public void test (InputAction.CallbackContext context){
+    public void test (InputAction.CallbackContext callback){
+
+        if (_recording)
+        {
+            record(callback);
+        }
 
         print("tu vieja");
-
-        InputAction.CallbackContext callbackContext = new InputAction.CallbackContext();
-
 
     }
 
