@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3eb926b5539f147abc88d129ac6f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recording: 1
+  _recording: 0
   _storage: {fileID: 0}
   moveSpeed: 10
   jumpForce: 20
@@ -468,4 +468,4 @@ MonoBehaviour:
   bulletLifetime: 5
   bulletCollisionLayers:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 320

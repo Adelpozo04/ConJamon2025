@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tirachinas_0: 4165130780675449940
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
