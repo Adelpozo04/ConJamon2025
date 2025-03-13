@@ -308,7 +308,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_recording)
         {
-            _controller.stopRecording();
+            //_controller.stopRecording();
         }
     }
 
