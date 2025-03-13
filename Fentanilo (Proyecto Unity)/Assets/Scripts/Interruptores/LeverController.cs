@@ -16,4 +16,9 @@ public class LeverController : Activador
             clicktestPress = false;
         }
     }
+
+    public void SetStateTo(bool a)
+    {
+        SendToActivables(a);
+    }
 }
