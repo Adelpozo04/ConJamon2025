@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool _recording;
 
     [SerializeField]
-    SombraStorage _storage;
+    SombrasController _controller;
 
     double _startTime = 0;
 
@@ -294,15 +294,13 @@ public class PlayerMovement : MonoBehaviour
     {
         SombraStorage.SombraAction sombraAction = new SombraStorage.SombraAction();
 
+        //agregar la accion a la lista de acciones actuales
         sombraAction.callback = callback;
         sombraAction.time = Time.time - _startTime;
         sombraAction.type = type;
 
 
-        _storage._currentRecord.Add(sombraAction);
-        //print(_storage._record.Count);
-        //print(_storage.gameObject.name);
-
+        _controller._currentRecord.Add(sombraAction);
     }
 
 

@@ -1,24 +1,20 @@
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+
+
+
+/*
+Este componente se encarga de guardar la lista  de grabaciones de toda la escena,
+es singleton y pervive entre escenas
+ */
 public class SombraStorage : MonoBehaviour
 {
     //singleton para manejar una sola instancia
     public static SombraStorage Instance = null;
 
-
-    //grabacion actual
-    public List<SombraAction> _currentRecord = new List<SombraAction>();
-
     //lista de todas las grabaciones
     public List<List<SombraAction>> _records = new List<List<SombraAction>>();
-
-
-    [SerializeField]
-    int _maxRecords;
-
 
     //wrapper de callbackContext
     public struct CustomCallbackContext
@@ -33,7 +29,7 @@ public class SombraStorage : MonoBehaviour
     //tipos de acciones que almacenamos
     public enum ActionType
     {
-        TEST,MOVE,JUMP,SHOOT
+        MOVE,JUMP,SHOOT
     }
 
     //guarda el callback original, el momento en que se ejecutó y el tipo de accion que fue
@@ -44,13 +40,6 @@ public class SombraStorage : MonoBehaviour
         public ActionType type;
     }
 
-    [SerializeField]
-    PlayerMovement _sombraTarget;
-
-
-    double _startTime = 0;
-    bool _runningShadow = false;
-
 
     private void Awake()
     {
@@ -59,7 +48,6 @@ public class SombraStorage : MonoBehaviour
             Instance = this;    
             //para conservar entre escenas
             DontDestroyOnLoad(gameObject);
-
         }   
         else
         {
@@ -67,43 +55,14 @@ public class SombraStorage : MonoBehaviour
         }
     }
 
-    public void startShadow()
-    {
-        _startTime = Time.time;
-
-        _runningShadow = true;
-    }
 
     //controller
-    void Update()
-    {
-
-        if (_runningShadow)
-        {
-            if (_currentRecord.Count > 0)
-            {
-                double currTime = Time.time - _startTime;
-                if (currTime  >= _currentRecord[0].time)
-                {
-                    runAction(_currentRecord[0],_sombraTarget);
-                    _currentRecord.RemoveAt(0);
-                }
-            }
-        }
-    }
-
-    //controller
-    void runAction(SombraAction sombraAction,PlayerMovement target)
+    public static void runAction(SombraAction sombraAction,PlayerMovement target)
     {
         //if else con todas las funciones
-        if (sombraAction.type == ActionType.TEST) {
-
-            print("replicando accion, time:" + sombraAction.time + "  callback started:" + sombraAction.callback.started);
-            //_sombraTarget.test(sombraAction.callback);
-        }
-
         if (sombraAction.type == ActionType.JUMP)
         {
+            print("replicando accion, time:" + sombraAction.time + "  callback started:" + sombraAction.callback.started);
             target.OnJump(sombraAction.callback);
         }
         else if (sombraAction.type == ActionType.MOVE)
@@ -111,16 +70,7 @@ public class SombraStorage : MonoBehaviour
             target.OnMove(sombraAction.callback);
         }
 
-
         //...
-    }
-
-
-    //controller
-    public void startShadow(InputAction.CallbackContext callback)
-    {
-        print("starrrrt");
-        startShadow();
     }
 
     //convierte un CallbackContext de unity a uno custom
@@ -146,31 +96,10 @@ public class SombraStorage : MonoBehaviour
     }
 
 
-    //controller
-    public void stopRecording(InputAction.CallbackContext callback)
-    {
-        if (callback.started) {
-            _records.Add(_currentRecord);
-            _currentRecord.Clear();
-            reloadScene();
-        }
-    }
-
-    //controller/boton llama aqui, ambos sitios
+    //limpia la lista de fantasmas
     public void clearRecords()
     {
         _records.Clear();
-        _currentRecord.Clear();
     }
-
-    //controller
-    void reloadScene()
-    {
-        SceneManager.UnloadSceneAsync("SombrasScene");
-        SceneManager.LoadScene("SombrasScene");
-    }
-
-
-
-
+    
 }
