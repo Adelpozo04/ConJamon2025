@@ -1,22 +1,47 @@
 using UnityEngine;
 
+
+enum PerkType { Roca, Explosion, Impulso }
 public class PerkGrabable : MonoBehaviour
 {   
-    private PerkBehaviour perkBehaviour;
-    private GameObject player;
+    [SerializeField] private PerkType perkType;
     private bool activated = false;
-    void Start()
-    {
-        perkBehaviour = GetComponent<PerkBehaviour>();    
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!activated && LayerMask.LayerToName(collision.gameObject.layer) == "Player")
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
         {
-            player = collision.gameObject;
-            perkBehaviour.ActivateEffect(player);
-            activated = true;
+            GameObject player = collision.gameObject;
+            bool setted = false;
+
+            switch (perkType)
+            {
+                case PerkType.Roca:
+                    /*
+                    if (player.GetComponent<RocaBehaviour>() == null){
+                        player.AddComponent<RocaBehaviour>();
+                        setted = true;
+                    }
+                    */
+                    break;
+                case PerkType.Explosion:
+                    /*
+                    if (player.GetComponent<ExplosionBehaviour>() == null){
+                        player.AddComponent<ExplosionBehaviour>();
+                        setted = true;
+                    }
+                    */
+                    break;
+                case PerkType.Impulso:
+                    if (player.GetComponent<ImpulsoBehaviour>() == null){
+                        player.AddComponent<ImpulsoBehaviour>();
+                        setted = true;
+                    }
+                    break;
+            }
+
+            if (setted)
+                gameObject.SetActive(false);
         }
     }
 }

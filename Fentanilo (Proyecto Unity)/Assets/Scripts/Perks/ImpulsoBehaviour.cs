@@ -37,9 +37,13 @@ public class ImpulsoBehaviour : PerkBehaviour
         {
             time += Time.deltaTime;
 
-            Vector3 pos = Vector3.Lerp(startPos, endPos, Easing.InCirc(time / totalTime));
+            if ((time / totalTime) < 1)
+            {
+                Vector3 pos = Vector3.Lerp(startPos, endPos, Easing.InCirc(time / totalTime));
+
+                playerTr.position = pos;
+            }
             
-            playerTr.position = pos;
 
             yield return null;
         }
