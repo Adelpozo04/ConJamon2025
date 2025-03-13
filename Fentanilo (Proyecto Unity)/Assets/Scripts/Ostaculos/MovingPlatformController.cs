@@ -21,7 +21,7 @@ public class MovingPlatformController : Activable
         }
         else
         {
-            _activado = true;
+            _activado = false;
         }
     }
     
@@ -29,7 +29,6 @@ public class MovingPlatformController : Activable
     {
         rb = GetComponent<Rigidbody2D>();
         _current = 0;
-        _inverse = false;
     }
 
     private void Update()
@@ -58,6 +57,5 @@ public class MovingPlatformController : Activable
         {
             _current--;
         }
-        Debug.Log(_current);
     }
 }

@@ -5,14 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class DoorController : Activable
 {
-    private SpriteRenderer renderer;
-    private Collider2D collider;
+    private SpriteRenderer _rend;
+    private Collider2D _coll;
     private bool _opened;
 
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
-        renderer = GetComponent<SpriteRenderer>();
+        _coll = GetComponent<Collider2D>();
+        _rend = GetComponent<SpriteRenderer>();
     }
 
     public override void Activar(bool state)
@@ -30,8 +30,8 @@ public class DoorController : Activable
     void Open() {
         if(!_opened) {
             //Abrir la puerta
-            collider.enabled = false;
-            renderer.color = Color.green;
+            _coll.enabled = false;
+            _rend.color = Color.green;
             Debug.Log("door opened");
             //Efectuar animación de apertura
             _opened = true;
@@ -42,8 +42,8 @@ public class DoorController : Activable
         if (_opened) {
             //Cerrar la puerta
             
-            collider.enabled = true;
-            renderer.color = Color.red;
+            _coll.enabled = true;
+            _rend.color = Color.red;
             Debug.Log("door closed");
             //Efectuar animación de cierre
             
