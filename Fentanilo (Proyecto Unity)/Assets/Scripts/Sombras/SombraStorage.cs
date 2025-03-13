@@ -97,7 +97,9 @@ public class SombraStorage : MonoBehaviour
         customCallbackContext.canceled = callback.canceled;
         customCallbackContext.performed = callback.performed;
 
-        customCallbackContext.valueVector2 = callback.ReadValue<Vector2>();
+        if (callback.valueType == typeof(Vector2)) { 
+            customCallbackContext.valueVector2 = callback.ReadValue<Vector2>();
+        }
 
         return customCallbackContext; 
     }
