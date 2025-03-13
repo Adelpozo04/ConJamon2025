@@ -26,6 +26,9 @@ public abstract class Activador : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// El método para cambiar automáticamente el estado del Activador a su opuesto.
+    /// </summary>
     protected void Switch()
     {        
         SendToActivables(!isPressed);
