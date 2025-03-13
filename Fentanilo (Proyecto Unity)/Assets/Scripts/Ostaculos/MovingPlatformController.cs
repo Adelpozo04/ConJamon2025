@@ -26,7 +26,7 @@ public class MovingPlatformController : Activable
 
     private void Update()
     {
-        if (_activado)
+        if (_activado && points.Length >0)
         {
             rb.MovePosition(Vector3.MoveTowards(transform.position, points[_current].position, speed * Time.deltaTime));
             //Si ha llegado al current point
