@@ -20,7 +20,14 @@ public class PinchosComponent : MonoBehaviour
 
         if (playerMovement != null)
         {
-            Destroy(playerMovement.gameObject);
+            if (playerMovement._recording)
+            {
+                playerMovement._controller.stopRecording();
+            }
+
+
+            Destroy(playerMovement.gameObject); 
+
         }
     }
 }
