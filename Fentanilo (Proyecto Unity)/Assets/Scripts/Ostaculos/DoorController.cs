@@ -32,6 +32,7 @@ public class DoorController : Activable
             //Abrir la puerta
             collider.enabled = false;
             renderer.color = Color.green;
+            Debug.Log("door opened");
             //Efectuar animación de apertura
             _opened = true;
         }
@@ -40,7 +41,12 @@ public class DoorController : Activable
     void Close() {
         if (_opened) {
             //Cerrar la puerta
+            
+            collider.enabled = true;
+            renderer.color = Color.red;
+            Debug.Log("door closed");
             //Efectuar animación de cierre
+            
             _opened = false;
         }
     }
