@@ -280,9 +280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 5
-  affectedLayers:
-    serializedVersion: 2
-    m_Bits: 0
   explosionEffectPrefab: {fileID: 0}
 --- !u!1001 &1511194927376177745
 PrefabInstance:
@@ -564,7 +561,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5425251595085337923, guid: 4d9d778c231f70b4a93a8bcfdaa54c02, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
