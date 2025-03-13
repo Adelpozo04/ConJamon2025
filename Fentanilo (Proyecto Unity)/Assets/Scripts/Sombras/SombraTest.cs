@@ -25,15 +25,19 @@ public class SombraTest : MonoBehaviour
 
 
      */
+    
 
-    bool _recording = true;
     double _startTime = 0;
 
+    [SerializeField]
+    bool _recording = true;
+
+    [SerializeField]
     SombraStorage _storage;
 
 
 
-    void record(InputAction.CallbackContext callback)
+    void record(SombraStorage.CustomCallbackContext callback)
     {
         SombraStorage.SombraAction sombraAction = new SombraStorage.SombraAction();
 
@@ -41,6 +45,9 @@ public class SombraTest : MonoBehaviour
         sombraAction.time = Time.time - _startTime;
 
         _storage._record.Add(sombraAction);
+        print(_storage._record.Count);
+        print(_storage.gameObject.name);
+
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,12 +63,24 @@ public class SombraTest : MonoBehaviour
 
     public void test (InputAction.CallbackContext callback){
 
-        if (_recording)
-        {
-            record(callback);
-        }
+        test(callback);
 
-        print("tu vieja");
+    }
+
+    public void test(SombraStorage.CustomCallbackContext callback)
+    {
+
+        if (callback.started)
+        {
+            if (_recording)
+            {
+                record(callback);
+            }
+
+            print("tu vieja from object:" + gameObject.name);
+
+            transform.position+= new Vector3(0, 2, 0);
+        }
 
     }
 
