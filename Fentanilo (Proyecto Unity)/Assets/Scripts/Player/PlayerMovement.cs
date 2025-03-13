@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Mejora del Salto")]
     [Tooltip("Multiplicador de gravedad cuando el jugador esta cayendo")]
     [SerializeField] float fallMultiplier;
+    [Tooltip("Tiempo (en segundos) durante el cual se guarda la intención de salto")]
+    [SerializeField] float jumpBufferTime;
 
     [Header("Coyote Jump")]
     [Tooltip("Tiempo (en segundos) durante el cual se permite saltar después de salir del suelo")]
@@ -31,48 +33,63 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private bool onGround;
     private float coyoteTimeCounter;
+    private float jumpBufferCounter;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // M�todo para manejar el movimiento (llamado por el Input System)
+    // Metodo para manejar el movimiento (llamado por el Input System)
     public void OnMove(InputAction.CallbackContext context) {
         OnMove(SombraStorage.convertCallbackContext(context));
     }
 
-    // M�todo para gestionar el salto (llamado por el Input System)
+    // Metodo para manejar el salto (llamado por el Input System)
     public void OnJump(InputAction.CallbackContext context) {
-
         OnJump(SombraStorage.convertCallbackContext(context));
     }
 
-    // M�todo para manejar el movimiento 
+    // Metodo para manejar el movimiento 
     public void OnMove(SombraStorage.CustomCallbackContext context)
     {
         moveInput = context.valueVector2;
     }
 
-    // M�todo para gestionar el salto 
+    // Metodo para manejar el salto 
     public void OnJump(SombraStorage.CustomCallbackContext context)
     {
-        // Permite saltar si está en el suelo o dentro del tiempo de "Coyote Jump"
-        if (context.started && (onGround || coyoteTimeCounter > 0))
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            // Resetea el contador para evitar saltos múltiples sin tocar el suelo
-            coyoteTimeCounter = 0;
+        if (context.started) {
+            jumpBufferCounter = jumpBufferTime;
         }
     }
 
+    // Ejecuta el salto asignando la velocidad vertical y resetea el coyote time
+    private void Jump() {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        // Reseteamos contadores para evitar saltos múltiples
+        coyoteTimeCounter = 0;
+        jumpBufferCounter = 0;
+    }
 
     private void Update() {
+
+        // Si hay una intención de salto guardada y se cumple que el jugador puede saltar,
+        // se ejecuta el salto.
+        if (jumpBufferCounter > 0 && (onGround || coyoteTimeCounter > 0)) {
+            Jump();
+        }
+
         // Mientras el jugador esté en el suelo, reiniciamos el contador de coyoteTime
         if (onGround) {
             coyoteTimeCounter = coyoteTime;
         } else {
             // Se va decrementando conforme el jugador permanece en el aire
             coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        // Se decrementa el contador del buffer de salto si está activo
+        if (jumpBufferCounter > 0) {
+            jumpBufferCounter -= Time.deltaTime;
         }
     }
 
@@ -82,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
         // Obtiene la velocidad vertical actual
         float verticalVelocity = rb.linearVelocity.y;
 
-        // Si el jugador est� cayendo (velocidad vertical negativa), se aplica mayor gravedad
+        // Si el jugador esta cayendo (velocidad vertical negativa), se aplica mayor gravedad
         if (verticalVelocity < 0) {
             verticalVelocity += Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
         }
@@ -91,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(horizontalVelocity, verticalVelocity);
     }
 
-    // Determina cu�ndo el jugador est� en contacto con el suelo
+    // Determina cu�ndo el jugador esta en contacto con el suelo
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Ground")) {
             onGround = true;
