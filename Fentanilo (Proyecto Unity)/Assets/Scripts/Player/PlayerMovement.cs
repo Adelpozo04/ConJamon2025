@@ -113,9 +113,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundCheckDistance = 0.1f;
     [Tooltip("Posición desde donde se lanza el Raycast (relativa al jugador)")]
     [SerializeField] Vector2 groundCheckOffset = Vector2.zero;
-    [Header("Audio")]
-    [SerializeField] private PlayerAudio playerAudio;
-
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -126,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed;
     private float velocitySmoothing;
 
+    private PlayerAudio playerAudio;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -135,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _startTime = Time.time;
+        playerAudio = GetComponentInChildren<PlayerAudio>();
     }
 
     // Método para manejar el movimiento (llamado por el Input System)
