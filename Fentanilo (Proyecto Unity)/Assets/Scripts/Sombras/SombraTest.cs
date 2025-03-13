@@ -63,8 +63,7 @@ public class SombraTest : MonoBehaviour
 
     public void test (InputAction.CallbackContext callback){
 
-        test(callback);
-
+        test(SombraStorage.convertCallbackContext(callback));
     }
 
     public void test(SombraStorage.CustomCallbackContext callback)

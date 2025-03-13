@@ -59,11 +59,11 @@ public class SombraStorage : MonoBehaviour
 
         if (_runningShadow)
         {
-            //print(_record.Count);
+            print(_record.Count);
             if (_record.Count > 0)
             {
                 double currTime = Time.time - _startTime;
-                if (_record[0].time >= currTime)
+                if (currTime  >= _record[0].time)
                 {
                     runAction(_record[0]);
                     _record.RemoveAt(0);
@@ -86,7 +86,6 @@ public class SombraStorage : MonoBehaviour
 
     public void startShadow(InputAction.CallbackContext callback)
     {
-        print("empezar a replicar");
         startShadow();
     }
 
