@@ -22,6 +22,8 @@ public class SombrasController : MonoBehaviour
 
     double _startTime = 0;
 
+   
+
     private void Start()
     {
         //crear las sombras
@@ -40,6 +42,9 @@ public class SombrasController : MonoBehaviour
         //print("starttt" + _sombrasIndices.Count);
 
         _startTime = Time.time;
+
+        //print("start , sombras indices size" + _sombrasIndices.Count);
+
     }
 
 
@@ -47,11 +52,17 @@ public class SombrasController : MonoBehaviour
     //controller
     void Update()
     {
+        if (_sombrasIndices.Count == 0) return;
+
         //actualizar todos las sombras
         for(int i = 0; i < SombraStorage.Instance._records.Count; i++)
         {
+            //print("update , sombrasStorage records[0] size" + SombraStorage.Instance._records[i].Count);
+            //print("update , sombras indices size" + _sombrasIndices.Count);
 
-            if(SombraStorage.Instance._records[i].Count >  _sombrasIndices[i])
+
+
+            if (SombraStorage.Instance._records[i].Count >  _sombrasIndices[i])
             {
 
                 double currTime = Time.time - _startTime;
