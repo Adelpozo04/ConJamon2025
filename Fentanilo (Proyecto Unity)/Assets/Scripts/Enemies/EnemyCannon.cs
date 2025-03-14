@@ -13,14 +13,18 @@ public class EnemyCannon : MonoBehaviour
     [SerializeField] float _burstDelay; //Time between bursts
     public float _speed;
     private bool _lookingRight = true;
-
+    private Vector2 _initPos;
+ 
     private void Start()
     {
         StartCoroutine(CanonSequence());
+        _initPos.x = transform.position.x;
     }
 
     private void Update()
     {
+        transform.position = new Vector2(_initPos.x, transform.position.y);
+
         if (transform.position.x < _player.transform.position.x && _lookingRight == false)
         {
             Flip();

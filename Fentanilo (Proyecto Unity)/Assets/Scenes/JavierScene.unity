@@ -119,12 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &824500441 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7146295817256670000, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
-  m_PrefabInstance: {fileID: 6409898018209363237}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1401758136
+--- !u!1001 &359626644
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -132,25 +127,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 261021921592823057, guid: 9cdf8efadf5a51548b0d983a4050f09c, type: 3}
-      propertyPath: m_LinearDamping
-      value: 0.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 3058850206784619819, guid: 9cdf8efadf5a51548b0d983a4050f09c, type: 3}
-      propertyPath: m_Size.y
-      value: 2.8364897
-      objectReference: {fileID: 0}
-    - target: {fileID: 3058850206784619819, guid: 9cdf8efadf5a51548b0d983a4050f09c, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.012222767
-      objectReference: {fileID: 0}
     - target: {fileID: 3567869047890595174, guid: 9cdf8efadf5a51548b0d983a4050f09c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.114828
+      value: 20.191849
       objectReference: {fileID: 0}
     - target: {fileID: 3567869047890595174, guid: 9cdf8efadf5a51548b0d983a4050f09c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.035
+      value: -7.0358043
       objectReference: {fileID: 0}
     - target: {fileID: 3567869047890595174, guid: 9cdf8efadf5a51548b0d983a4050f09c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -193,6 +176,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cdf8efadf5a51548b0d983a4050f09c, type: 3}
+--- !u!4 &824500441 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7146295817256670000, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
+  m_PrefabInstance: {fileID: 6409898018209363237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1511194927376177745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,4 +657,4 @@ SceneRoots:
   - {fileID: 6409898018209363237}
   - {fileID: 7337251255182494921}
   - {fileID: 8148908308685138019}
-  - {fileID: 1401758136}
+  - {fileID: 359626644}
