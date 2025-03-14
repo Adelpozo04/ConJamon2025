@@ -3,6 +3,7 @@ using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static SombraStorage;
 
 public class SombrasController : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class SombrasController : MonoBehaviour
     //grabacion actual
     public List<SombraStorage.SombraAction> _currentRecord = new List<SombraStorage.SombraAction>();
 
-    List<PlayerMovement> _sombrasActivas = new List<PlayerMovement>();
+    List<SombraStorage.SombraState> _sombrasActivas = new List<SombraStorage.SombraState>();
     List<int> _sombrasIndices = new List<int>();
 
     double _startTime = 0;
@@ -26,26 +27,20 @@ public class SombrasController : MonoBehaviour
 
     private void Start()
     {
-        //crear las sombras
+        _startTime = Time.fixedTime;
 
+        //crear las sombras
         for (int i = 0; i < SombraStorage.Instance._records.Count; i++)
         {
             GameObject newSombra = Instantiate(sombrasPrefab, transform.position, Quaternion.identity);
 
             _sombrasIndices.Add(0);
-            _sombrasActivas.Add(newSombra.GetComponent<PlayerMovement>());
+            _sombrasActivas.Add(new SombraStorage.SombraState(newSombra.GetComponent<PlayerMovement>()));
             
-            newSombra.GetComponent<PlayerMovement>().setRecording(false);
-            newSombra.GetComponent<PlayerInput>().enabled = false;
+            //newSombra.GetComponent<PlayerMovement>().setRecording(false);
+            //newSombra.GetComponent<PlayerInput>().enabled = false;
             newSombra.GetComponentInChildren<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f,1);
         }
-
-        //print("starttt" + _sombrasIndices.Count);
-
-        _startTime = Time.time;
-
-        //print("start , sombras indices size" + _sombrasIndices.Count);
-
 
         GameUI.Instance.StartUI(_maxRecords, SombraStorage.Instance._records.Count);
     }
@@ -53,7 +48,7 @@ public class SombrasController : MonoBehaviour
 
 
     //controller
-    void Update()
+    void FixedUpdate()
     {
         if (_sombrasIndices.Count == 0) return;
 
@@ -62,13 +57,10 @@ public class SombrasController : MonoBehaviour
         {
             //print("update , sombrasStorage records[0] size" + SombraStorage.Instance._records[i].Count);
             //print("update , sombras indices size" + _sombrasIndices.Count);
-
-
-
-            if (SombraStorage.Instance._records[i].Count >  _sombrasIndices[i])
+            if (SombraStorage.Instance._records[i].Count > _sombrasIndices[i])
             {
 
-                double currTime = Time.time - _startTime;
+                double currTime = Time.fixedTime - _startTime;
                 double actionTime = SombraStorage.Instance._records[i][_sombrasIndices[i]].time;
 
                 //print("CurrTime: " + currTime);
@@ -76,22 +68,62 @@ public class SombrasController : MonoBehaviour
 
                 if (currTime >= actionTime)
                 {
-                    SombraStorage.runAction(SombraStorage.Instance._records[i][_sombrasIndices[i]], _sombrasActivas[i]);
+                    //Debug.Log("BEFORE" + _sombrasActivas[i].movementDirection + SombraStorage.Instance._records[i][_sombrasIndices[i]].direction);
+                    //runAction(SombraStorage.Instance._records[i][_sombrasIndices[i]], _sombrasActivas[i]);
+
+                    //if else con todas las funciones
+                    if (SombraStorage.Instance._records[i][_sombrasIndices[i]].type == ActionType.JUMP)
+                    {
+                        _sombrasActivas[i].jumpPressed = SombraStorage.Instance._records[i][_sombrasIndices[i]].pressed;
+                    }
+                    else if (SombraStorage.Instance._records[i][_sombrasIndices[i]].type == ActionType.MOVE)
+                    {
+                        _sombrasActivas[i].movementDirection = SombraStorage.Instance._records[i][_sombrasIndices[i]].direction;
+                    }
+                    else if (SombraStorage.Instance._records[i][_sombrasIndices[i]].type == ActionType.SHOOT)
+                    {
+                        _sombrasActivas[i].shootPressed = SombraStorage.Instance._records[i][_sombrasIndices[i]].pressed;
+                        //target.playerMovement.gameObject.GetComponentInChildren<Shoot>().OnShoot(sombraAction.callback);
+                    }
+                    else if (SombraStorage.Instance._records[i][_sombrasIndices[i]].type == ActionType.AIM)
+                    {
+                        _sombrasActivas[i].movementDirection = SombraStorage.Instance._records[i][_sombrasIndices[i]].direction;
+                        //target.gameObject.GetComponentInChildren<Shoot>().OnAim(sombraAction.callback);
+                    }
+                    else if (SombraStorage.Instance._records[i][_sombrasIndices[i]].type == ActionType.STOP_RECORDING)
+                    {
+                        _sombrasActivas[i].nextIterationPressed = SombraStorage.Instance._records[i][_sombrasIndices[i]].pressed;
+
+                        if (SombraStorage.Instance._records[i][_sombrasIndices[i]].pressed)
+                        {
+                            PerkBehaviour perk = _sombrasActivas[i].playerMovement.GetComponent<PerkBehaviour>();
+                            if (perk != null)
+                            {
+                                perk.ActivateEffect();
+                                Destroy(_sombrasActivas[i].playerMovement.gameObject);
+                            }
+                        }
+                    }
+                    //Debug.Log("after" + _sombrasActivas[i].movementDirection);
                     _sombrasIndices[i]++;
                 }
             }
-            else if (SombraStorage.Instance._records[i].Count ==  _sombrasIndices[i]) //cuando se ha dejado de detectar el input
+            else if (SombraStorage.Instance._records[i].Count == _sombrasIndices[i]) //cuando se ha dejado de detectar el input
             {
                 //cancelar todos los inputs
-                if (_sombrasActivas[i] != null)
+                if (_sombrasActivas[i].playerMovement != null)
                 {
-                    _sombrasActivas[i].colliderOnDead.SetActive(true);
+                    _sombrasActivas[i].playerMovement.colliderOnDead.SetActive(true);
                     _sombrasIndices[i]++;
                 }
             }
 
 
-
+            if (_sombrasActivas[i].alive)
+            {
+                //Debug.Log("updateing" + _sombrasActivas[i].movementDirection + " " + _sombrasActivas[i].jumpPressed);
+                _sombrasActivas[i].playerMovement.MovementUpdate(_sombrasActivas[i].movementDirection, _sombrasActivas[i].jumpPressed);
+            }
         }
       
     }
@@ -99,15 +131,6 @@ public class SombrasController : MonoBehaviour
     public void KillShadow()
     {
 
-    }
-
-    //controller
-    public void stopRecording(InputAction.CallbackContext callback)
-    {
-        if (callback.started)
-        {
-            stopRecording();
-        }
     }
 
     public void stopRecording()

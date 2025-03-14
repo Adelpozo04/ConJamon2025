@@ -93,8 +93,8 @@ public class ImpulsoEffect : MonoBehaviour
                     playerRB.AddForce(-direction.normalized * currentAttractForce, ForceMode2D.Force);
 
                 // vibracion
-                float offsetX = Mathf.Sin(Time.time * vibrationSpeed) * vibrationIntensity;
-                float offsetY = Mathf.Cos(Time.time * vibrationSpeed) * vibrationIntensity;
+                float offsetX = Mathf.Sin(Time.fixedTime * vibrationSpeed) * vibrationIntensity;
+                float offsetY = Mathf.Cos(Time.fixedTime * vibrationSpeed) * vibrationIntensity;
 
                 playerTR.position += new Vector3(offsetX, offsetY, 0);
             }

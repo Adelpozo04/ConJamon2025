@@ -46,6 +46,7 @@ public class Shoot : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
     }
 
+    /*
     public void OnShoot(InputAction.CallbackContext context) {
         var customContext = SombraStorage.convertCallbackContext(context);
         if (playerMovement._recording)
@@ -112,13 +113,7 @@ public class Shoot : MonoBehaviour
                 firePoint.rotation = Quaternion.Euler(0, 0, -90);
             }
         }
-    }
-
-
-
-
-
-
+    }*/
 
     private void TryShoot() {
         if (Time.time - lastShotTime < fireRate)

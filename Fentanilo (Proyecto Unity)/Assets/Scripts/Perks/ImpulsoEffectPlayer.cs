@@ -8,7 +8,7 @@ public class ImpulsoEffectPlayer : MonoBehaviour
     public ImpulsoEffect impulsoEffect;
     public bool active;
     private bool shooting = false;
-    public void onAim(InputAction.CallbackContext context)
+    /*public void onAim(InputAction.CallbackContext context)
     {
         var customContext = SombraStorage.convertCallbackContext(context);
         if (playerMovement._recording)
@@ -21,7 +21,7 @@ public class ImpulsoEffectPlayer : MonoBehaviour
     public void OnAim(SombraStorage.CustomCallbackContext context)
     {
         TryAim(context.valueVector2);
-    }
+    }*/
 
     private void TryAim(Vector2 inputDirection)
     {

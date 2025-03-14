@@ -27,10 +27,12 @@ public class ProyectileBehaviour : MonoBehaviour
 
         if (playerMovement != null)
         {
+            /*
             if (playerMovement._recording)
             {
                 playerMovement._controller.stopRecording();
             }
+            */
 
             Destroy(playerMovement.gameObject);
         }

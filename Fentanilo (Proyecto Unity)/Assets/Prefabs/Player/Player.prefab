@@ -147,10 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3eb926b5539f147abc88d129ac6f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recording: 1
   _controller: {fileID: 0}
   colliderOnDead: {fileID: 2518898269516376531}
-  moveSpeed: 10
+  moveSpeed: 20
   jumpForce: 20
   fallMultiplierSettings:
     enabled: 1

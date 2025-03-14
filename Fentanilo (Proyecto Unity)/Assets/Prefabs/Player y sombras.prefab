@@ -43,6 +43,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6457466719948743055}
     m_Modifications:
     - target: {fileID: 1149719708052113280, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: moveSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149719708052113280, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: _controller
       value: 
       objectReference: {fileID: 6252671448358043589}
@@ -56,6 +60,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3151568337878791679, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8407047750420327450, guid: ba4572d907251ab4085c97176416578e, type: 3}
