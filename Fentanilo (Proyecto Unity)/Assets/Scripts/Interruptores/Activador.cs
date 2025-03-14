@@ -27,7 +27,7 @@ public abstract class Activador : MonoBehaviour
         isPressed = state;
         foreach (Activable act in activables)
         {
-            act.Activar(state);
+            if(act != null) act.Activar(state);
         }
     }
 
