@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7324510544234325889}
   - component: {fileID: 6378089840511117427}
   - component: {fileID: 7533189221399951391}
+  - component: {fileID: 4702441550906163125}
   m_Layer: 6
   m_Name: ColliderOnDead
   m_TagString: Untagged
@@ -132,6 +133,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &4702441550906163125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226389057419423327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1625b43beb7a8904c994dd1141a73df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityUmbral: 0.2
+  rb: {fileID: 6508321178267873830}
 --- !u!1 &8270905112512153635
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +526,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3eb926b5539f147abc88d129ac6f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &6508321178267873830 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 5725547134616731898, guid: ba4572d907251ab4085c97176416578e, type: 3}
+  m_PrefabInstance: {fileID: 1524197347970052828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7146295817256670000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
