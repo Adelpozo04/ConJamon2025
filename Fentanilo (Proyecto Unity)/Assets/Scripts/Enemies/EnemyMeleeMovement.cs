@@ -7,10 +7,9 @@ public class EnemyMeleeMovement : MonoBehaviour
     [SerializeField] private MovementState _currentState; // Estado actual del movimiento
     [SerializeField] private LayerMask _playerLayer; // Capa para detectar al jugador
     
-    [SerializeField] private float _searchRange; // Distancia del Raycast
-    [SerializeField] private float _maxDistance; // Distancia máxima de seguimiento
+    [SerializeField] private float _followingRange;  // Distancia del Raycast
     [SerializeField] private float _speed; // Velocidad de movimiento
-    [SerializeField] private float _raycastDistance;  // Distancia del Raycast
+    
 
     private Transform _playerTransform; // Referencia al transform del jugador
     private bool _lookingRight = true; // Variable para saber si el enemigo está mirando a la derecha
@@ -51,7 +50,8 @@ public class EnemyMeleeMovement : MonoBehaviour
         Vector3 _newPos = new Vector3(_patrolPositions[_randomNumber].position.x, transform.position.y, transform.position.z);
         transform.position = Vector2.MoveTowards(transform.position, _newPos, _speed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, _patrolPositions[_randomNumber].position) < _distancePP)
+        if (Vector2.Distance(transform.position, _patrolPositions[_randomNumber].position) < _distancePP ||
+            transform.position.x == _patrolPositions[_randomNumber].position.x)
         {
             _randomNumber = Random.Range(0, _patrolPositions.Length);
         }
@@ -60,10 +60,10 @@ public class EnemyMeleeMovement : MonoBehaviour
         Vector2 direction = _lookingRight ? Vector2.right : Vector2.left;
 
         // Lanzar un Raycast para detectar al jugador
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _raycastDistance, _playerLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _followingRange, _playerLayer);
 
         // Dibujar el Raycast en la Scene para depuración
-        Debug.DrawRay(transform.position, direction * _raycastDistance, Color.red);
+        Debug.DrawRay(transform.position, direction * _followingRange, Color.red);
 
         // Si el raycast golpea al jugador, cambia al estado de "Following"
         if (hit.collider != null)
@@ -90,8 +90,8 @@ public class EnemyMeleeMovement : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, _posToFollow, _speed * Time.deltaTime);
 
         Vector2 direction = _lookingRight ? Vector2.right : Vector2.left;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _raycastDistance, _playerLayer);
-        Debug.DrawRay(transform.position, direction * _raycastDistance, Color.blue);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _followingRange, _playerLayer);
+        Debug.DrawRay(transform.position, direction * _followingRange, Color.blue);
 
         if (hit.collider != null)
         {
@@ -99,13 +99,6 @@ public class EnemyMeleeMovement : MonoBehaviour
         }
         else
         {
-            _playerTransform = null;
-        }
-
-        // Si el jugador se aleja demasiado, volver al estado de patrullaje
-        if (_playerTransform != null && Vector2.Distance(transform.position, _playerTransform.position) > _searchRange)
-        {
-            _currentState = MovementState.Patrolling;
             _playerTransform = null;
         }
     }

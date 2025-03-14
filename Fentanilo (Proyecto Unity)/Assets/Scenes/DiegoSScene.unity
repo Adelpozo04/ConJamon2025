@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &337203924
+--- !u!1001 &209961865
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -170,10 +170,6 @@ PrefabInstance:
     - target: {fileID: 6009756248330914167, guid: 0a76ef72a76995945b564007a2d07d74, type: 3}
       propertyPath: m_Name
       value: EnemyMelee
-      objectReference: {fileID: 0}
-    - target: {fileID: 6009756248330914167, guid: 0a76ef72a76995945b564007a2d07d74, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -806,4 +802,4 @@ SceneRoots:
   - {fileID: 1686030559}
   - {fileID: 2047832564}
   - {fileID: 546189198}
-  - {fileID: 337203924}
+  - {fileID: 209961865}
