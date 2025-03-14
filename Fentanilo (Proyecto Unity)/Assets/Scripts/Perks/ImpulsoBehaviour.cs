@@ -8,9 +8,12 @@ using Unity.VisualScripting;
 
 public class ImpulsoBehaviour : PerkBehaviour
 {
+    public GameObject ImpulsoPrefab;
     public override void ActivateEffect()
     {
-        gameObject.AddComponent<ImpulsoEffect>();
+        GameObject go = Instantiate(ImpulsoPrefab);
+        go.transform.position = transform.position;
+
         GameUI.Instance.RemovePerk();
     }
 }

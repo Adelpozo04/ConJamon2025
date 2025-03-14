@@ -46,6 +46,10 @@ PrefabInstance:
       propertyPath: _controller
       value: 
       objectReference: {fileID: 6252671448358043589}
+    - target: {fileID: 1149719708052113280, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: groundCheckOffset.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1388279535486550557, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Name
       value: Player

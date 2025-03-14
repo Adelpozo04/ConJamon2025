@@ -140,3 +140,4 @@ MonoBehaviour:
   perkType: 2
   rocaPrefab: {fileID: 6927569464768627335, guid: c38924298a3b1db48b11a2c21aabceae, type: 3}
   explosionEffectPrefab: {fileID: 6927569464768627335, guid: 408bd542564f25c4b902477bfab25338, type: 3}
+  impulsoPrefab: {fileID: 1177837502797919453, guid: d150824df6ed6014f83b1535eb9649da, type: 3}

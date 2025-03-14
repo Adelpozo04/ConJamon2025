@@ -9,6 +9,7 @@ public class PerkGrabable : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] GameObject rocaPrefab;
     [SerializeField] GameObject explosionEffectPrefab;
+    [SerializeField] GameObject impulsoPrefab;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
@@ -41,7 +42,8 @@ public class PerkGrabable : MonoBehaviour
                     case PerkType.Impulso:
                         if (player.GetComponent<ImpulsoBehaviour>() == null)
                         {
-                            player.AddComponent<ImpulsoBehaviour>();
+                            ImpulsoBehaviour imp = player.AddComponent<ImpulsoBehaviour>();
+                            imp.ImpulsoPrefab = impulsoPrefab;
                             setted = true;
                         }
                         break;

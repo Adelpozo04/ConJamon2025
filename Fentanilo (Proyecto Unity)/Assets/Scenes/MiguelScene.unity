@@ -1163,10 +1163,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1933054219702416732, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
-      propertyPath: groundCheckOffset.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 2024300202711053799, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
       propertyPath: m_Name
       value: Player y sombras
