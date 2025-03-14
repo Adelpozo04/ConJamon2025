@@ -394,11 +394,23 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1207605168287316587}
     - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1933054219702416732}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
@@ -406,11 +418,23 @@ PrefabInstance:
       value: onAim
       objectReference: {fileID: 0}
     - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnStopRecording
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: ImpulsoEffectPlayer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
@@ -548,9 +572,13 @@ PrefabInstance:
       propertyPath: m_DefaultControlScheme
       value: Keyboard&Mouse
       objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7932213793077487095, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: _maxRecords
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7932213793077487095, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: sombrasPrefab

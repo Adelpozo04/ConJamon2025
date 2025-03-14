@@ -29,7 +29,7 @@ public class SombraStorage : MonoBehaviour
     //tipos de acciones que almacenamos
     public enum ActionType
     {
-        MOVE,JUMP,SHOOT,AIM
+        MOVE,JUMP,SHOOT,AIM,STOP_RECORDING
     }
 
     //guarda el callback original, el momento en que se ejecutó y el tipo de accion que fue
@@ -63,7 +63,7 @@ public class SombraStorage : MonoBehaviour
         //if else con todas las funciones
         if (sombraAction.type == ActionType.JUMP)
         {
-            print("replicando accion, time:" + sombraAction.time + "  callback started:" + sombraAction.callback.started);
+            //print("replicando accion, time:" + sombraAction.time + "  callback started:" + sombraAction.callback.started);
             target.OnJump(sombraAction.callback);
         }
         else if (sombraAction.type == ActionType.MOVE)
@@ -78,7 +78,12 @@ public class SombraStorage : MonoBehaviour
         {
             target.gameObject.GetComponentInChildren<Shoot>().OnAim(sombraAction.callback);
         }
+        else if(sombraAction.type == ActionType.STOP_RECORDING){
+            runCancelAllInputs(target); 
+        }
 
+
+        
         //...
     }
 
@@ -104,6 +109,58 @@ public class SombraStorage : MonoBehaviour
 
 
         return customCallbackContext; 
+    }
+
+
+    public static SombraAction getCancelInput(ActionType type)
+    {
+        SombraAction action = new SombraAction();
+
+
+        action.time = 0;
+        action.type = type;
+
+        CustomCallbackContext callback = new CustomCallbackContext();
+
+        //default, cambiar en cada caso si es necesario
+        callback.started = false;
+        callback.performed = false;
+
+        callback.canceled = true;
+
+        callback.valueVector2 = Vector2.zero;
+
+
+        if (type == ActionType.MOVE)
+        {
+    
+        }
+        else if (type == ActionType.JUMP)
+        {
+
+        }
+        else if (type == ActionType.SHOOT)
+        {
+
+        }
+        else if (type == ActionType.AIM)
+        {
+
+        }
+
+
+        action.callback = callback;
+
+        return action;
+    }
+
+
+    public static void runCancelAllInputs(PlayerMovement target)
+    {
+        runAction(getCancelInput(ActionType.MOVE), target );
+        runAction(getCancelInput(ActionType.JUMP), target);
+        runAction(getCancelInput(ActionType.SHOOT), target);
+        runAction(getCancelInput(ActionType.AIM), target);
     }
 
 

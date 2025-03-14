@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -36,7 +37,7 @@ public class SombrasController : MonoBehaviour
             newSombra.GetComponent<PlayerInput>().enabled = false;  
         }
 
-        print("starttt" + _sombrasIndices.Count);
+        //print("starttt" + _sombrasIndices.Count);
 
         _startTime = Time.time;
     }
@@ -49,7 +50,6 @@ public class SombrasController : MonoBehaviour
         //actualizar todos las sombras
         for(int i = 0; i < SombraStorage.Instance._records.Count; i++)
         {
-            print(i);
 
             if(SombraStorage.Instance._records[i].Count >  _sombrasIndices[i])
             {
@@ -57,8 +57,8 @@ public class SombrasController : MonoBehaviour
                 double currTime = Time.time - _startTime;
                 double actionTime = SombraStorage.Instance._records[i][_sombrasIndices[i]].time;
 
-                print("CurrTime: " + currTime);
-                print("ActionTime: " + actionTime);
+                //print("CurrTime: " + currTime);
+                //print("ActionTime: " + actionTime);
 
                 if (currTime >= actionTime)
                 {
@@ -66,8 +66,10 @@ public class SombrasController : MonoBehaviour
                     _sombrasIndices[i]++;
                 }
             }
-            else if (SombraStorage.Instance._records[i].Count ==  _sombrasIndices[i])
+            else if (SombraStorage.Instance._records[i].Count ==  _sombrasIndices[i]) //cuando se ha dejado de detectar el input
             {
+                //cancelar todos los inputs
+
                 _sombrasActivas[i].colliderOnDead.SetActive(true);
                 _sombrasIndices[i]++;
             }

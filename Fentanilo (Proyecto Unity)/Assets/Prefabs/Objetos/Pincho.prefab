@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4229966941668380672}
   - component: {fileID: 1305637119425249133}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Pincho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
