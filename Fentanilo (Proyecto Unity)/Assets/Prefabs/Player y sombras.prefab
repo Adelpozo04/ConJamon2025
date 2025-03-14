@@ -54,9 +54,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1797060917292614558, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.080131054
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797060917292614558, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.95127463
+      objectReference: {fileID: 0}
     - target: {fileID: 3151568337878791679, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Offset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3231563778749634443, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229765729853162222, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 1015
       objectReference: {fileID: 0}
     - target: {fileID: 8407047750420327450, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Offset.y
@@ -249,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 7932213793077487095, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: sombrasPrefab
       value: 
-      objectReference: {fileID: 1388279535486550557, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      objectReference: {fileID: 460248456075030721}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
