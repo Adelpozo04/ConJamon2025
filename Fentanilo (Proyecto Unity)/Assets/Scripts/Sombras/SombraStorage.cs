@@ -60,6 +60,12 @@ public class SombraStorage : MonoBehaviour
     //controller
     public static void runAction(SombraAction sombraAction,PlayerMovement target)
     {
+
+        if(target == null){
+            print("target null at run action");
+            return;
+        }
+
         //if else con todas las funciones
         if (sombraAction.type == ActionType.JUMP)
         {
