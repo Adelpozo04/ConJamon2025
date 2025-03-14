@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,10 +13,18 @@ using UnityEngine.UI;
 /// </summary>
     public class LevelManager : MonoBehaviour
     {
+        [Header("Entre niveles")]
         [SerializeField] private Image fadeInImage;
         [SerializeField] private float fadeInDuration;
         [SerializeField] private float fadeOutDuration;
-
+        
+        [Header("Reinicio del nivel")]
+        [SerializeField] private Image fadeRestart;
+        [SerializeField] private float fadeRestartDuration;
+        
+        [Header("Final de iteración")]
+        [SerializeField] private Image fadeEndIteration;
+        [SerializeField] private float fadeEndIterationDuration;
         public static LevelManager Instance { get; private set; }
 
         //El awake asegura que la instancia es única y que no se el objeto no se destruye al cambiar de escena
@@ -98,5 +107,20 @@ using UnityEngine.UI;
             }
             NextLevel();
         }
-
+        
+        private IEnumerator RestartTransition()
+        {
+            float elapsedTime = 0f;
+            Color color = fadeInImage.color;
+            
+            while (elapsedTime < fadeOutDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                color.a = Mathf.Lerp(0, 1, elapsedTime / fadeInDuration); // Reduce alpha
+                fadeInImage.color = color;
+                yield return null;
+            }
+            NextLevel();
+        }
+        
     }
