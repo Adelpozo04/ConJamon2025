@@ -125,6 +125,8 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerAudio playerAudio;
 
+
+    private bool active = true;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -134,6 +136,16 @@ public class PlayerMovement : MonoBehaviour
     {
         _startTime = Time.time;
         playerAudio = GetComponentInChildren<PlayerAudio>();
+    }
+
+    public void DisableMovement()
+    {
+        active = false;
+    }
+
+    public void EnableMovement()
+    {
+        active = true;
     }
 
     // Método para manejar el movimiento (llamado por el Input System)
@@ -232,60 +244,74 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate() {
         // Calcula la velocidad horizontal según la entrada.
-        float horizontalVelocity = moveInput.x * moveSpeed;
-        // Obtiene la velocidad vertical actual.
-        float verticalVelocity = rb.linearVelocity.y;
 
-        if (shouldJump) {
-            verticalVelocity = jumpForce;
-            shouldJump = false;
+        if (active)
+        {
+            float horizontalVelocity = moveInput.x * moveSpeed;
+            // Obtiene la velocidad vertical actual.
+            float verticalVelocity = rb.linearVelocity.y;
 
-            // Reseteamos Coyote Jump y Jump Buffer al saltar
-            coyoteTimeCounter = 0;
-            jumpBufferCounter = 0;
+            if (shouldJump)
+            {
+                verticalVelocity = jumpForce;
+                shouldJump = false;
 
-            playerAudio.PlayJump();
-        }
+                // Reseteamos Coyote Jump y Jump Buffer al saltar
+                coyoteTimeCounter = 0;
+                jumpBufferCounter = 0;
 
-        // Si el jugador está cayendo y el multiplicador de caída está activo, se aplica mayor gravedad.
-        if (fallMultiplierSettings.enabled && verticalVelocity < 0) {
-            verticalVelocity += Physics2D.gravity.y * (fallMultiplierSettings.fallMultiplier - 1) * Time.fixedDeltaTime;
-        }
-
-        // Aplicamos el limitador de velocidad en caida
-        if (fallControlSettings.enabled && verticalVelocity < -fallControlSettings.maxFallSpeed) {
-            verticalVelocity = -fallControlSettings.maxFallSpeed;
-        }
-
-        // Suavizamos el movimiento si el smooth está habilitado
-        if (smoothMovementSettings.enabled) {
-            if (moveInput.x != 0) {
-                // Aplicamos aceleración si hay input.
-                currentSpeed = Mathf.SmoothDamp(
-                    currentSpeed,
-                    horizontalVelocity,
-                    ref velocitySmoothing,
-                    smoothMovementSettings.accelerationTime
-                );
-            } else {
-                // Aplicamos desaceleración si no hay input.
-                currentSpeed = Mathf.SmoothDamp(
-                    currentSpeed,
-                    0,
-                    ref velocitySmoothing,
-                    smoothMovementSettings.decelerationTime
-                );
+                playerAudio.PlayJump();
             }
 
-            // Permite cambiar de dirección instantáneamente si está activado.
-            if (smoothMovementSettings.instantTurn && moveInput.x != 0) {
+            // Si el jugador está cayendo y el multiplicador de caída está activo, se aplica mayor gravedad.
+            if (fallMultiplierSettings.enabled && verticalVelocity < 0)
+            {
+                verticalVelocity += Physics2D.gravity.y * (fallMultiplierSettings.fallMultiplier - 1) * Time.fixedDeltaTime;
+            }
+
+            // Aplicamos el limitador de velocidad en caida
+            if (fallControlSettings.enabled && verticalVelocity < -fallControlSettings.maxFallSpeed)
+            {
+                verticalVelocity = -fallControlSettings.maxFallSpeed;
+            }
+
+            // Suavizamos el movimiento si el smooth está habilitado
+            if (smoothMovementSettings.enabled)
+            {
+                if (moveInput.x != 0)
+                {
+                    // Aplicamos aceleración si hay input.
+                    currentSpeed = Mathf.SmoothDamp(
+                        currentSpeed,
+                        horizontalVelocity,
+                        ref velocitySmoothing,
+                        smoothMovementSettings.accelerationTime
+                    );
+                }
+                else
+                {
+                    // Aplicamos desaceleración si no hay input.
+                    currentSpeed = Mathf.SmoothDamp(
+                        currentSpeed,
+                        0,
+                        ref velocitySmoothing,
+                        smoothMovementSettings.decelerationTime
+                    );
+                }
+
+                // Permite cambiar de dirección instantáneamente si está activado.
+                if (smoothMovementSettings.instantTurn && moveInput.x != 0)
+                {
+                    currentSpeed = horizontalVelocity;
+                }
+            }
+            else
+            {
                 currentSpeed = horizontalVelocity;
             }
-        } else {
-            currentSpeed = horizontalVelocity;
-        }
 
-        rb.linearVelocity = new Vector2(currentSpeed, verticalVelocity);
+            rb.linearVelocity = new Vector2(currentSpeed, verticalVelocity);
+        }
     }
 
     /// <summary>

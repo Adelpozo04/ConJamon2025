@@ -108,6 +108,7 @@ public class ImpulsoEffect : MonoBehaviour
                 playerRB.AddForce(aimDirection.normalized * shootingSpeed, ForceMode2D.Impulse);
 
                 canShoot = false;
+                active = false;
                 //Destroy(gameObject);
             }
         }
