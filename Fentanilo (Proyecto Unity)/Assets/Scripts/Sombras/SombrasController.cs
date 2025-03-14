@@ -36,7 +36,8 @@ public class SombrasController : MonoBehaviour
             _sombrasActivas.Add(newSombra.GetComponent<PlayerMovement>());
             
             newSombra.GetComponent<PlayerMovement>().setRecording(false);
-            newSombra.GetComponent<PlayerInput>().enabled = false;  
+            newSombra.GetComponent<PlayerInput>().enabled = false;
+            newSombra.GetComponentInChildren<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f,1);
         }
 
         //print("starttt" + _sombrasIndices.Count);
@@ -45,6 +46,8 @@ public class SombrasController : MonoBehaviour
 
         //print("start , sombras indices size" + _sombrasIndices.Count);
 
+
+        GameUI.Instance.StartUI(_maxRecords, SombraStorage.Instance._records.Count);
     }
 
 
@@ -80,15 +83,22 @@ public class SombrasController : MonoBehaviour
             else if (SombraStorage.Instance._records[i].Count ==  _sombrasIndices[i]) //cuando se ha dejado de detectar el input
             {
                 //cancelar todos los inputs
-
-                _sombrasActivas[i].colliderOnDead.SetActive(true);
-                _sombrasIndices[i]++;
+                if (_sombrasActivas[i] != null)
+                {
+                    _sombrasActivas[i].colliderOnDead.SetActive(true);
+                    _sombrasIndices[i]++;
+                }
             }
 
 
 
         }
       
+    }
+
+    public void KillShadow()
+    {
+
     }
 
     //controller
