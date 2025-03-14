@@ -5,7 +5,7 @@ public class ButtonController : Activador
 {
     //Para probar la funcionalidad del botón sin que esté hecho. ESTO ES TEMPORAL
     [FormerlySerializedAs("clicktestPress")][SerializeField] private bool clicktestPress;
-
+    int numPisando = 0;
 
     // Update is called once per frame
     void Update()
@@ -22,8 +22,12 @@ public class ButtonController : Activador
     {
         if(other.gameObject.GetComponent<PlayerMovement>() != null)
         {
-            SendToActivables(true);
-            PlayAudioSFX();
+            if(numPisando == 0)
+            {
+                SendToActivables(true);
+                PlayAudioSFX();
+            }            
+            numPisando++;
         }
     }
     
@@ -31,8 +35,12 @@ public class ButtonController : Activador
     {
         if (other.gameObject.GetComponent<PlayerMovement>() != null)
         {
-            SendToActivables(false);
-            PlayAudioSFX();
+            if (numPisando == 1)
+            {
+                SendToActivables(false);
+                PlayAudioSFX();
+            }
+            numPisando--;           
         }
     }
 }
