@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7b7ab4985c666024d80bab011e84eb4d
+guid: 35a9cdf49f060be4391ed300637f0af4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8182623236386698006
-    second: "SE\xD1AL ROJO LADO D_0"
+      213: 5171728975412597029
+    second: Torreta_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "SE\xD1AL ROJO LADO D_0"
+      name: Torreta_0
       rect:
         serializedVersion: 2
-        x: 266
-        y: 0
-        width: 419
-        height: 422
+        x: 159
+        y: 237
+        width: 1065
+        height: 614
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 613bfa7ea748e8170800000000000000
-      internalID: 8182623236386698006
+      spriteID: 52110162a1ca5c740800000000000000
+      internalID: 5171728975412597029
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      "SE\xD1AL ROJO LADO D_0": 8182623236386698006
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
