@@ -17,8 +17,8 @@ public class SombrasController : MonoBehaviour
     //grabacion actual
     public List<SombraStorage.SombraAction> _currentRecord = new List<SombraStorage.SombraAction>();
 
-    List<PlayerMovement> _sombrasActivas = new List<PlayerMovement>();
-    List<int> _sombrasIndices = new List<int>();
+    public List<PlayerMovement> _sombrasActivas = new List<PlayerMovement>();
+    public List<int> _sombrasIndices = new List<int>();
 
     double _startTime = 0;
 
@@ -34,9 +34,13 @@ public class SombrasController : MonoBehaviour
 
             _sombrasIndices.Add(0);
             _sombrasActivas.Add(newSombra.GetComponent<PlayerMovement>());
-            
+
+            newSombra.GetComponent<PlayerMovement>()._controllerIndex = i;  
+
+
             newSombra.GetComponent<PlayerMovement>().setRecording(false);
             newSombra.GetComponent<PlayerInput>().enabled = false;
+
             newSombra.GetComponentInChildren<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f,1);
         }
 
@@ -55,6 +59,8 @@ public class SombrasController : MonoBehaviour
     //controller
     void Update()
     {
+        //ahora las instancias preguntan por su input
+        return;
         if (_sombrasIndices.Count == 0) return;
 
         //actualizar todos las sombras

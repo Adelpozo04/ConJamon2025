@@ -4,7 +4,6 @@ public class TrampaComponent : MonoBehaviour
 {
     /*
         -bug con el rigidstatic al dejar de grabar
-        -bug camara a veces
         -bug repeticion de sombras
         
      

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -126,7 +127,16 @@ public class PlayerMovement : MonoBehaviour
     private PlayerAudio playerAudio;
 
 
+
+
     private bool active = true;
+    
+
+    bool _jumpButtonPressed = false;
+    public int _controllerIndex = 0; 
+
+
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -134,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        _startTime = Time.time;
+        _startTime = Time.fixedTime;
         playerAudio = GetComponentInChildren<PlayerAudio>();
     }
 
@@ -154,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_recording)
         {
-            record(customContext,SombraStorage.ActionType.MOVE);
+            //record(customContext,SombraStorage.ActionType.MOVE);
         }
         OnMove(customContext);
     }
@@ -164,9 +174,9 @@ public class PlayerMovement : MonoBehaviour
         var customContext = SombraStorage.convertCallbackContext(context);
         if (_recording)
         {
-            record(customContext, SombraStorage.ActionType.JUMP);
+            //record(customContext, SombraStorage.ActionType.JUMP);
         }
-        OnJump(customContext);
+        //OnJump(customContext);
     }
 
     public void OnStopRecording(InputAction.CallbackContext context)
@@ -174,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
         var customContext = SombraStorage.convertCallbackContext(context);
         if (context.started && _recording)
         {
-            record(customContext, SombraStorage.ActionType.STOP_RECORDING);
+            //record(customContext, SombraStorage.ActionType.STOP_RECORDING);
 
             _controller.stopRecording();
         }
@@ -185,10 +195,20 @@ public class PlayerMovement : MonoBehaviour
     // Método para manejar el movimiento (custom para guardar los callbacks)
     public void OnMove(SombraStorage.CustomCallbackContext context) {
         moveInput = context.valueVector2;
+        //print(moveInput);
     }
 
     // Método para manejar el salto (custom para guardar los callbacks)
     public void OnJump(SombraStorage.CustomCallbackContext context) {
+
+
+        if (!_recording)
+        {
+            //print("Started: " +context.started + " Canceled: " + context.canceled);
+
+        }
+
+
         if (context.started) {
             if (jumpBufferSettings.enabled) {
                 jumpBufferCounter = jumpBufferSettings.jumpBufferTime;
@@ -242,8 +262,130 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //de momento mira solo jump y move
+    void getFixedInput()
+    {
+        //getMove
+        SombraStorage.CustomCallbackContext moveContext = new SombraStorage.CustomCallbackContext();
+
+        moveInput = new Vector2(Input.GetAxis("Horizontal"), 0);
+
+        moveContext.valueVector2 = moveInput;
+        
+
+        //getJump
+
+
+        SombraStorage.CustomCallbackContext jumpContext = new SombraStorage.CustomCallbackContext();
+
+        jumpContext.started = false;
+        jumpContext.canceled = false;
+
+        bool thisFrameJumpButtonPressed = Input.GetButton("Jump");
+
+        //si ha cambiado su estado
+        if (thisFrameJumpButtonPressed != _jumpButtonPressed) {
+
+            //si se ha pulsado
+            if (thisFrameJumpButtonPressed)
+            {
+                jumpContext.started = true;
+                jumpContext.canceled = false;
+            }
+            else // si se ha dejado de pulsar
+            {
+                jumpContext.started = false;
+                jumpContext.canceled = true;
+
+                print("canceleeed");
+
+            }
+            _jumpButtonPressed = thisFrameJumpButtonPressed;
+
+            OnJump(jumpContext);
+        }
+
+
+
+        //getShoot
+
+
+        //getAim
+
+
+        //stop recording
+        SombraStorage.CustomCallbackContext stopContext = new SombraStorage.CustomCallbackContext();
+
+        stopContext.started = false;    
+
+        if (Input.GetButton("Cbutton"))
+        {
+            stopContext.started = true;
+        }
+
+        //record de los inputs
+        record(moveContext,SombraStorage.ActionType.MOVE);
+        record(jumpContext,SombraStorage.ActionType.JUMP);
+       // print("Action Nº: " + _controller._currentRecord.Count +  " Started: " +jumpContext.started + " Canceled: " + jumpContext.canceled);
+
+
+
+
+        if (stopContext.started)
+        {
+            record(stopContext, SombraStorage.ActionType.STOP_RECORDING);
+            _controller.stopRecording();
+        }
+
+    }
+
+    void askInput()
+    {
+        if (SombraStorage.Instance._records[_controllerIndex].Count >  _controller._sombrasIndices[_controllerIndex])
+        {
+
+            double currTime = Time.fixedTime - _startTime;
+            double actionTime = SombraStorage.Instance._records[_controllerIndex][_controller._sombrasIndices[_controllerIndex]].time;
+
+            //print("CurrTime: " + currTime);
+            //print("ActionTime: "+  actionTime);
+
+
+            while(currTime >= actionTime && _controller._sombrasIndices[_controllerIndex] < SombraStorage.Instance._records[_controllerIndex].Count)
+            {
+                actionTime = SombraStorage.Instance._records[_controllerIndex][_controller._sombrasIndices[_controllerIndex]].time;
+                SombraStorage.runAction(SombraStorage.Instance._records[_controllerIndex][_controller._sombrasIndices[_controllerIndex]], _controller._sombrasActivas[_controllerIndex]);
+                _controller._sombrasIndices[_controllerIndex]++;
+            }
+        }
+        else if (SombraStorage.Instance._records[_controllerIndex].Count ==  _controller._sombrasIndices[_controllerIndex]) //cuando se ha dejado de detectar el input
+        {
+            //cancelar todos los inputs
+            if (_controller._sombrasActivas[_controllerIndex] != null)
+            {
+                _controller._sombrasActivas[_controllerIndex].colliderOnDead.SetActive(true);
+                _controller._sombrasIndices[_controllerIndex]++;
+            }
+        }
+
+    }
+
+
     private void FixedUpdate() {
         // Calcula la velocidad horizontal según la entrada.
+
+        if (_recording) { 
+            
+            getFixedInput();
+        
+        }
+        else //ask for input in sombraController
+        {
+            //print("asking");
+            askInput();
+        }
+
+
 
         if (active)
         {
@@ -342,7 +484,7 @@ public class PlayerMovement : MonoBehaviour
 
         //agregar la accion a la lista de acciones actuales
         sombraAction.callback = callback;
-        sombraAction.time = Time.time - _startTime;
+        sombraAction.time = Time.fixedTime - _startTime;
         sombraAction.type = type;
 
 

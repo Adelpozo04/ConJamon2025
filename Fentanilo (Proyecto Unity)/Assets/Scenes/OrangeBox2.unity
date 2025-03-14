@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 53024951}
   - component: {fileID: 53024952}
   - component: {fileID: 53024950}
+  - component: {fileID: 53024953}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -411,6 +412,14 @@ MonoBehaviour:
   perkRoca: {fileID: 21300000, guid: 3cbf73af551b3ed4caa0b93242b79e13, type: 3}
   perkExplosion: {fileID: 21300000, guid: 3a33806f143dd1f418161d37eced2198, type: 3}
   perkImpulso: {fileID: 21300000, guid: 3b4a282fff5bc3f41bf9b7c9c7a58125, type: 3}
+--- !u!81 &53024953
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53024949}
+  m_Enabled: 1
 --- !u!1001 &453461805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1159,6 +1168,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1250752514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1771741082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771741083}
+  - component: {fileID: 1771741084}
+  m_Layer: 0
+  m_Name: fps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771741083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771741082}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.275824, y: -3.2331138, z: -0.0000352779}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1771741084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771741082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35f1286273d31042bac76e1238a70c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fps: 144
 --- !u!1001 &1851841509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1268,7 +1322,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1515662173478715363, guid: ccb99f08cf79ab0489a921a7a4235f37, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1903,3 +1958,4 @@ SceneRoots:
   - {fileID: 3618744297918074868}
   - {fileID: 453461805}
   - {fileID: 534467618}
+  - {fileID: 1771741083}
