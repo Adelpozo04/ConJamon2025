@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7260395336222840812}
   - component: {fileID: 5127628773807477762}
   m_Layer: 0
-  m_Name: Disparador
+  m_Name: EnemyShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

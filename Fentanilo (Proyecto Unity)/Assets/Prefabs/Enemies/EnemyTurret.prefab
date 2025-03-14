@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 948349090133579252}
   - component: {fileID: 3915100120470884896}
   m_Layer: 0
-  m_Name: Torreta
+  m_Name: EnemyTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
