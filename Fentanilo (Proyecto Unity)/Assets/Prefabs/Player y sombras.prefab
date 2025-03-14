@@ -578,7 +578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7932213793077487095, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: _maxRecords
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7932213793077487095, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: sombrasPrefab

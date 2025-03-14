@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnStopRecording(InputAction.CallbackContext context)
     {
         var customContext = SombraStorage.convertCallbackContext(context);
-        if (_recording)
+        if (context.started && _recording)
         {
             record(customContext, SombraStorage.ActionType.STOP_RECORDING);
 
