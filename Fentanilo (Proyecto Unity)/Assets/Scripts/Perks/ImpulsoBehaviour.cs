@@ -11,5 +11,6 @@ public class ImpulsoBehaviour : PerkBehaviour
     public override void ActivateEffect()
     {
         gameObject.AddComponent<ImpulsoEffect>();
+        GameUI.Instance.RemovePerk();
     }
 }

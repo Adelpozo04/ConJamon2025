@@ -85,7 +85,13 @@ public class SombraStorage : MonoBehaviour
             target.gameObject.GetComponentInChildren<Shoot>().OnAim(sombraAction.callback);
         }
         else if(sombraAction.type == ActionType.STOP_RECORDING){
-            runCancelAllInputs(target); 
+            runCancelAllInputs(target);
+            PerkBehaviour perk = target.GetComponent<PerkBehaviour>();
+            if (perk != null)
+            {
+                target.GetComponent<PerkBehaviour>().ActivateEffect();
+                Destroy(target.gameObject);
+            }
         }
 
 
