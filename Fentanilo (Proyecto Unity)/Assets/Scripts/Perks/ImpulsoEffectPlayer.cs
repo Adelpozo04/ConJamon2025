@@ -31,12 +31,11 @@ public class ImpulsoEffectPlayer : MonoBehaviour
     public void ActivateAiming(ImpulsoEffect comp)
     {
         impulsoEffect = comp;
-        playerMovement.enabled = false;
+        playerMovement.DisableMovement();
         active = true;
     }
     public void DeactivateAiming()
     {
-        //playerMovement.enabled = true;
         shooting = true;
         active = false;
     }
@@ -50,7 +49,7 @@ public class ImpulsoEffectPlayer : MonoBehaviour
     {
         if (shooting && LayerMask.LayerToName(collision.gameObject.layer) == "Ground")
         {
-            playerMovement.enabled = true;
+            playerMovement.EnableMovement();
             shooting = false;
         }
     }
