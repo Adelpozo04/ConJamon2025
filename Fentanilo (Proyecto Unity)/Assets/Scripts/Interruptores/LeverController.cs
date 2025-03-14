@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.Serialization;
 
 public class LeverController : Activador
 {
     //Para probar la funcionalidad del botón sin que esté hecho. ESTO ES TEMPORAL
     [FormerlySerializedAs("clicktestPress")][SerializeField] private bool clicktestPress;
+
     
     // Update is called once per frame
     void Update()
@@ -17,8 +19,11 @@ public class LeverController : Activador
         }
     }
 
+    
+
     public void SetStateTo(bool a)
     {
         SendToActivables(a);
+        PlayAudioSFX();
     }
 }

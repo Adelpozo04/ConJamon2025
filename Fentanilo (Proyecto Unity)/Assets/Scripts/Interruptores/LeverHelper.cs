@@ -7,7 +7,6 @@ public class LeverHelper : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(signal);
         mLeverController.SetStateTo(signal);
     }
 }
