@@ -528,7 +528,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3516178262479634510, guid: 5099c66be5e56b24096bffc6c1494546, type: 3}
       propertyPath: m_Name
-      value: Pincho
+      value: spike
       objectReference: {fileID: 0}
     - target: {fileID: 8222003556218151266, guid: 5099c66be5e56b24096bffc6c1494546, type: 3}
       propertyPath: m_LocalPosition.x
@@ -536,7 +536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222003556218151266, guid: 5099c66be5e56b24096bffc6c1494546, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.92
+      value: -7.17
       objectReference: {fileID: 0}
     - target: {fileID: 8222003556218151266, guid: 5099c66be5e56b24096bffc6c1494546, type: 3}
       propertyPath: m_LocalPosition.z
