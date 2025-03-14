@@ -6,6 +6,7 @@ public class ButtonController : Activador
     //Para probar la funcionalidad del botón sin que esté hecho. ESTO ES TEMPORAL
     [FormerlySerializedAs("clicktestPress")][SerializeField] private bool clicktestPress;
 
+
     // Update is called once per frame
     void Update()
     {
@@ -19,12 +20,10 @@ public class ButtonController : Activador
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        Debug.Log("BotonTocado");
-
         if(other.gameObject.GetComponent<PlayerMovement>() != null)
         {
             SendToActivables(true);
+            PlayAudioSFX();
         }
     }
     
@@ -33,6 +32,7 @@ public class ButtonController : Activador
         if (other.gameObject.GetComponent<PlayerMovement>() != null)
         {
             SendToActivables(false);
+            PlayAudioSFX();
         }
     }
 }
