@@ -10,7 +10,7 @@ public abstract class Activador : MonoBehaviour
     /// <summary>
     /// Variable que guarda el último estado del Activador
     /// </summary>
-    private bool isPressed = false;
+    public bool isPressed = false;
 
     /// <summary>
     /// El método para enviar señal de activarse a todos los activables asociados a este activador.
@@ -46,7 +46,8 @@ public abstract class Activador : MonoBehaviour
 
     protected void PlayAudioSFX()
     {
+        /*
         audioSource.clip = isPressed ? activateSFX : deactivateSFX;
-        audioSource.Play();
+        audioSource.Play();*/
     }
 }
