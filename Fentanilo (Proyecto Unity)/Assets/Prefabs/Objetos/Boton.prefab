@@ -105,9 +105,10 @@ MonoBehaviour:
   activables:
   - {fileID: 0}
   - {fileID: 0}
+  isPressed: 0
   activateSFX: {fileID: 8300000, guid: 5a11e1ff092734449b6d5d27f387538a, type: 3}
   deactivateSFX: {fileID: 8300000, guid: 22b238e89a221604293942aca0725138, type: 3}
-  clicktestPress: 1
+  clicktestPress: 0
 --- !u!61 &9094343974993444516
 BoxCollider2D:
   m_ObjectHideFlags: 0
