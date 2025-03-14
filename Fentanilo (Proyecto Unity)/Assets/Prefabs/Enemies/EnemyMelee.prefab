@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 5294715173393082018}
   - component: {fileID: 675750362773012435}
   - component: {fileID: 8417562195698829878}
+  - component: {fileID: 5426944189438803993}
   m_Layer: 0
   m_Name: EnemyFloor
   m_TagString: Untagged
@@ -309,6 +310,19 @@ MonoBehaviour:
   - {fileID: 6825682888990746846}
   - {fileID: 6949860046806568876}
   - {fileID: 2824900200914639905}
+--- !u!114 &5426944189438803993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789863285725221646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790b30f89046e7343873fc4df71374f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 1
 --- !u!1 &5623614404580777322
 GameObject:
   m_ObjectHideFlags: 0

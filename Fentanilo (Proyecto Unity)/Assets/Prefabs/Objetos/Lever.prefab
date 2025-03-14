@@ -344,7 +344,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9fe93b1f3ccedca4db59f71fd766c062, type: 2}
+  m_Material: {fileID: 6200000, guid: cb63aef94847ae04981ff49800b985e8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 951
@@ -595,7 +595,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cb63aef94847ae04981ff49800b985e8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -620,7 +620,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.618514}
-  m_Radius: 0.3234529
+  m_Radius: 0.55
 --- !u!82 &528480830215856520
 AudioSource:
   m_ObjectHideFlags: 0
