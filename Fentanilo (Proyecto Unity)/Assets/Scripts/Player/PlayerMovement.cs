@@ -157,6 +157,19 @@ public class PlayerMovement : MonoBehaviour
         OnJump(customContext);
     }
 
+    public void OnStopRecording(InputAction.CallbackContext context)
+    {
+        var customContext = SombraStorage.convertCallbackContext(context);
+        if (_recording)
+        {
+            record(customContext, SombraStorage.ActionType.STOP_RECORDING);
+
+            _controller.stopRecording();
+        }
+    }
+
+
+
     // Método para manejar el movimiento (custom para guardar los callbacks)
     public void OnMove(SombraStorage.CustomCallbackContext context) {
         moveInput = context.valueVector2;
@@ -181,6 +194,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }   
+
+
+
+
 
     // Aplica el salto variable: si el jugador suelta el botón mientras sube, reduce la velocidad vertical.
     private void JumpCut() {
