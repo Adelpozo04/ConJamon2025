@@ -7,10 +7,10 @@ public class MovingPlatformController : Activable
     //La platadorma debe desplazarse de un punto a otro.
     [SerializeField] private Transform[] points;
     [SerializeField] private float speed;
-    
-    private bool _activado;
+
+    public bool _activado;
     //El punto del recorrido en el que está
-    private int _current;
+    public int _current;
     //Está haciendo el recorrido al revés.
     private bool _inverse;
     public override void Activar(bool state)

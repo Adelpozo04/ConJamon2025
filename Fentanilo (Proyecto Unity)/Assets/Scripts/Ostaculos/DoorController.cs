@@ -32,7 +32,7 @@ public class DoorController : Activable
             //Abrir la puerta
             _coll.enabled = false;
             _rend.color = Color.green;
-            Debug.Log("door opened");
+            //Debug.Log("door opened");
             //Efectuar animación de apertura
             _opened = true;
         }
@@ -44,7 +44,7 @@ public class DoorController : Activable
             
             _coll.enabled = true;
             _rend.color = Color.red;
-            Debug.Log("door closed");
+            //Debug.Log("door closed");
             //Efectuar animación de cierre
             
             _opened = false;

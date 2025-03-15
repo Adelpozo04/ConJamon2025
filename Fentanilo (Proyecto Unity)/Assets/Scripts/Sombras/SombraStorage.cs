@@ -10,6 +10,11 @@ es singleton y pervive entre escenas
  */
 public class SombraStorage : MonoBehaviour
 {
+    //IMPORTANTEEEEE: SI LAS SOMBRAS FALLAN PROBAR A CAMBIAR  ESTO
+    public static  float positionCompareUmbral = 0.5f;
+
+
+
     //singleton para manejar una sola instancia
     public static SombraStorage Instance = null;
 
@@ -32,6 +37,24 @@ public class SombraStorage : MonoBehaviour
         MOVE,JUMP,SHOOT,AIM,STOP_RECORDING
     }
 
+
+    public struct PlatformState
+    {
+        public bool isInContact;
+
+        public bool active;
+        public int current;
+        public Vector3 position;
+    }
+
+    public struct DoorState
+    {
+        //todo
+
+    }
+
+
+
     //guarda el callback original, el momento en que se ejecutó y el tipo de accion que fue
     public struct SombraAction
     {
@@ -39,6 +62,9 @@ public class SombraStorage : MonoBehaviour
         public double time;
         public ActionType type;
         public Vector3 position;
+
+        public PlatformState platformState;
+
     }
 
 
@@ -67,7 +93,18 @@ public class SombraStorage : MonoBehaviour
             return;
         }
 
-        target.transform.position = sombraAction.position;
+        if (target._copyPosition)
+        {
+            if (comparePlatformInfo(sombraAction, target))
+            {
+                target.transform.position = sombraAction.position;
+            }
+            else
+            {
+                target._copyPosition = false;
+            }
+        }
+
 
 
         //if else con todas las funciones
@@ -178,6 +215,25 @@ public class SombraStorage : MonoBehaviour
         runAction(getCancelInput(ActionType.SHOOT), target);
         runAction(getCancelInput(ActionType.AIM), target);
     }
+
+
+    //true equals, false algo distinto
+    public static bool comparePlatformInfo(SombraAction sombraAction, PlayerMovement target)
+    {
+        bool bothContact = sombraAction.platformState.isInContact == (target._contactPlatform != null);
+        
+        if(!bothContact) return false;  
+
+
+        bool bothActive = sombraAction.platformState.active == target._contactPlatform._activado;
+        bool bothCurrent =  sombraAction.platformState.current == target._contactPlatform._current;
+        bool bothPos = Vector3.Distance(sombraAction.platformState.position, target._contactPlatform.transform.position) < positionCompareUmbral;
+
+
+        return bothContact && bothActive && bothCurrent && bothPos;
+    }
+
+
 
 
     //limpia la lista de fantasmas

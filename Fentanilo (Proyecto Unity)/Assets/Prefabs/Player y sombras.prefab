@@ -70,9 +70,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4778552077666353708, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 2628536636053261273}
     - target: {fileID: 4933326839707285654, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229765729853162222, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_SurfaceArc
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7229765729853162222, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_UseColliderMask
@@ -157,6 +165,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1388279535486550557, guid: ba4572d907251ab4085c97176416578e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4685678393714337162}
+    - targetCorrespondingSourceObject: {fileID: 2518898269516376531, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2628536636053261273}
   m_SourcePrefab: {fileID: 100100000, guid: ba4572d907251ab4085c97176416578e, type: 3}
 --- !u!1 &460248456075030721 stripped
 GameObject:
@@ -217,6 +228,38 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 2.0014274}
   m_EdgeRadius: 0
+--- !u!1 &4022811543464205071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2518898269516376531, guid: ba4572d907251ab4085c97176416578e, type: 3}
+  m_PrefabInstance: {fileID: 1524197347970052828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &2628536636053261273
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022811543464205071}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!4 &7146295817256670000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
