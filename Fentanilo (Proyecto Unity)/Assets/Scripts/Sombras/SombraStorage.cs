@@ -165,7 +165,7 @@ public class SombraStorage : MonoBehaviour
     }
 
 
-    public static SombraAction getCancelInput(ActionType type)
+    public static SombraAction getCancelInput(ActionType type, PlayerMovement target)
     {
         SombraAction action = new SombraAction();
 
@@ -201,6 +201,7 @@ public class SombraStorage : MonoBehaviour
 
         }
 
+        action.position = target.transform.position;
 
         action.callback = callback;
 
@@ -210,10 +211,10 @@ public class SombraStorage : MonoBehaviour
 
     public static void runCancelAllInputs(PlayerMovement target)
     {
-        runAction(getCancelInput(ActionType.MOVE), target );
-        runAction(getCancelInput(ActionType.JUMP), target);
-        runAction(getCancelInput(ActionType.SHOOT), target);
-        runAction(getCancelInput(ActionType.AIM), target);
+        runAction(getCancelInput(ActionType.MOVE, target), target);
+        runAction(getCancelInput(ActionType.JUMP, target), target);
+        runAction(getCancelInput(ActionType.SHOOT, target), target);
+        runAction(getCancelInput(ActionType.AIM, target), target);
     }
 
 
