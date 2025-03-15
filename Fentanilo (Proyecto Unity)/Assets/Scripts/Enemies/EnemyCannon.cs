@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyCannon : MonoBehaviour
 {
+    Animator _anim;
+
     [SerializeField] GameObject _shotPrefab;
     [SerializeField] Transform _spawnPoint;
 
@@ -23,6 +25,7 @@ public class EnemyCannon : MonoBehaviour
 
     private void Start()
     {
+        _anim = GetComponent<Animator>();
         _initPos.x = transform.position.x;
     }
 
@@ -73,13 +76,14 @@ public class EnemyCannon : MonoBehaviour
         else
         {
             _playerDetected = false;
+            _anim.SetBool("_isShooting", false);
             _detectedPlayerTransform = null;
         }
 
         // Disparar solo si el jugador es detectado y ha pasado el tiempo de espera
         if (_playerDetected && Time.time >= _lastShootTime + _shootingDelay)
         {
-            Shoot();
+            _anim.SetBool("_isShooting", true);
             _lastShootTime = Time.time;
         }
     }

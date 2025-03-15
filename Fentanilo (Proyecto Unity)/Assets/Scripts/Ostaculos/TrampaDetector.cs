@@ -9,19 +9,28 @@ public class TrampaDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(Animator.StringToHash("Idle") == animator.GetCurrentAnimatorStateInfo(0).fullPathHash)
+        if(collision.gameObject.GetComponent<PlayerMovement>() != null)
         {
             //si se esta ejecutando el idle
-            animator.Play("Attack");
+            animator.SetBool("Attack",true);
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Animator.StringToHash("Idle") == animator.GetCurrentAnimatorStateInfo(0).fullPathHash)
+        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
         {
             //si se esta ejecutando el idle
-            animator.Play("Attack");
+            animator.SetBool("Attack", true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+        {
+            //si se esta ejecutando el idle
+            animator.SetBool("Attack", false);
         }
     }
 }

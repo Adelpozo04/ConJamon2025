@@ -1,59 +1,28 @@
 using UnityEngine;
+using System.Collections;
 
 public class PerkTwin : MonoBehaviour
 {
-
     [SerializeField]
-    private float upOffset = 0;
-
+    public float floatStrength = 0.5f; // Amplitud del movimiento
     [SerializeField]
-    private float downOffset = 0;
-
+    public float floatSpeed = 2f;      // Velocidad de oscilación
     [SerializeField]
-    private float speed = 30;
+    private float startY;              // Posición inicial en Y
 
-    [SerializeField]
-    private Vector3 direction = Vector2.up;
-
-    private Vector3 originalPos;
-
-    [SerializeField]
-    private float cooldowm = 0.2f;
-
-    private float elapsedTime = 0;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        originalPos = transform.position;
-
-        elapsedTime = cooldowm;
+        startY = transform.position.y;
+        StartCoroutine(FloatEffect());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator FloatEffect()
     {
-        
-        if(elapsedTime >= cooldowm)
+        while (true) // Bucle infinito mientras el objeto esté activo
         {
-            if (transform.position.y >= originalPos.y + upOffset && direction == Vector3.up)
-            {
-                direction = Vector3.down;
-            }
-            else if (transform.position.y <= originalPos.y - upOffset && direction == Vector3.down)
-            {
-                direction = Vector3.up;
-            }
-
-            elapsedTime = 0;
+            float newY = startY + Mathf.Sin(Time.time * floatSpeed) * floatStrength;
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+            yield return new WaitForSeconds(0.02f); // Espera un frame antes de continuar
         }
-        else
-        {
-            elapsedTime += Time.deltaTime;
-        }
-        
-
-        transform.position += direction * speed * Time.deltaTime;
-
     }
 }
