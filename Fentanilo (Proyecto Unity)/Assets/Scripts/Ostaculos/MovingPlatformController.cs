@@ -1,13 +1,13 @@
 using System;
+using System.Linq;
 using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 public class MovingPlatformController : Activable
 {
-    Vector2 platformVelocity;
-    private Rigidbody2D rb;
     //La platadorma debe desplazarse de un punto a otro.
     [SerializeField] private Transform[] points;
     [SerializeField] private float speed;
@@ -15,46 +15,79 @@ public class MovingPlatformController : Activable
 
     public bool _activado;
 
-    // que se mueva solo una vez en su recorrido en una dirección
-    public bool moveOnce;
-    //El punto del recorrido en el que está
-    public int _current;
-    //Está haciendo el recorrido al revés.
-    private bool _inverse;
+    public bool loop;
 
-    private bool queuedChange = false;
+    //El punto del recorrido en el que está
+    public int current;
+    public bool forward = true;
     public override void Activar(bool state)
     {
         _activado = state;
+
+        if (!loop)
+        {
+            // cambio pa atras o pa alante
+            if (forward && !state && current != 0)
+            {
+                forward = false;
+                current--;
+            }
+            else if (!forward && state && current < points.Count() - 1)
+            {
+                current++;
+                forward = true;
+            }
+        }
+
     }
     
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        _current = 0;
+        current = 0;
     }
 
     private void Update()
     {
-        if (_activado && points.Length > 0)
+        if (loop)
         {
-            transform.position = Vector3.MoveTowards(transform.position, points[_current].position, speed * Time.deltaTime);
-            //Si ha llegado al current point
-            if ((points[_current].position - transform.position).magnitude <= 0.1 && !queuedChange)
+            if (_activado)
             {
-                if (moveOnce && (_current == 0 || _current == points.Length - 1))
-                    _activado = false;
+                transform.position = Vector3.MoveTowards(transform.position, points[current].position, speed * Time.deltaTime);
 
-                Invoke("Next", cooldown);
-
-                queuedChange = true;
+                if ((points[current].position - transform.position).magnitude <= 0.1)
+                {
+                    if (forward)
+                    {
+                        if (current < points.Count() - 1)
+                            current++;
+                        else
+                            forward = false;
+                    }
+                    else
+                    {
+                        if (current > 0)
+                            current--;
+                        else
+                            forward = true;
+                    }
+                }
             }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        platformVelocity = rb.linearVelocity;
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, points[current].position, speed * Time.deltaTime);
+            if ((points[current].position - transform.position).magnitude <= 0.1)
+            {
+                if (_activado && current < points.Count() - 1)
+                {
+                    current++;
+                }
+                else if (!_activado && current > 0)
+                {
+                    current--;
+                }
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -70,26 +103,6 @@ public class MovingPlatformController : Activable
         if (other.GetComponent<PlayerMovement>() != null)
         {
             other.transform.SetParent(null);
-        }
-    }
-    
-    //Comienza el movimiento al siguiente punto.
-    private void Next()
-    {
-        queuedChange = false;
-
-        if (_current == 0 || _current == points.Length - 1)
-        {
-            _inverse = !_inverse;
-        }
-
-        if (_inverse)
-        {
-            _current++;
-        }
-        else
-        {
-            _current--;
         }
     }
 }
