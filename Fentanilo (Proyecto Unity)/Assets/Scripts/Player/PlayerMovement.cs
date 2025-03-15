@@ -504,6 +504,7 @@ public class PlayerMovement : MonoBehaviour
         sombraAction.position = transform.position;
 
 
+        //info de la plataforma
         if(_contactPlatform == null)
         {
             sombraAction.platformState.isInContact = false;
@@ -514,6 +515,19 @@ public class PlayerMovement : MonoBehaviour
             sombraAction.platformState.active = _contactPlatform._activado;
             sombraAction.platformState.current = _contactPlatform._current;
             sombraAction.platformState.position = _contactPlatform.gameObject.transform.position;   
+        }
+
+
+        //info de la puerta
+
+        if(_contactDoor == null)
+        {
+            sombraAction.doorState.isInContact = false; 
+        }
+        else
+        {
+            sombraAction.doorState.isInContact = true;
+            sombraAction.doorState.flag = _contactDoor.flag;
         }
 
 

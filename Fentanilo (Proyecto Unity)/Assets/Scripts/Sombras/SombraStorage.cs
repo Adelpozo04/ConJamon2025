@@ -50,7 +50,8 @@ public class SombraStorage : MonoBehaviour
     public struct DoorState
     {
         //todo
-
+        public bool isInContact;
+        public bool flag;
     }
 
 
@@ -64,6 +65,8 @@ public class SombraStorage : MonoBehaviour
         public Vector3 position;
 
         public PlatformState platformState;
+        public DoorState doorState;
+
 
     }
 
@@ -95,7 +98,7 @@ public class SombraStorage : MonoBehaviour
 
         if (target._copyPosition)
         {
-            if (comparePlatformInfo(sombraAction, target))
+            if (comparePlatformInfo(sombraAction, target) && compareDoorInfo(sombraAction,target))
             {
                 target.transform.position = sombraAction.position;
             }
@@ -236,6 +239,19 @@ public class SombraStorage : MonoBehaviour
         return bothContact && bothActive && bothCurrent && bothPos;
     }
 
+
+    public static bool compareDoorInfo(SombraAction sombraAction, PlayerMovement target)
+    {
+        bool bothContact = sombraAction.doorState.isInContact == (target._contactDoor != null);
+        bool noContact = !sombraAction.doorState.isInContact && (target._contactDoor == null);
+
+        if (noContact) return true;
+        if (!bothContact) return false;
+
+        bool bothFlag = sombraAction.doorState.flag == target._contactDoor.flag;
+       
+        return bothContact && bothFlag;
+    }
 
 
 
