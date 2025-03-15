@@ -55,8 +55,10 @@ public class PerkGrabable : MonoBehaviour
                 gameObject.SetActive(false);
 
                 // si no es sombra
-                if (collision.gameObject.name == "Player")
-                    GameUI.Instance.AddPerk(perkType);
+                //if (collision.gameObject.name == "Player")
+                //    GameUI.Instance.AddPerk(perkType);
+
+                collision.gameObject.GetComponentInChildren<PerkVisualizer>()?.AddPerk(perkType);
             }
         }
     }
