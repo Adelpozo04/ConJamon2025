@@ -42,6 +42,7 @@ public class SombrasController : MonoBehaviour
             newSombra.GetComponent<PlayerInput>().enabled = false;
 
             newSombra.GetComponentInChildren<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f,1);
+            newSombra.GetComponentInChildren<ColorIndicator>().SetColor(i);
         }
 
         //print("starttt" + _sombrasIndices.Count);
