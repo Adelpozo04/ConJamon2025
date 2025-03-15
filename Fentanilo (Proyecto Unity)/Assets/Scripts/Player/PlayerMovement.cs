@@ -139,17 +139,19 @@ public class PlayerMovement : MonoBehaviour
     PlayerInput input;
     Shoot shoot;
 
-
     public MovingPlatformController _contactPlatform;
     public DoorController _contactDoor;
 
-
     public bool _copyPosition = true;
+
+    public Animator animator;
+    public SpriteRenderer renderer;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         input = GetComponent<PlayerInput>();    
-        shoot = GetComponentInChildren<Shoot>();    
+        shoot = GetComponentInChildren<Shoot>();
+        //animator = animator.GetComponentInChildren<Animator>();
     }
 
 
@@ -162,6 +164,23 @@ public class PlayerMovement : MonoBehaviour
             var audio = GetComponent<AudioListener>();
             audio.enabled = false;
         }
+    }
+
+    public void OnRestart()
+    {
+        animator.SetTrigger("Restart");
+        Invoke("DestroySelf", 0.767f);
+    }
+
+    public void OnDeath()
+    {
+        animator.SetTrigger("Death");
+        Invoke("DestroySelf", 0.767f);
+    }
+
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 
     public void DisableMovement()
@@ -179,6 +198,10 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(SombraStorage.CustomCallbackContext context) {
         moveInput = context.valueVector2;
         //print(moveInput);
+
+        animator.SetBool("Walking", context.valueVector2.sqrMagnitude > 0.1f);
+        if (moveInput.x != 0)
+            renderer.flipX = moveInput.x < 0;
     }
 
     // Método para manejar el salto (custom para guardar los callbacks)
@@ -208,6 +231,8 @@ public class PlayerMovement : MonoBehaviour
                 JumpCut();
             }
         }
+
+        
     }   
 
 
@@ -225,6 +250,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Deteccion de suelo basada en raycast
         onGround = CheckGround();
+        animator.SetBool("Grounded", onGround);
 
         // Preparamos el salto si se cumplen las condiciones para saltar. El salto realmente se ejecuta en fixedUpdate()
         if (jumpBufferSettings.enabled && jumpBufferCounter > 0 && 
@@ -256,6 +282,9 @@ public class PlayerMovement : MonoBehaviour
 
         moveContext.valueVector2 = moveInput;
         
+        animator.SetBool("Walking", moveContext.valueVector2.sqrMagnitude > 0.1f);
+        if (moveInput.x != 0)
+            renderer.flipX = moveInput.x < 0;
 
         //getJump
         
@@ -303,6 +332,8 @@ public class PlayerMovement : MonoBehaviour
             shoot.OnShoot(shootContext);
         }
 
+        animator.SetBool("Shooting", shootContext.started);
+
         //getAim
 
         SombraStorage.CustomCallbackContext aimContext = new SombraStorage.CustomCallbackContext();
@@ -331,6 +362,7 @@ public class PlayerMovement : MonoBehaviour
         if (input.actions["NextIteration"].IsPressed())
         {
             stopContext.started = true;
+            OnRestart();
         }
 
 

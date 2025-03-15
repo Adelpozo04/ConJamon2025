@@ -429,7 +429,7 @@ MonoBehaviour:
     m_ActionName: 'Player/ResetLevel[/Keyboard/r]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e40cc162-0c5e-4cda-bb64-da3da43a4d59
+    m_ActionId: 1989eab7-aba0-47b3-a121-2d10ca5f0616
     m_ActionName: 'Player/Pause[/Keyboard/p]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
@@ -896,6 +896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8948253370013070246}
   - component: {fileID: 7642938239527298099}
+  - component: {fileID: 6810654089794804502}
   m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
@@ -964,7 +965,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -7385789195546760866, guid: 68e5959eaadb9174ea75b53978d393d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -975,6 +976,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6810654089794804502
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108862221003653235}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51efd6c478b10404b93d8b998b000714, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5401333536823562664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkRenderer: {fileID: 8693306784751130504}
+  gameIndicator: {fileID: 0}
   perkRoca: {fileID: 0}
   perkExplosion: {fileID: 0}
   perkImpulso: {fileID: 0}

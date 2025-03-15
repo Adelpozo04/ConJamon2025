@@ -14,7 +14,7 @@ public class PinchosComponent : MonoBehaviour
             }
 
 
-            Destroy(playerMovement.gameObject); 
+            playerMovement.OnDeath();
 
         }
     }

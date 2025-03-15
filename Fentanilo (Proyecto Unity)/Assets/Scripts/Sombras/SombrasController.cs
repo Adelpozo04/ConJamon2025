@@ -22,7 +22,7 @@ public class SombrasController : MonoBehaviour
 
     double _startTime = 0;
 
-   
+    private bool stoppedRecording = false;
 
     private void Start()
     {
@@ -119,12 +119,14 @@ public class SombrasController : MonoBehaviour
 
     public void stopRecording()
     {
-        if (SombraStorage.Instance._records.Count < _maxRecords)
+        if (SombraStorage.Instance._records.Count < _maxRecords && !stoppedRecording)
         {
             SombraStorage.Instance._records.Add(new List<SombraStorage.SombraAction>(_currentRecord));
             _currentRecord.Clear();
+
+            stoppedRecording = true;
+            Invoke("reloadScene", 0.767f);
         }
-        reloadScene();
     }
 
 

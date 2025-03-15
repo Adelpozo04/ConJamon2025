@@ -43,6 +43,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 6457466719948743055}
     m_Modifications:
     - target: {fileID: 1149719708052113280, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 5450275458016815562}
+    - target: {fileID: 1149719708052113280, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: renderer
+      value: 
+      objectReference: {fileID: 9166552282980865775}
+    - target: {fileID: 1149719708052113280, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: _controller
       value: 
       objectReference: {fileID: 6252671448358043589}
@@ -81,6 +89,22 @@ PrefabInstance:
     - target: {fileID: 1797060917292614558, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Offset.y
       value: 0.95127463
+      objectReference: {fileID: 0}
+    - target: {fileID: 2702563525370498029, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7582072
+      objectReference: {fileID: 0}
+    - target: {fileID: 2702563525370498029, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7582072
+      objectReference: {fileID: 0}
+    - target: {fileID: 2702563525370498029, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7582072
+      objectReference: {fileID: 0}
+    - target: {fileID: 2702563525370498029, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.34
       objectReference: {fileID: 0}
     - target: {fileID: 3151568337878791679, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Offset.y
@@ -122,9 +146,13 @@ PrefabInstance:
       propertyPath: m_ColliderMask.m_Bits
       value: 631
       objectReference: {fileID: 0}
+    - target: {fileID: 7642938239527298099, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5163676775561223323, guid: a6ad2e4ee4b8c7649b8f1f57b862e18f, type: 3}
     - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
@@ -207,8 +235,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8948253370013070246, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948253370013070246, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948253370013070246, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9017108428883436606, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: perkRoca
@@ -328,9 +364,19 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6093296139257805459, guid: ba4572d907251ab4085c97176416578e, type: 3}
   m_PrefabInstance: {fileID: 1524197347970052828}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &5450275458016815562 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6810654089794804502, guid: ba4572d907251ab4085c97176416578e, type: 3}
+  m_PrefabInstance: {fileID: 1524197347970052828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7146295817256670000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
+  m_PrefabInstance: {fileID: 1524197347970052828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &9166552282980865775 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7642938239527298099, guid: ba4572d907251ab4085c97176416578e, type: 3}
   m_PrefabInstance: {fileID: 1524197347970052828}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4094073219727612466
