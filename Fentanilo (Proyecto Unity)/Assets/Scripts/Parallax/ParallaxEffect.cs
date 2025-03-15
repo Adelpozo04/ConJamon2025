@@ -17,7 +17,9 @@ public class ParallaxEffect : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
-        transform.position += new Vector3(deltaMovement.x * parallaxSpeed, deltaMovement.y * 1, 0);
+        //transform.position += new Vector3(deltaMovement.x * parallaxSpeed, deltaMovement.y * 1, 0);
+        transform.position += new Vector3(deltaMovement.x * parallaxSpeed, deltaMovement.y * parallaxSpeed, 0); //FIX PARALAX
+
         lastCameraPosition = cameraTransform.position;
 
         // Reposicionar el fondo si se sale de la pantalla

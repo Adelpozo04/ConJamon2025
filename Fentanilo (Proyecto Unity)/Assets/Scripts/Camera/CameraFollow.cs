@@ -19,43 +19,47 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        myTransform.position = new Vector3(target.position.x, target.position.y, -1000);
+        if(target != null) myTransform.position = new Vector3(target.position.x, target.position.y, -1000);
     }
 
     private void FixedUpdate()
     {
-        Vector3 targetPos = new Vector3(target.position.x, target.position.y, 0);
-        Vector3 myPos = new Vector3(myTransform.position.x, myTransform.position.y);
-        float distance = Vector3.Distance(targetPos, myPos);
+        if (target != null)
+        {
+            Vector3 targetPos = new Vector3(target.position.x, target.position.y, 0);
+            Vector3 myPos = new Vector3(myTransform.position.x, myTransform.position.y);
+            float distance = Vector3.Distance(targetPos, myPos);
 
 
-        Vector3 targetVelocity = new Vector3();
+            Vector3 targetVelocity = new Vector3();
 
 
-        if (distance > followUmbral) {
-
-            Vector3 dir =(targetPos - myPos).normalized;
-            
-            float desplazamiento = (dir * followVelocity).magnitude * Time.fixedDeltaTime;
-
-            //print(desplazamiento);
-            //print(distance);
-
-            if (desplazamiento > distance)
+            if (distance > followUmbral)
             {
-                targetVelocity = dir * distance / Time.fixedDeltaTime;
+
+                Vector3 dir = (targetPos - myPos).normalized;
+
+                float desplazamiento = (dir * followVelocity).magnitude * Time.fixedDeltaTime;
+
+                //print(desplazamiento);
+                //print(distance);
+
+                if (desplazamiento > distance)
+                {
+                    targetVelocity = dir * distance / Time.fixedDeltaTime;
+                }
+                else
+                {
+                    targetVelocity = dir * followVelocity;
+                }
             }
             else
             {
-                targetVelocity = dir * followVelocity;
+                //targetVelocity = Vector3.zero;
             }
-        }
-        else
-        {
-            //targetVelocity = Vector3.zero;
-        }
 
-        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, lerpTime);
-        //myTransform.position = new Vector3( target.position.x,target.position.y, myTransform.position.z);
+            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, lerpTime);
+            //myTransform.position = new Vector3( target.position.x,target.position.y, myTransform.position.z);
+        }
     }
 }
