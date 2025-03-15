@@ -66,6 +66,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3213378487001099424, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3231563778749634443, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -76,6 +80,10 @@ PrefabInstance:
       objectReference: {fileID: 2628536636053261273}
     - target: {fileID: 4933326839707285654, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093296139257805459, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6660002594039811224, guid: ba4572d907251ab4085c97176416578e, type: 3}
@@ -154,10 +162,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8687843034767242567, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_Name
+      value: PerkSprite
+      objectReference: {fileID: 0}
     - target: {fileID: 8948253370013070246, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9017108428883436606, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: perkRoca
+      value: 
+      objectReference: {fileID: 21300000, guid: 5a2ad01c565ee3f42898946f2f6d570b, type: 3}
+    - target: {fileID: 9017108428883436606, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: perkImpulso
+      value: 
+      objectReference: {fileID: 21300000, guid: 7474ee149d5c7c842b761e07647f1b4a, type: 3}
+    - target: {fileID: 9017108428883436606, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: gameIndicator
+      value: 
+      objectReference: {fileID: 4731231414557640783}
+    - target: {fileID: 9017108428883436606, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: perkExplosion
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e70b662c5aee384288d15dbed138b16, type: 3}
     m_RemovedComponents:
     - {fileID: 8407047750420327450, guid: ba4572d907251ab4085c97176416578e, type: 3}
     m_RemovedGameObjects: []
@@ -255,6 +283,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!212 &4731231414557640783 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6093296139257805459, guid: ba4572d907251ab4085c97176416578e, type: 3}
+  m_PrefabInstance: {fileID: 1524197347970052828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7146295817256670000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}

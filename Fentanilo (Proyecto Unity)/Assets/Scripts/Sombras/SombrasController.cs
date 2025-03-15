@@ -132,7 +132,15 @@ public class SombrasController : MonoBehaviour
     //controller
     void reloadScene()
     {
-        LevelManager.Instance.SetState(LevelManager.FState.Ramificado);
+        //por si acaso, si falla LevelManager mirar aqui
+        if(LevelManager.Instance != null)
+        {
+            LevelManager.Instance.SetState(LevelManager.FState.Ramificado);
+        }
+
+
+
+
         SceneManager.UnloadSceneAsync(gameObject.scene);
         SceneManager.LoadScene(gameObject.scene.name);
     }
