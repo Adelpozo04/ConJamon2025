@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2265491614588986217}
   - component: {fileID: 2763458792314388892}
   - component: {fileID: 5303634234533794253}
+  - component: {fileID: 4215010866691386183}
   m_Layer: 0
   m_Name: Trampa
   m_TagString: Untagged
@@ -33,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 397971821658778247}
+  - {fileID: 3871556527628044997}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2265491614588986217
@@ -148,6 +150,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cac7e337752d174abbda320efe554f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &4215010866691386183
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2468402478350289360}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: b181dd26b02f91c4e804abc24b9e9482, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!1 &3976166708348709794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3871556527628044997}
+  m_Layer: 0
+  m_Name: MovePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3871556527628044997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3976166708348709794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.786, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5568502261332085276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8067194724208708127
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +235,7 @@ Transform:
   m_GameObject: {fileID: 8067194724208708127}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.26, z: 0}
+  m_LocalPosition: {x: 0, y: -1.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -194,7 +254,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -239,7 +299,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3d522bec22aff4bba6ccd96b43e0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayTime: 0
-  _atackTime: 0
-  _recoveryTime: 0
-  stopFall: []
+  _delayTime: 0.5
+  _atackTime: 1
+  _recoveryTime: 1
+  rb: {fileID: 4215010866691386183}
+  movePoint: {fileID: 3871556527628044997}
+  moveTransform: {fileID: 5568502261332085276}
+  stopFall:
+  - serializedVersion: 2
+    m_Bits: 64
