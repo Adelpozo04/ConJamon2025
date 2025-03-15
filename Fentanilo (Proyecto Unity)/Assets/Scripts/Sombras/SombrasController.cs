@@ -43,6 +43,8 @@ public class SombrasController : MonoBehaviour
 
             newSombra.GetComponentInChildren<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f,1);
             newSombra.GetComponentInChildren<ColorIndicator>().SetColor(i);
+
+            Destroy(newSombra.GetComponent<AudioListener>());
         }
 
         //print("starttt" + _sombrasIndices.Count);

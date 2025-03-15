@@ -183,6 +183,11 @@ public class PlayerMovement : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void DeactivateShootingAnimator()
+    {
+        animator.SetBool("Shooting", false);
+    }
+
     public void DisableMovement()
     {
         active = false;
@@ -332,7 +337,11 @@ public class PlayerMovement : MonoBehaviour
             shoot.OnShoot(shootContext);
         }
 
-        animator.SetBool("Shooting", shootContext.started);
+        if (shootContext.started)
+        {
+            animator.SetBool("Shooting", true);
+            Invoke("DeactivateShootingAnimator", shoot.fireRate);
+        }
 
         //getAim
 
