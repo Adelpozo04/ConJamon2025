@@ -105,7 +105,7 @@ public class TrampaComponent : MonoBehaviour
                     float distance = Vector2.Distance(startPos, (Vector2)moveTransform.position);
 
                     //calcular la velocidad a partir de la distancia
-                    float velocity = distance / _atackTime;
+                    float velocity = distance / _recoveryTime;
 
                     //setear la velocidad de caida
                     targetVel = new Vector2(0, velocity);
