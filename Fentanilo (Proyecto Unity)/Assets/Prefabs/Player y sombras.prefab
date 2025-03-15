@@ -54,6 +54,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1788957049855241508, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788957049855241508, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788957049855241508, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788957049855241508, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788957049855241508, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1797060917292614558, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Size.y
       value: 0.080131054
@@ -101,6 +121,10 @@ PrefabInstance:
     - target: {fileID: 7229765729853162222, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ColliderMask.m_Bits
       value: 631
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
@@ -169,6 +193,18 @@ PrefabInstance:
     - target: {fileID: 8687843034767242567, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Name
       value: PerkSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693306784751130504, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.5146487
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693306784751130504, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_Size.y
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693306784751130504, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8948253370013070246, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalPosition.y
