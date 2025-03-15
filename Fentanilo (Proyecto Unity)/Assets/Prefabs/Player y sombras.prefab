@@ -70,9 +70,29 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4933326839707285654, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7229765729853162222, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ColliderMask.m_Bits
-      value: 1015
+      value: 631
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654914819449700528, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8407047750420327450, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Offset.y

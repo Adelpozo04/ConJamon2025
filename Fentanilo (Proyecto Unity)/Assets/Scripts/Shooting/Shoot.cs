@@ -35,7 +35,7 @@ public class Shoot : MonoBehaviour
     private float lastShotTime;
     private Rigidbody2D playerRb;
     private int activeBullets = 0;
-    private Vector2 aimDirection = Vector2.right;
+    public Vector2 aimDirection = Vector2.right;
 
 
     [SerializeField]

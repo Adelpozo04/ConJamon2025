@@ -133,12 +133,17 @@ public class PlayerMovement : MonoBehaviour
     
 
     bool _jumpButtonPressed = false;
-    public int _controllerIndex = 0; 
+    public int _controllerIndex = 0;
 
+
+    PlayerInput input;
+    Shoot shoot;
 
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        input = GetComponent<PlayerInput>();    
+        shoot = GetComponentInChildren<Shoot>();    
     }
 
 
@@ -146,6 +151,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _startTime = Time.fixedTime;
         playerAudio = GetComponentInChildren<PlayerAudio>();
+        if(!_recording)
+        {
+            var audio = GetComponent<AudioListener>();
+            audio.enabled = false;
+        }
     }
 
     public void DisableMovement()
@@ -157,39 +167,6 @@ public class PlayerMovement : MonoBehaviour
     {
         active = true;
     }
-
-    // Método para manejar el movimiento (llamado por el Input System)
-    public void OnMove(InputAction.CallbackContext context) {
-        var customContext = SombraStorage.convertCallbackContext(context);
-
-        if (_recording)
-        {
-            //record(customContext,SombraStorage.ActionType.MOVE);
-        }
-        OnMove(customContext);
-    }
-
-    // Método para manejar el salto (llamado por el Input System)
-    public void OnJump(InputAction.CallbackContext context) {
-        var customContext = SombraStorage.convertCallbackContext(context);
-        if (_recording)
-        {
-            //record(customContext, SombraStorage.ActionType.JUMP);
-        }
-        //OnJump(customContext);
-    }
-
-    public void OnStopRecording(InputAction.CallbackContext context)
-    {
-        var customContext = SombraStorage.convertCallbackContext(context);
-        if (context.started && _recording)
-        {
-            //record(customContext, SombraStorage.ActionType.STOP_RECORDING);
-
-            _controller.stopRecording();
-        }
-    }
-
 
 
     // Método para manejar el movimiento (custom para guardar los callbacks)
@@ -268,20 +245,21 @@ public class PlayerMovement : MonoBehaviour
         //getMove
         SombraStorage.CustomCallbackContext moveContext = new SombraStorage.CustomCallbackContext();
 
-        moveInput = new Vector2(Input.GetAxis("Horizontal"), 0);
+        
+        moveInput = input.actions["Move"].ReadValue<Vector2>();
 
         moveContext.valueVector2 = moveInput;
         
 
         //getJump
-
+        
 
         SombraStorage.CustomCallbackContext jumpContext = new SombraStorage.CustomCallbackContext();
 
         jumpContext.started = false;
         jumpContext.canceled = false;
 
-        bool thisFrameJumpButtonPressed = Input.GetButton("Jump");
+        bool thisFrameJumpButtonPressed =  input.actions["Jump"].IsPressed();
 
         //si ha cambiado su estado
         if (thisFrameJumpButtonPressed != _jumpButtonPressed) {
@@ -308,9 +286,35 @@ public class PlayerMovement : MonoBehaviour
 
 
         //getShoot
+        SombraStorage.CustomCallbackContext shootContext = new SombraStorage.CustomCallbackContext();
 
+        shootContext.started = false;
+        shootContext.canceled = false;
+
+        if (input.actions["Shoot"].IsPressed())
+        {
+            shootContext.started = true;
+            shoot.OnShoot(shootContext);
+        }
 
         //getAim
+
+        SombraStorage.CustomCallbackContext aimContext = new SombraStorage.CustomCallbackContext();
+
+        aimContext.started = false;
+        aimContext.canceled = false;
+
+        if (input.actions["Move"].IsPressed())
+        {
+            aimContext.started = true;
+            shoot.aimDirection = input.actions["Move"].ReadValue<Vector2>();
+            aimContext.valueVector2 =  input.actions["Move"].ReadValue<Vector2>();
+        }
+        else {
+            aimContext.canceled = true;
+        }
+
+        shoot.OnAim(aimContext);
 
 
         //stop recording
@@ -318,7 +322,7 @@ public class PlayerMovement : MonoBehaviour
 
         stopContext.started = false;    
 
-        if (Input.GetButton("Cbutton"))
+        if (input.actions["NextIteration"].IsPressed())
         {
             stopContext.started = true;
         }
@@ -326,10 +330,10 @@ public class PlayerMovement : MonoBehaviour
         //record de los inputs
         record(moveContext,SombraStorage.ActionType.MOVE);
         record(jumpContext,SombraStorage.ActionType.JUMP);
+        record(shootContext,SombraStorage.ActionType.SHOOT);
+        record(aimContext,SombraStorage.ActionType.AIM);
+
        // print("Action Nº: " + _controller._currentRecord.Count +  " Started: " +jumpContext.started + " Canceled: " + jumpContext.canceled);
-
-
-
 
         if (stopContext.started)
         {
