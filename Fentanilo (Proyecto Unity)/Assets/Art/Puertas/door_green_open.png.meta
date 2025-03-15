@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: puerta cerrada verde op_0
+      name: door_green_open_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 500
+        width: 250
         height: 921
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -126,10 +126,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fd67e37750622f2a0800000000000000
-      internalID: -6705255090283972897
+      spriteID: 8b98ea6eb6eb6c0478034bff15c7a7b7
+      internalID: -29515263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_green_open_1
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 250
+        height: 921
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed6a6ac4c84a92346bcfe0f1768b463d
+      internalID: -1611217661
       vertices: []
       indices: 
       edges: []
@@ -138,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b0d21a62082c25b46b2fee8325ff4c42
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      puerta cerrada verde op_0: -6705255090283972897
+      door_green_open_0: -29515263
+      door_green_open_1: -1611217661
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

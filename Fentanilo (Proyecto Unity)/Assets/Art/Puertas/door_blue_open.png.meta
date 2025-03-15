@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: puerta cerrada azul op_0
+      name: door_blue_open_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 500
+        width: 250
         height: 921
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -126,10 +126,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4bd423e72f45622c0800000000000000
-      internalID: -4456781380760482380
+      spriteID: 08c9f81ed2559cd428142c3bd55a8820
+      internalID: -1177604718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_blue_open_1
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 250
+        height: 921
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95552e768e9f8f749925613c753a6b8b
+      internalID: -1081609081
       vertices: []
       indices: 
       edges: []
@@ -138,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c252ab932bf045c4d9969b99af6927dd
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      puerta cerrada azul op_0: -4456781380760482380
+      door_blue_open_0: -1177604718
+      door_blue_open_1: -1081609081
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

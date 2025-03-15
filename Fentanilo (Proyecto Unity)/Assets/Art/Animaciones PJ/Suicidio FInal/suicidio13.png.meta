@@ -114,6 +114,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -284,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      suicidio13_0: 5149822608482411231
+      suicidio13_1: 4274299211393327839
+      suicidio13_2: 3966437736287199280
+      suicidio13_3: 2700171907468357107
+      suicidio13_4: -4356004667743671459
+      suicidio13_5: 6350576723247099088
+      suicidio13_6: 6075547628210675511
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
