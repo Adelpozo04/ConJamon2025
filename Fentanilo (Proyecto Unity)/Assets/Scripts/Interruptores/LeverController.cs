@@ -9,7 +9,7 @@ public class LeverController : Activador
 
     [SerializeField] SpriteRenderer spriteOn;
 
-
+    
     void Start() 
     {
         ChangeAspect();

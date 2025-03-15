@@ -128,15 +128,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8506093838034100716, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -164,7 +164,7 @@ PrefabInstance:
       addedObject: {fileID: 1515662173478715363}
     - targetCorrespondingSourceObject: {fileID: 1388279535486550557, guid: ba4572d907251ab4085c97176416578e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4685678393714337162}
+      addedObject: {fileID: 3898878717400239247}
     - targetCorrespondingSourceObject: {fileID: 2518898269516376531, guid: ba4572d907251ab4085c97176416578e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2628536636053261273}
@@ -182,8 +182,8 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460248456075030721}
   m_Enabled: 1
---- !u!61 &4685678393714337162
-BoxCollider2D:
+--- !u!70 &3898878717400239247
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -216,18 +216,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.00000011920929}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 2.0014274}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &4022811543464205071 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2518898269516376531, guid: ba4572d907251ab4085c97176416578e, type: 3}

@@ -14,6 +14,9 @@ public class MovingPlatformController : Activable
     [SerializeField] private float cooldown;
 
     public bool _activado;
+
+    // que se mueva solo una vez en su recorrido en una dirección
+    public bool moveOnce;
     //El punto del recorrido en el que está
     public int _current;
     //Está haciendo el recorrido al revés.
@@ -37,9 +40,13 @@ public class MovingPlatformController : Activable
         {
             transform.position = Vector3.MoveTowards(transform.position, points[_current].position, speed * Time.deltaTime);
             //Si ha llegado al current point
-            if ((points[_current].position - transform.position).magnitude <= 1 && !queuedChange)
+            if ((points[_current].position - transform.position).magnitude <= 0.1 && !queuedChange)
             {
+                if (moveOnce && (_current == 0 || _current == points.Length - 1))
+                    _activado = false;
+
                 Invoke("Next", cooldown);
+
                 queuedChange = true;
             }
         }
@@ -72,7 +79,10 @@ public class MovingPlatformController : Activable
         queuedChange = false;
 
         if (_current == 0 || _current == points.Length - 1)
+        {
             _inverse = !_inverse;
+        }
+
         if (_inverse)
         {
             _current++;
