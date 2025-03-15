@@ -1,5 +1,8 @@
 using System.Collections;
+using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +13,7 @@ public class TextSpawn : MonoBehaviour
     public string text;
     public float time;
     [Header("Ajustes efecto glitch")]
-    public float glitchChance;
+    public float timeToGlitch;
     public float glitchRadius;
     public float glitchVelocity;
     public int minGlitchAmmount;
@@ -24,6 +27,8 @@ public class TextSpawn : MonoBehaviour
     private int colorIt = 0;
     private bool canGlitch = true;
     private bool canWrite = true;
+
+    private float timer = 0;
     IEnumerator appearText(float totalTime)
     {
         int index = 1;
@@ -34,6 +39,7 @@ public class TextSpawn : MonoBehaviour
             if (time >= timeToType)
             {
                 textTMPRO.text = text.Substring(0, index++);
+                textTMPRO.text = textTMPRO.text.Replace('#', '\n');
 
                 timeToType = time + (totalTime / text.Length); 
             }
@@ -65,6 +71,7 @@ public class TextSpawn : MonoBehaviour
             yield return new WaitForSeconds(glitchVelocity);
         }
 
+        timer = timeToGlitch;
         canGlitch = true;
     }
 
@@ -77,13 +84,16 @@ public class TextSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Random.Range(0f, 100f) < glitchChance && canGlitch)
+        timer -= Time.deltaTime;
+        if (timer < 0 && canGlitch)
             StartCoroutine(Glitch());
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Player" && canWrite)
         {
             canWrite = false;
             StartCoroutine(appearText(time));

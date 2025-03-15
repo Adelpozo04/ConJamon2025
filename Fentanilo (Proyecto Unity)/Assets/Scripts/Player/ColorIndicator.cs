@@ -18,7 +18,6 @@ public class ColorIndicator : MonoBehaviour
     }
 
     public void SetColor(int n) {
-        print(name + n);
         if(colorIndicator != null && n < listaColores.Count)
             colorIndicator.color = listaColores[n];
     }
