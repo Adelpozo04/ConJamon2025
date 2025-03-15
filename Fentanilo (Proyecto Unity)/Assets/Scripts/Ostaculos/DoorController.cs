@@ -13,17 +13,25 @@ public class DoorController : Activable
     [SerializeField] private Sprite closeSpriteFirstHalf;
     [SerializeField] private Sprite closeSpriteSecondHalf;
 
+    public bool startClosed = true;
+    
     private Collider2D _coll;
-
+    private bool flag;
     private void Start()
     {
         _coll = GetComponent<Collider2D>();
+        flag = startClosed;
+
+        _coll.enabled = flag;
+        firstHalf.sprite = flag ? closeSpriteFirstHalf : openSpriteFirstHalf;
+        secondHalf.sprite = flag ? closeSpriteSecondHalf : openSpriteSecondHalf;
     }
 
     public override void Activar(bool state)
     {
-        _coll.enabled = state;
-        firstHalf.sprite = state ? openSpriteFirstHalf : closeSpriteFirstHalf;
-        secondHalf.sprite = state ? openSpriteSecondHalf : closeSpriteSecondHalf;
+        flag = !flag;
+        _coll.enabled = flag;
+        firstHalf.sprite = flag ? closeSpriteFirstHalf : openSpriteFirstHalf;
+        secondHalf.sprite = flag ? closeSpriteSecondHalf : openSpriteSecondHalf;
     }
 }
