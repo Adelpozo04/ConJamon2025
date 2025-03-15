@@ -6,22 +6,8 @@ public class ImpulsoEffectPlayer : MonoBehaviour
     public PlayerMovement playerMovement;
 
     public ImpulsoEffect impulsoEffect;
-    public bool active;
+    public bool aiming;
     private bool shooting = false;
-    public void onAim(InputAction.CallbackContext context)
-    {
-        var customContext = SombraStorage.convertCallbackContext(context);
-        if (playerMovement._recording)
-        {
-            playerMovement.record(customContext, SombraStorage.ActionType.AIM);
-        }
-        if (active)
-            OnAim(customContext);
-    }
-    public void OnAim(SombraStorage.CustomCallbackContext context)
-    {
-        TryAim(context.valueVector2);
-    }
 
     private void TryAim(Vector2 inputDirection)
     {
@@ -32,12 +18,18 @@ public class ImpulsoEffectPlayer : MonoBehaviour
     {
         impulsoEffect = comp;
         playerMovement.DisableMovement();
-        active = true;
+        aiming = true;
     }
     public void DeactivateAiming()
     {
         shooting = true;
-        active = false;
+        aiming = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (aiming)
+            TryAim(playerMovement.moveInput);
     }
 
     void Start()
