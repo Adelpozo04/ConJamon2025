@@ -13,6 +13,7 @@ public class GoalController : MonoBehaviour
         {
             //Sacar un mensaje de que has ganado
             //Fade out y cambiar de escena
+            other.gameObject.GetComponent<PlayerMovement>().enabled = false;
             LevelManager.Instance.Won();
         }
         else
