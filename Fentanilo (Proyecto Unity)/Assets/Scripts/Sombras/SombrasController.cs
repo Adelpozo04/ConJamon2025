@@ -125,10 +125,11 @@ public class SombrasController : MonoBehaviour
         {
             SombraStorage.Instance._records.Add(new List<SombraStorage.SombraAction>(_currentRecord));
             _currentRecord.Clear();
-
             stoppedRecording = true;
             Invoke("reloadScene", 0.767f);
         }
+        stoppedRecording = true;
+        Invoke("reloadScene", 0.767f);
     }
 
 

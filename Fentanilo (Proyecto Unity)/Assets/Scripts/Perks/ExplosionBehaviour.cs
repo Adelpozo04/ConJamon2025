@@ -19,12 +19,12 @@ public class ExplosionBehaviour : PerkBehaviour
         // Obtenemos todos los colliders dentro del radio de la explosión en las capas definidas
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
-        foreach (Collider2D col in colliders) {
+        foreach (Collider2D col in colliders) {            
             // Si el collider tiene el componente LivesComponent, llamamos a Die()
             LivesComponent enemy = col.GetComponent<LivesComponent>();
             if (enemy != null) {
                 enemy.EnemyDie();
-            } else {
+            } else {                
                 // Si tiene el componente ExplosionDestructible, llamamos a ActivateDestruction()
                 ExplosionDestructible destructible = col.GetComponent<ExplosionDestructible>();
                 if (destructible != null) {
