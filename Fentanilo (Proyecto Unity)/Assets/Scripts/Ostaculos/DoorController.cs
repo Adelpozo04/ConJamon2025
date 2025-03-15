@@ -5,49 +5,33 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class DoorController : Activable
 {
-    private SpriteRenderer _rend;
-    private Collider2D _coll;
-    private bool _opened;
+    [SerializeField] private SpriteRenderer firstHalf;
+    [SerializeField] private SpriteRenderer secondHalf;
 
+    [SerializeField] private Sprite openSpriteFirstHalf;
+    [SerializeField] private Sprite openSpriteSecondHalf;
+    [SerializeField] private Sprite closeSpriteFirstHalf;
+    [SerializeField] private Sprite closeSpriteSecondHalf;
+
+    public bool startClosed = true;
+    
+    private Collider2D _coll;
+    public bool flag;
     private void Start()
     {
         _coll = GetComponent<Collider2D>();
-        _rend = GetComponent<SpriteRenderer>();
+        flag = startClosed;
+
+        _coll.enabled = flag;
+        firstHalf.sprite = flag ? closeSpriteFirstHalf : openSpriteFirstHalf;
+        secondHalf.sprite = flag ? closeSpriteSecondHalf : openSpriteSecondHalf;
     }
 
     public override void Activar(bool state)
     {
-        if (state)
-        {
-            Open();
-        }
-        else
-        {
-            Close();
-        }
-    }
-    
-    void Open() {
-        if(!_opened) {
-            //Abrir la puerta
-            _coll.enabled = false;
-            _rend.color = Color.green;
-            Debug.Log("door opened");
-            //Efectuar animación de apertura
-            _opened = true;
-        }
-    }
-    
-    void Close() {
-        if (_opened) {
-            //Cerrar la puerta
-            
-            _coll.enabled = true;
-            _rend.color = Color.red;
-            Debug.Log("door closed");
-            //Efectuar animación de cierre
-            
-            _opened = false;
-        }
+        flag = !flag;
+        _coll.enabled = flag;
+        firstHalf.sprite = flag ? closeSpriteFirstHalf : openSpriteFirstHalf;
+        secondHalf.sprite = flag ? closeSpriteSecondHalf : openSpriteSecondHalf;
     }
 }

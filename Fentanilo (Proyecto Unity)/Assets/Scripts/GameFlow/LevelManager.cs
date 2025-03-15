@@ -80,7 +80,9 @@ using UnityEngine.UI;
         {
             float elapsedTime = 0f;
             Color color = fadeInImage.color;
+            fadeInImage.gameObject.SetActive(true);
             
+
             while (elapsedTime < fadeOutDuration)
             {          
                 elapsedTime += Time.deltaTime;
@@ -88,7 +90,9 @@ using UnityEngine.UI;
                 fadeInImage.color = color;
                 yield return null;
             }
+            fadeInImage.gameObject.SetActive(false);
         }
+
         /// <summary>
         /// Procesa el fadeout y una vez termina, lanza la nueva escena.
         /// </summary>
@@ -97,7 +101,8 @@ using UnityEngine.UI;
         {
             float elapsedTime = 0f;
             Color color = fadeInImage.color;
-            
+            fadeInImage.gameObject.SetActive(true);
+
             while (elapsedTime < fadeOutDuration)
             {
                 elapsedTime += Time.deltaTime;

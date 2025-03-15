@@ -18,6 +18,8 @@ public class EnemyMeleeMovement : MonoBehaviour
     private int _randomNumber;
     private float _distancePP = 0.25f; //Distancia en la que reconoce que llega al punto de patrullaje
 
+    private Animator _animator;
+
     public enum MovementState
     {
         Patrolling,
@@ -28,6 +30,7 @@ public class EnemyMeleeMovement : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _randomNumber = Random.Range(0, _patrolPositions.Length);
+        _animator= GetComponent<Animator>();
     }
 
     private void Update()
@@ -75,6 +78,8 @@ public class EnemyMeleeMovement : MonoBehaviour
         {
             _playerTransform = null;
         }
+
+        _animator.SetBool("followPlayer", false);
     }
 
     public void FollowingState()
@@ -101,6 +106,8 @@ public class EnemyMeleeMovement : MonoBehaviour
         {
             _playerTransform = null;
         }
+
+        _animator.SetBool("followPlayer", true);
     }
 
     private void FlipToTarget(Vector3 _target)

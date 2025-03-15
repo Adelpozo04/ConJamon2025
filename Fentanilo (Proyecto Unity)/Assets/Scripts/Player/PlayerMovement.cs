@@ -140,6 +140,12 @@ public class PlayerMovement : MonoBehaviour
     Shoot shoot;
 
 
+    public MovingPlatformController _contactPlatform;
+    public DoorController _contactDoor;
+
+
+    public bool _copyPosition = true;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         input = GetComponent<PlayerInput>();    
@@ -275,7 +281,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpContext.started = false;
                 jumpContext.canceled = true;
 
-                print("canceleeed");
+                //print("canceleeed");
 
             }
             _jumpButtonPressed = thisFrameJumpButtonPressed;
@@ -326,6 +332,8 @@ public class PlayerMovement : MonoBehaviour
         {
             stopContext.started = true;
         }
+
+
 
         //record de los inputs
         record(moveContext,SombraStorage.ActionType.MOVE);
@@ -492,6 +500,37 @@ public class PlayerMovement : MonoBehaviour
         sombraAction.type = type;
 
 
+        //guardar la posicion
+        sombraAction.position = transform.position;
+
+
+        //info de la plataforma
+        if(_contactPlatform == null)
+        {
+            sombraAction.platformState.isInContact = false;
+        }
+        else
+        {
+            sombraAction.platformState.isInContact = true;
+            sombraAction.platformState.active = _contactPlatform._activado;
+            sombraAction.platformState.current = _contactPlatform._current;
+            sombraAction.platformState.position = _contactPlatform.gameObject.transform.position;   
+        }
+
+
+        //info de la puerta
+
+        if(_contactDoor == null)
+        {
+            sombraAction.doorState.isInContact = false; 
+        }
+        else
+        {
+            sombraAction.doorState.isInContact = true;
+            sombraAction.doorState.flag = _contactDoor.flag;
+        }
+
+
         _controller._currentRecord.Add(sombraAction);
     }
 
@@ -503,6 +542,46 @@ public class PlayerMovement : MonoBehaviour
             //_controller.stopRecording();
         }
     }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var platform = collision.gameObject.GetComponent<MovingPlatformController>();
+
+        if (platform != null) { 
+        
+            _contactPlatform = platform;    
+        }
+
+        var door = collision.gameObject.GetComponent<DoorController>();
+
+        if (door != null) { 
+            _contactDoor = door;
+        }
+
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        var platform = collision.gameObject.GetComponent<MovingPlatformController>();
+
+        if (platform != null)
+        {
+
+            _contactPlatform = null;
+        }
+
+        var door = collision.gameObject.GetComponent<DoorController>();
+
+        if (door != null)
+        {
+            _contactDoor = null;
+        }
+
+    }
+
+
 
     #endregion
 

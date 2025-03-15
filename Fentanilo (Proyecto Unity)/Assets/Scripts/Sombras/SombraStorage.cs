@@ -10,6 +10,11 @@ es singleton y pervive entre escenas
  */
 public class SombraStorage : MonoBehaviour
 {
+    //IMPORTANTEEEEE: SI LAS SOMBRAS FALLAN PROBAR A CAMBIAR  ESTO
+    public static  float positionCompareUmbral = 0.5f;
+
+
+
     //singleton para manejar una sola instancia
     public static SombraStorage Instance = null;
 
@@ -32,12 +37,37 @@ public class SombraStorage : MonoBehaviour
         MOVE,JUMP,SHOOT,AIM,STOP_RECORDING
     }
 
+
+    public struct PlatformState
+    {
+        public bool isInContact;
+
+        public bool active;
+        public int current;
+        public Vector3 position;
+    }
+
+    public struct DoorState
+    {
+        //todo
+        public bool isInContact;
+        public bool flag;
+    }
+
+
+
     //guarda el callback original, el momento en que se ejecutó y el tipo de accion que fue
     public struct SombraAction
     {
         public CustomCallbackContext callback;
         public double time;
         public ActionType type;
+        public Vector3 position;
+
+        public PlatformState platformState;
+        public DoorState doorState;
+
+
     }
 
 
@@ -65,6 +95,20 @@ public class SombraStorage : MonoBehaviour
             print("target null at run action");
             return;
         }
+
+        if (target._copyPosition)
+        {
+            if (comparePlatformInfo(sombraAction, target) && compareDoorInfo(sombraAction,target))
+            {
+                target.transform.position = sombraAction.position;
+            }
+            else
+            {
+                target._copyPosition = false;
+            }
+        }
+
+
 
         //if else con todas las funciones
         if (sombraAction.type == ActionType.JUMP)
@@ -124,7 +168,7 @@ public class SombraStorage : MonoBehaviour
     }
 
 
-    public static SombraAction getCancelInput(ActionType type)
+    public static SombraAction getCancelInput(ActionType type, PlayerMovement target)
     {
         SombraAction action = new SombraAction();
 
@@ -160,6 +204,7 @@ public class SombraStorage : MonoBehaviour
 
         }
 
+        action.position = target.transform.position;
 
         action.callback = callback;
 
@@ -169,11 +214,45 @@ public class SombraStorage : MonoBehaviour
 
     public static void runCancelAllInputs(PlayerMovement target)
     {
-        runAction(getCancelInput(ActionType.MOVE), target );
-        runAction(getCancelInput(ActionType.JUMP), target);
-        runAction(getCancelInput(ActionType.SHOOT), target);
-        runAction(getCancelInput(ActionType.AIM), target);
+        runAction(getCancelInput(ActionType.MOVE, target), target);
+        runAction(getCancelInput(ActionType.JUMP, target), target);
+        runAction(getCancelInput(ActionType.SHOOT, target), target);
+        runAction(getCancelInput(ActionType.AIM, target), target);
     }
+
+
+    //true equals, false algo distinto
+    public static bool comparePlatformInfo(SombraAction sombraAction, PlayerMovement target)
+    {
+        bool bothContact = sombraAction.platformState.isInContact == (target._contactPlatform != null);
+        bool noContact = !sombraAction.platformState.isInContact && (target._contactPlatform == null);
+
+        if (noContact) return true;
+        if (!bothContact) return false;  
+
+
+        bool bothActive = sombraAction.platformState.active == target._contactPlatform._activado;
+        bool bothCurrent =  sombraAction.platformState.current == target._contactPlatform._current;
+        bool bothPos = Vector3.Distance(sombraAction.platformState.position, target._contactPlatform.transform.position) < positionCompareUmbral;
+
+
+        return bothContact && bothActive && bothCurrent && bothPos;
+    }
+
+
+    public static bool compareDoorInfo(SombraAction sombraAction, PlayerMovement target)
+    {
+        bool bothContact = sombraAction.doorState.isInContact == (target._contactDoor != null);
+        bool noContact = !sombraAction.doorState.isInContact && (target._contactDoor == null);
+
+        if (noContact) return true;
+        if (!bothContact) return false;
+
+        bool bothFlag = sombraAction.doorState.flag == target._contactDoor.flag;
+       
+        return bothContact && bothFlag;
+    }
+
 
 
     //limpia la lista de fantasmas

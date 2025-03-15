@@ -7,6 +7,8 @@ public abstract class Activador : MonoBehaviour
     /// </summary>
     [SerializeField] private Activable[] activables;
 
+    public bool alwaysSendTrueToActivators = false;
+
     /// <summary>
     /// Variable que guarda el último estado del Activador
     /// </summary>
@@ -24,7 +26,6 @@ public abstract class Activador : MonoBehaviour
     private AudioSource audioSource;
     protected void SendToActivables(bool state)
     {
-        isPressed = state;
         foreach (Activable act in activables)
         {
             if(act != null) act.Activar(state);
@@ -41,7 +42,13 @@ public abstract class Activador : MonoBehaviour
     /// </summary>
     protected void Switch()
     {        
-        SendToActivables(!isPressed);
+        isPressed = !isPressed;
+        if (alwaysSendTrueToActivators)
+        {
+            SendToActivables(true);
+        }
+        else
+            SendToActivables(!isPressed);
     }
 
     protected void PlayAudioSFX()
