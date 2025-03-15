@@ -275,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpContext.started = false;
                 jumpContext.canceled = true;
 
-                print("canceleeed");
+                //print("canceleeed");
 
             }
             _jumpButtonPressed = thisFrameJumpButtonPressed;
@@ -326,6 +326,8 @@ public class PlayerMovement : MonoBehaviour
         {
             stopContext.started = true;
         }
+
+
 
         //record de los inputs
         record(moveContext,SombraStorage.ActionType.MOVE);
@@ -490,6 +492,8 @@ public class PlayerMovement : MonoBehaviour
         sombraAction.callback = callback;
         sombraAction.time = Time.fixedTime - _startTime;
         sombraAction.type = type;
+
+        sombraAction.position = transform.position; 
 
 
         _controller._currentRecord.Add(sombraAction);

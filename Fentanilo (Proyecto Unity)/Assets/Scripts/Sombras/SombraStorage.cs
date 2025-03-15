@@ -38,6 +38,7 @@ public class SombraStorage : MonoBehaviour
         public CustomCallbackContext callback;
         public double time;
         public ActionType type;
+        public Vector3 position;
     }
 
 
@@ -65,6 +66,9 @@ public class SombraStorage : MonoBehaviour
             print("target null at run action");
             return;
         }
+
+        target.transform.position = sombraAction.position;
+
 
         //if else con todas las funciones
         if (sombraAction.type == ActionType.JUMP)
