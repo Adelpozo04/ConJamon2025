@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class EnemyShotComponent : MonoBehaviour
+[RequireComponent(typeof(Animator))]
+public class LivesComponent : MonoBehaviour
 {
     [SerializeField] int lives = 1;
 
@@ -20,9 +21,13 @@ public class EnemyShotComponent : MonoBehaviour
             lives--;
             if (lives <= 0)
             {
-                animator.SetTrigger("Die");
+                EnemyDie();
             }            
         }
+    }
+
+    public void EnemyDie() {
+        animator.SetTrigger("Die");
     }
 
     public void OnAnimationEnd()
