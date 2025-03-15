@@ -1419,9 +1419,9 @@ TextureImporter:
       name: tiles_61
       rect:
         serializedVersion: 2
-        x: 250
+        x: 251
         y: 250
-        width: 250
+        width: 248
         height: 250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1639,9 +1639,9 @@ TextureImporter:
       name: tiles_71
       rect:
         serializedVersion: 2
-        x: 250
+        x: 251
         y: 0
-        width: 250
+        width: 248
         height: 250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1798,7 +1798,7 @@ TextureImporter:
         width: 750
         height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
