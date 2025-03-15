@@ -11,12 +11,15 @@ public class MovingPlatformController : Activable
     //La platadorma debe desplazarse de un punto a otro.
     [SerializeField] private Transform[] points;
     [SerializeField] private float speed;
+    [SerializeField] private float cooldown;
 
     public bool _activado;
     //El punto del recorrido en el que está
     public int _current;
     //Está haciendo el recorrido al revés.
     private bool _inverse;
+
+    private bool queuedChange = false;
     public override void Activar(bool state)
     {
         _activado = state;
@@ -34,9 +37,10 @@ public class MovingPlatformController : Activable
         {
             transform.position = Vector3.MoveTowards(transform.position, points[_current].position, speed * Time.deltaTime);
             //Si ha llegado al current point
-            if ((points[_current].position - transform.position).magnitude <= 1)
+            if ((points[_current].position - transform.position).magnitude <= 1 && !queuedChange)
             {
-                Next();
+                Invoke("Next", cooldown);
+                queuedChange = true;
             }
         }
     }
@@ -65,6 +69,8 @@ public class MovingPlatformController : Activable
     //Comienza el movimiento al siguiente punto.
     private void Next()
     {
+        queuedChange = false;
+
         if (_current == 0 || _current == points.Length - 1)
             _inverse = !_inverse;
         if (_inverse)
