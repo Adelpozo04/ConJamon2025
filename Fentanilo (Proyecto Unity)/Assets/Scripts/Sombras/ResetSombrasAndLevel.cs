@@ -18,6 +18,7 @@ public class ResetSombrasAndLevel : MonoBehaviour
     {
         if (input.actions["ResetLevel"].IsPressed()) {
             SombraStorage.Instance.clearRecords();
+            LevelManager.Instance.SetState(LevelManager.FState.Restart);
             SceneManager.UnloadSceneAsync(gameObject.scene);
             SceneManager.LoadScene(gameObject.scene.name);
         }

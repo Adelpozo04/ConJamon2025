@@ -15,6 +15,7 @@ public class GoalController : MonoBehaviour
             //Fade out y cambiar de escena
             other.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, 0);
             other.gameObject.GetComponent<PlayerMovement>().enabled = false;
+            SombraStorage.Instance.clearRecords();
             LevelManager.Instance.Won();
         }
         else
