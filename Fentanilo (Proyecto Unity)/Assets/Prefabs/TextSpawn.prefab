@@ -48,11 +48,11 @@ MonoBehaviour:
   textTMPRO: {fileID: 0}
   text: 
   time: 2.5
-  glitchChance: 0.5
-  glitchRadius: 0.2
+  timeToGlitch: 3
+  glitchRadius: 0.15
   glitchVelocity: 0.05
-  minGlitchAmmount: 6
-  maxGlitchAmmount: 9
+  minGlitchAmmount: 4
+  maxGlitchAmmount: 7
   color1: {r: 0.32156864, g: 0.97647065, b: 0.8470589, a: 1}
   color2: {r: 0.97647065, g: 0.2627451, b: 0.40784317, a: 1}
   color3: {r: 0.5837369, g: 0.478697, b: 0.82641506, a: 1}
