@@ -162,6 +162,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8575620293565050593, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: bulletCollisionLayers.m_Bits
+      value: 7031
+      objectReference: {fileID: 0}
     - target: {fileID: 8687843034767242567, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Name
       value: PerkSprite
