@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyMeleeMovement : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
 
     [SerializeField] private MovementState _currentState; // Estado actual del movimiento
     [SerializeField] private LayerMask _playerLayer; // Capa para detectar al jugador
@@ -10,15 +11,12 @@ public class EnemyMeleeMovement : MonoBehaviour
     [SerializeField] private float _followingRange;  // Distancia del Raycast
     [SerializeField] private float _speed; // Velocidad de movimiento
     
-
     private Transform _playerTransform; // Referencia al transform del jugador
     private bool _lookingRight = true; // Variable para saber si el enemigo está mirando a la derecha
 
     [SerializeField] private Transform[] _patrolPositions;
     private int _actualPatrolPoint = 0; // Punto de patrullaje actual, empieza en 0 q es la pos del primero en el array
     private float _distancePP = 0.25f; // Distancia en la que reconoce que llega al punto de patrullaje
-
-    private Animator _animator;
 
     public enum MovementState
     {
@@ -30,6 +28,7 @@ public class EnemyMeleeMovement : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+
         //_actualPatrolPoint = Random.Range(0, _patrolPositions.Length);
         _actualPatrolPoint = 0;
     }

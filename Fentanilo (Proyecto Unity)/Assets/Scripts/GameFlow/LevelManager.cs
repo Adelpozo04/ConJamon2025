@@ -14,6 +14,8 @@ using UnityEngine.UI;
 /// </summary>
     public class LevelManager : MonoBehaviour
     {
+        [SerializeField] private String[] levels;
+        private int _currentLevel;
         public enum FState
         {
             Won, //Cuando el jugador gane la partida
@@ -65,6 +67,7 @@ using UnityEngine.UI;
             SetState(FState.Won);
             StartCoroutine(FadeOut(colorWon));
         }
+        
         /// <summary>
         /// Reproduce la animación y cambia a la siguiente escena.
         /// Las escenas de Niveles deben estar ordenadas en los ajustes de la build.
@@ -72,9 +75,26 @@ using UnityEngine.UI;
         /// </summary>
         private void NextLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (_currentLevel < levels.Length)
+            {
+                _currentLevel++;
+                SceneManager.LoadScene(levels[_currentLevel]);
+            }
+            else
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
 
+        /// <summary>
+        /// Para cargar directamente un nivel.
+        /// </summary>
+        /// <param name="lvl">El número del nivel (en el array de levels)</param>
+        public void LoadLevel(int lvl)
+        {
+            _currentLevel = lvl;
+            SceneManager.LoadScene(levels[lvl]);
+        }
         /// <summary>
         /// Queremos que al iniciar la escena, haga fade in.
         /// </summary>
