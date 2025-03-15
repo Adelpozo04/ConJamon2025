@@ -16,6 +16,8 @@ using UnityEngine.UI;
     {
         [SerializeField] private String[] levels;
         private int _currentLevel;
+        private ResetSombrasAndLevel _resetSombrasAndLevel;
+        private int lastGoal = -1;
         public enum FState
         {
             Won, //Cuando el jugador gane la partida
@@ -23,7 +25,7 @@ using UnityEngine.UI;
             Ramificado //Cuando el enemigo le da a la c o muere
         }
 
-        private FState state;
+        public FState state;
         [SerializeField] private Image fadeInImageColored;
         [SerializeField] private Image fadeInImageFondo;
         [SerializeField] private float fadeInDuration;
@@ -56,16 +58,6 @@ using UnityEngine.UI;
             {
                 Destroy(gameObject);
             }
-        }
-
-        /// <summary>
-        /// A ser llamado cuando el jugador gana el nivel.
-        /// Activa un fade out.
-        /// </summary>
-        public void Won()
-        {
-            SetState(FState.Won);
-            StartCoroutine(FadeOut(colorWon));
         }
         
         /// <summary>
@@ -100,6 +92,7 @@ using UnityEngine.UI;
         /// </summary>
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            
             if (state == FState.Won)
             {
                 StartCoroutine(FadeIn(colorWon));
@@ -118,7 +111,7 @@ using UnityEngine.UI;
         /// </summary>
         /// <returns></returns>
         private IEnumerator FadeIn(Color color)
-        {
+        {        
             float elapsedTime = 0f;
             while (elapsedTime < fadeOutDuration)
             {          
@@ -129,32 +122,71 @@ using UnityEngine.UI;
                 fadeInImageFondo.color = color;
                 yield return null;
             }
-        }
+            if (CameraFollow.Instance != null)
+            {
+                CameraFollow.Instance.destroyGoalTransform();
+            }
+    }
 
         /// <summary>
         /// Procesa el fadeout y una vez termina, lanza la nueva escena.
         /// </summary>
         /// <returns></returns>
-        private IEnumerator FadeOut(Color color)
-        {
-            float elapsedTime = 0f;
+        private IEnumerator FadeOut(Color color, string sceneName)
+        {        
+        float elapsedTime = 0f;
 
-            while (elapsedTime < fadeOutDuration)
+            float lDuration = fadeOutDuration;
+            float lDurationFondo = fadeInDurationFondo;
+            if (state != FState.Won)
+            {
+                lDuration /= 5;
+                lDurationFondo /= 5;
+            }
+            while (elapsedTime < lDuration)
             {
                 elapsedTime += Time.deltaTime;
-                color.a = Mathf.Lerp(0, 1, elapsedTime / fadeOutDuration); // Reduce alpha
+                color.a = Mathf.Lerp(0, 1, elapsedTime / lDuration); // Increase alpha
                 fadeInImageColored.color = color;
-                color.a = Mathf.Lerp(0, 1, elapsedTime / fadeOutDurationFondo); // Reduce alpha
+                color.a = Mathf.Lerp(0, 1, elapsedTime / lDurationFondo); // Increase alpha
                 fadeInImageFondo.color = color;
                 yield return null;
             }
-            if(state == FState.Won) 
+            //Cutrísimo esto. Lo siento, es una jam.
+            if (state == FState.Won)
+            {
                 NextLevel();
+            }
+            else
+            {
+                SceneManager.UnloadSceneAsync(sceneName);
+                SceneManager.LoadScene(sceneName);
+            }
+        }
+
+        public void RestartLevel(string sceneName)
+        {
+            state = FState.Restart;
+            StartCoroutine(FadeOut(colorRestart, sceneName));
         }
         
-        //Asigna la situación para que el level manager sepa que tipo de transición hacer
-        public void SetState(FState state)
+        /// <summary>
+        /// A ser llamado cuando el jugador gana el nivel.
+        /// Activa un fade out.
+        /// </summary>
+        public void Won()
         {
-            this.state = state;
+            state = FState.Won;
+            StartCoroutine(FadeOut(colorWon, "wo"));
+        }
+
+        public bool checkGoalTransform()
+        {
+            if(lastGoal == _currentLevel) return false;
+            else
+            {            
+                lastGoal = _currentLevel;
+                return true;
+            }
         }
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -9,12 +10,15 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject Volumen;
     [SerializeField] GameObject Controles;
 
+    [SerializeField] Slider Music;
+    [SerializeField] Slider SFX;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         paused = false;
         input = GetComponent<PlayerInput>();
-        Opciones.SetActive(false);
+        HideAll();
     }
 
     // Update is called once per frame
@@ -31,8 +35,8 @@ public class PauseManager : MonoBehaviour
     void HideAll()
     {
         Opciones.SetActive(false);
-        //Volumen.SetActive(false);
-        //Controles.SetActive(false);
+        Volumen.SetActive(false);
+        Controles.SetActive(false);
     }
 
     public void ShowOptions()
@@ -43,14 +47,14 @@ public class PauseManager : MonoBehaviour
 
     public void ShowVolumen()
     {
-        //HideAll();
-        //Volumen.SetActive(true);
+        HideAll();
+        Volumen.SetActive(true);
     }
 
     public void ShowControles()
     {
-        //HideAll();
-        //Controles.SetActive(true);
+        HideAll();
+        Controles.SetActive(true);
     }
 
     public void Exit()
@@ -58,5 +62,14 @@ public class PauseManager : MonoBehaviour
         HideAll();
         Time.timeScale = 1;
         paused = false;
+    }
+
+    public void changeVolMusic()
+    {
+        AudioManager.Instance.SongVolume = Music.value;        
+    }
+    public void changeVolSFX()
+    {
+        AudioManager.Instance.SFXVolume = SFX.value;        
     }
 }

@@ -22,7 +22,7 @@ public class SombrasController : MonoBehaviour
 
     double _startTime = 0;
 
-   
+    private bool stoppedRecording = false;
 
     private void Start()
     {
@@ -43,6 +43,8 @@ public class SombrasController : MonoBehaviour
 
             newSombra.GetComponentInChildren<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f,1);
             newSombra.GetComponentInChildren<ColorIndicator>().SetColor(i);
+
+            Destroy(newSombra.GetComponent<AudioListener>());
         }
 
         //print("starttt" + _sombrasIndices.Count);
@@ -119,12 +121,14 @@ public class SombrasController : MonoBehaviour
 
     public void stopRecording()
     {
-        if (SombraStorage.Instance._records.Count < _maxRecords)
+        if (SombraStorage.Instance._records.Count < _maxRecords && !stoppedRecording)
         {
             SombraStorage.Instance._records.Add(new List<SombraStorage.SombraAction>(_currentRecord));
             _currentRecord.Clear();
+
+            stoppedRecording = true;
+            Invoke("reloadScene", 0.767f);
         }
-        reloadScene();
     }
 
 
@@ -135,12 +139,9 @@ public class SombrasController : MonoBehaviour
         //por si acaso, si falla LevelManager mirar aqui
         if(LevelManager.Instance != null)
         {
-            LevelManager.Instance.SetState(LevelManager.FState.Ramificado);
+            LevelManager.Instance.state = LevelManager.FState.Ramificado;
         }
-
-
-
-
+        
         SceneManager.UnloadSceneAsync(gameObject.scene);
         SceneManager.LoadScene(gameObject.scene.name);
     }

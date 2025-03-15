@@ -15,7 +15,7 @@ public class Shoot : MonoBehaviour
     [Header("Propiedades del Disparo")]
 
     [Tooltip("Cadencia de disparo (segundos entre disparos)")]
-    [SerializeField] float fireRate = 0.2f;
+    [SerializeField] public float fireRate = 0.2f;
     [Tooltip("Retroceso aplicado al jugador al disparar")]
     [SerializeField] float recoilForce = 0f;
     [Tooltip("Número máximo de balas activas al mismo tiempo (-1 para ilimitado)")]

@@ -231,7 +231,7 @@ public class SombraStorage : MonoBehaviour
 
 
         bool bothActive = sombraAction.platformState.active == target._contactPlatform._activado;
-        bool bothCurrent =  sombraAction.platformState.current == target._contactPlatform._current;
+        bool bothCurrent =  sombraAction.platformState.current == target._contactPlatform.current;
         bool bothPos = Vector3.Distance(sombraAction.platformState.position, target._contactPlatform.transform.position) < positionCompareUmbral;
 
 

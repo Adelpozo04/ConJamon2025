@@ -28,6 +28,9 @@ public class LivesComponent : MonoBehaviour
 
     public void EnemyDie() {
 
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().gravityScale = 0;
+
         EnemyMeleeMovement EMM = GetComponent<EnemyMeleeMovement>();
 
         if(EMM != null)

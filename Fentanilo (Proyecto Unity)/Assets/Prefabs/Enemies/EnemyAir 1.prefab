@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7604208753570733164}
   - component: {fileID: 1167259478561938906}
   - component: {fileID: 1772688122723615404}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyAir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.1472398, y: -0.8245374}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -194,7 +194,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.181592, y: 2.6490748}
   m_EdgeRadius: 0
 --- !u!114 &7604208753570733164
 MonoBehaviour:
