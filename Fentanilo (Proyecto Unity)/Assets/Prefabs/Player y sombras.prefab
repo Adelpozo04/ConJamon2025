@@ -75,6 +75,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7229765729853162222, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_UseColliderMask
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229765729853162222, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_ColliderMask.m_Bits
       value: 631
       objectReference: {fileID: 0}
