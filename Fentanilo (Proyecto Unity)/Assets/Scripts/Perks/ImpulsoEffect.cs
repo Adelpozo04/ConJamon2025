@@ -118,8 +118,8 @@ public class ImpulsoEffect : MonoBehaviour
     {
         if (!active && LayerMask.LayerToName(collision.gameObject.layer) == "Player")
         {
-            playerRB = collision.gameObject.GetComponent<Rigidbody2D>();
-            playerTR = collision.gameObject.transform;
+            playerRB = collision.gameObject.GetComponentInParent<Rigidbody2D>();
+            playerTR = playerRB.gameObject.transform;
             ActivateEffect();
             active = true;
         }

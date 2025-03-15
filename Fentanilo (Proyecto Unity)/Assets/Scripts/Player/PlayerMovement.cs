@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 groundCheckOffset = Vector2.zero;
 
     private Rigidbody2D rb;
-    private Vector2 moveInput;
+    public Vector2 moveInput;
     private bool onGround;
     private bool shouldJump;
     private float coyoteTimeCounter;

@@ -3505,7 +3505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'X / J PARA DISPARAR '
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1916f3922a6e29846a1270642e65fbb8, type: 2}
   m_sharedMaterial: {fileID: -265944752233427406, guid: 1916f3922a6e29846a1270642e65fbb8, type: 2}
@@ -3514,8 +3514,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293722367
-  m_fontColor: {r: 1, g: 0, b: 0.9278941, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3616,10 +3616,9 @@ MonoBehaviour:
   fadeInImage: {fileID: 830908909}
   fadeInDuration: 1
   fadeOutDuration: 1
-  fadeRestart: {fileID: 830908909}
-  fadeRestartDuration: 1
-  fadeEndIteration: {fileID: 1925332521}
-  fadeEndIterationDuration: 1
+  colorWon: {r: 0, g: 0, b: 0, a: 0}
+  colorRestart: {r: 0, g: 0, b: 0, a: 0}
+  colorRamificar: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &617380360
 Transform:
   m_ObjectHideFlags: 0
@@ -3743,6 +3742,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2822620341438565072, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
       propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822620341438565072, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4527466413447910381, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
@@ -3767,7 +3770,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6284318687831325552, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.185
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284318687831325552, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7313680829246064496, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
       propertyPath: m_Name
@@ -3775,11 +3782,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7852857990169323874, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.4240003
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7852857990169323874, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.34
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7852857990169323874, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4036,45 +4043,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2822620341438565072, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527466413447910381, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527466413447910381, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527466413447910381, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5977606312885993190, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
-      propertyPath: cooldown
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5977606312885993190, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
-      propertyPath: moveOnce
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6284318687831325552, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.185
-      objectReference: {fileID: 0}
     - target: {fileID: 7313680829246064496, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
       propertyPath: m_Name
       value: PlataformaAzul
-      objectReference: {fileID: 0}
-    - target: {fileID: 7852857990169323874, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4.4240003
-      objectReference: {fileID: 0}
-    - target: {fileID: 7852857990169323874, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.34
       objectReference: {fileID: 0}
     - target: {fileID: 7852857990169323874, guid: 7262c235729e9c34a91fed75e412788d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4223,17 +4194,52 @@ RectTransform:
   m_AnchoredPosition: {x: 356.5, y: 200.49994}
   m_SizeDelta: {x: 713, y: 401}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1925332521 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4812026755701533177, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
-  m_PrefabInstance: {fileID: 200422855}
+--- !u!1 &2042597089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042597091}
+  - component: {fileID: 2042597090}
+  m_Layer: 0
+  m_Name: TextSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2042597090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042597089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a05b5e881b10fb4f96b8040602e114f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: 'X / J PARA DISPARAR '
+  textTMPRO: {fileID: 589827684}
+--- !u!4 &2042597091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042597089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5478846, y: -2.4734874, z: 0.04224773}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4249,3 +4255,4 @@ SceneRoots:
   - {fileID: 1824187503}
   - {fileID: 1347530780}
   - {fileID: 583979888}
+  - {fileID: 2042597091}

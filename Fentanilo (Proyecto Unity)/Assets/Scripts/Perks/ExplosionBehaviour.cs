@@ -20,17 +20,17 @@ public class ExplosionBehaviour : PerkBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
         foreach (Collider2D col in colliders) {
-            //// Si el collider tiene el componente Enemy, llamamos a Die()
-            //Enemy enemy = col.GetComponent<Enemy>();
-            //if (enemy != null) {
-            //    enemy.Die();
-            //} else {
-            //    // Si tiene el componente ExplosionDestructible, llamamos a Destruct()
-            //    ExplosionDestructible destructible = col.GetComponent<ExplosionDestructible>();
-            //    if (destructible != null) {
-            //        destructible.Destruct();
-            //    }
-            //}
+            // Si el collider tiene el componente LivesComponent, llamamos a Die()
+            LivesComponent enemy = col.GetComponent<LivesComponent>();
+            if (enemy != null) {
+                enemy.EnemyDie();
+            } else {
+                // Si tiene el componente ExplosionDestructible, llamamos a ActivateDestruction()
+                ExplosionDestructible destructible = col.GetComponent<ExplosionDestructible>();
+                if (destructible != null) {
+                    destructible.ActivateDestruction();
+                }
+            }
         }
     }
 
