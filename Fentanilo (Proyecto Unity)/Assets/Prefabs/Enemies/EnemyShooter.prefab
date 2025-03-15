@@ -176,12 +176,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f913b8700405b141a6d6e7e9db2ab56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1388279535486550557, guid: ba4572d907251ab4085c97176416578e, type: 3}
   _shotPrefab: {fileID: 6273607098203241179, guid: eb6b24ef2492f6540b891afefdadcb8e, type: 3}
   _spawnPoint: {fileID: 9038017567445077281}
   _shootingDelay: 1
   _shotSpeed: 8
-  _raycastDistance: 10
+  _raycastForwardDistance: 5
+  _raycastBackwardDistance: 2.5
   _flipDelay: 0.5
   _playerLayer:
     serializedVersion: 2
