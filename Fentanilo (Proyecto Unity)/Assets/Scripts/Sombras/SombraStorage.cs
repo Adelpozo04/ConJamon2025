@@ -221,8 +221,10 @@ public class SombraStorage : MonoBehaviour
     public static bool comparePlatformInfo(SombraAction sombraAction, PlayerMovement target)
     {
         bool bothContact = sombraAction.platformState.isInContact == (target._contactPlatform != null);
-        
-        if(!bothContact) return false;  
+        bool noContact = !sombraAction.platformState.isInContact && (target._contactPlatform == null);
+
+        if (noContact) return true;
+        if (!bothContact) return false;  
 
 
         bool bothActive = sombraAction.platformState.active == target._contactPlatform._activado;
