@@ -16,7 +16,7 @@ public class DoorController : Activable
     public bool startClosed = true;
     
     private Collider2D _coll;
-    private bool flag;
+    public bool flag;
     private void Start()
     {
         _coll = GetComponent<Collider2D>();
