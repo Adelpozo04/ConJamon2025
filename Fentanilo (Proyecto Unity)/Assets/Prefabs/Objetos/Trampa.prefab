@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 397971821658778247}
   - component: {fileID: 2907120047567097889}
   - component: {fileID: 8071081442091070298}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PlayerDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,9 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3d522bec22aff4bba6ccd96b43e0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayTime: 0.5
-  _atackTime: 1
-  _recoveryTime: 1
+  _delayTime: 0.3
+  _atackTime: 0.6
+  _recoveryTime: 2
   rb: {fileID: 4215010866691386183}
   movePoint: {fileID: 3871556527628044997}
   moveTransform: {fileID: 5568502261332085276}
