@@ -17,9 +17,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         // Comprobamos que la layer del objeto contra el que chocamos sea una de las layers con las que debemos colisionar.
+        /*
         if (((1 << collision.gameObject.layer) & collisionLayers) != 0) {
             Destroy(gameObject);
-        }
+        }*/        
+        if(collision.gameObject.layer != 7) Destroy(gameObject);        
     }
 
     private void OnDestroy() {
