@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-
 /*
 Este componente se encarga de guardar la lista  de grabaciones de toda la escena,
 es singleton y pervive entre escenas

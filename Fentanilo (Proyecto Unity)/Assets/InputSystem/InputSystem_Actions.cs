@@ -62,6 +62,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""b9d20ab9-34f3-4cb7-a4ed-005177e4d16e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -282,6 +291,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""995ca6cf-33f9-4fcf-ae13-fb6af262a746"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59bdb178-ad29-43c2-8ae5-bb03f0121009"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -873,6 +904,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_NextIteration = m_Player.FindAction("NextIteration", throwIfNotFound: true);
+        m_Player_ResetLevel = m_Player.FindAction("ResetLevel", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -956,6 +988,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_NextIteration;
+    private readonly InputAction m_Player_ResetLevel;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -964,6 +997,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @NextIteration => m_Wrapper.m_Player_NextIteration;
+        public InputAction @ResetLevel => m_Wrapper.m_Player_ResetLevel;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -985,6 +1019,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @NextIteration.started += instance.OnNextIteration;
             @NextIteration.performed += instance.OnNextIteration;
             @NextIteration.canceled += instance.OnNextIteration;
+            @ResetLevel.started += instance.OnResetLevel;
+            @ResetLevel.performed += instance.OnResetLevel;
+            @ResetLevel.canceled += instance.OnResetLevel;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1001,6 +1038,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @NextIteration.started -= instance.OnNextIteration;
             @NextIteration.performed -= instance.OnNextIteration;
             @NextIteration.canceled -= instance.OnNextIteration;
+            @ResetLevel.started -= instance.OnResetLevel;
+            @ResetLevel.performed -= instance.OnResetLevel;
+            @ResetLevel.canceled -= instance.OnResetLevel;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1187,6 +1227,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnNextIteration(InputAction.CallbackContext context);
+        void OnResetLevel(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
