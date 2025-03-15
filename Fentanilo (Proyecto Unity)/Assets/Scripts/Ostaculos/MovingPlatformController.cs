@@ -1,8 +1,12 @@
 using System;
+using System.Numerics;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class MovingPlatformController : Activable
 {
+    Vector2 platformVelocity;
     private Rigidbody2D rb;
     //La platadorma debe desplazarse de un punto a otro.
     [SerializeField] private Transform[] points;
@@ -26,9 +30,9 @@ public class MovingPlatformController : Activable
 
     private void Update()
     {
-        if (_activado && points.Length >0)
+        if (_activado && points.Length > 0)
         {
-            rb.MovePosition(Vector3.MoveTowards(transform.position, points[_current].position, speed * Time.deltaTime));
+            transform.position = Vector3.MoveTowards(transform.position, points[_current].position, speed * Time.deltaTime);
             //Si ha llegado al current point
             if ((points[_current].position - transform.position).magnitude <= 1)
             {
@@ -37,6 +41,27 @@ public class MovingPlatformController : Activable
         }
     }
 
+    private void FixedUpdate()
+    {
+        platformVelocity = rb.linearVelocity;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+    
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+        {
+            collision.transform.SetParent(null);
+        }
+    }
+    
     //Comienza el movimiento al siguiente punto.
     private void Next()
     {
