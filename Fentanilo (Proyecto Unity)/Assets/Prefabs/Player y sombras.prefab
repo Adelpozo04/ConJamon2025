@@ -387,11 +387,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Keyboard&Mouse
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: 1989eab7-aba0-47b3-a121-2d10ca5f0616
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: 'Player/Pause[/Keyboard/p]'
       objectReference: {fileID: 0}
     - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1318023423684594152}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnReset
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ResetSombrasAndLevel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7932213793077487095, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: _maxRecords
@@ -406,6 +446,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+--- !u!114 &1318023423684594152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3070222071143371738, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+  m_PrefabInstance: {fileID: 4094073219727612466}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c75f21809ed1a498c83e89098a8305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6252671448358043589 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7932213793077487095, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
