@@ -17,6 +17,7 @@ using UnityEngine.UI;
         [SerializeField] private String[] levels;
         private int _currentLevel;
         private ResetSombrasAndLevel _resetSombrasAndLevel;
+        private int lastGoal = -1;
         public enum FState
         {
             Won, //Cuando el jugador gane la partida
@@ -110,7 +111,7 @@ using UnityEngine.UI;
         /// </summary>
         /// <returns></returns>
         private IEnumerator FadeIn(Color color)
-        {
+        {        
             float elapsedTime = 0f;
             while (elapsedTime < fadeOutDuration)
             {          
@@ -121,15 +122,19 @@ using UnityEngine.UI;
                 fadeInImageFondo.color = color;
                 yield return null;
             }
-        }
+            if (CameraFollow.Instance != null)
+            {
+                CameraFollow.Instance.destroyGoalTransform();
+            }
+    }
 
         /// <summary>
         /// Procesa el fadeout y una vez termina, lanza la nueva escena.
         /// </summary>
         /// <returns></returns>
         private IEnumerator FadeOut(Color color, string sceneName)
-        {
-            float elapsedTime = 0f;
+        {        
+        float elapsedTime = 0f;
 
             float lDuration = fadeOutDuration;
             float lDurationFondo = fadeInDurationFondo;
@@ -173,5 +178,15 @@ using UnityEngine.UI;
         {
             state = FState.Won;
             StartCoroutine(FadeOut(colorWon, "wo"));
+        }
+
+        public bool checkGoalTransform()
+        {
+            if(lastGoal == _currentLevel) return false;
+            else
+            {            
+                lastGoal = _currentLevel;
+                return true;
+            }
         }
     }

@@ -554,7 +554,7 @@ public class PlayerMovement : MonoBehaviour
         {
             sombraAction.platformState.isInContact = true;
             sombraAction.platformState.active = _contactPlatform._activado;
-            sombraAction.platformState.current = _contactPlatform._current;
+            sombraAction.platformState.current = _contactPlatform.current;
             sombraAction.platformState.position = _contactPlatform.gameObject.transform.position;   
         }
 
