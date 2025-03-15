@@ -57,19 +57,19 @@ public class MovingPlatformController : Activable
         platformVelocity = rb.linearVelocity;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+        if (other.GetComponent<PlayerMovement>() != null)
         {
-            collision.transform.SetParent(transform);
+            other.transform.SetParent(transform);
         }
     }
     
-    void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+        if (other.GetComponent<PlayerMovement>() != null)
         {
-            collision.transform.SetParent(null);
+            other.transform.SetParent(null);
         }
     }
     

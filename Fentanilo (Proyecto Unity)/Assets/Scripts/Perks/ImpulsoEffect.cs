@@ -118,13 +118,9 @@ public class ImpulsoEffect : MonoBehaviour
     {
         if (!active && LayerMask.LayerToName(collision.gameObject.layer) == "Player")
         {
-            Debug.Log("Antes RigidBody");
-            playerRB = collision.gameObject.GetComponent<Rigidbody2D>();
-            Debug.Log("Antes transform");
-            playerTR = collision.gameObject.transform;
-            Debug.Log("Antes activateEffect");
+            playerRB = collision.gameObject.GetComponentInParent<Rigidbody2D>();
+            playerTR = playerRB.gameObject.transform;
             ActivateEffect();
-            Debug.Log("Antes active = true");
             active = true;
         }
     }

@@ -228,6 +228,8 @@ MonoBehaviour:
   openSpriteSecondHalf: {fileID: 1709158314, guid: fb4e6ff48745cc94da707779e305ad28, type: 3}
   closeSpriteFirstHalf: {fileID: 2053208269, guid: 5182101f39408f6469c784e527e0325b, type: 3}
   closeSpriteSecondHalf: {fileID: -1269596133, guid: 5182101f39408f6469c784e527e0325b, type: 3}
+  startClosed: 1
+  flag: 0
 --- !u!50 &2419374695836082636
 Rigidbody2D:
   serializedVersion: 5
@@ -265,7 +267,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b181dd26b02f91c4e804abc24b9e9482, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

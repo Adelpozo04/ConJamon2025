@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6595220251888434290}
   - component: {fileID: 7788937038313678388}
   - component: {fileID: 7932213793077487095}
+  - component: {fileID: 3070222071143371738}
   m_Layer: 0
   m_Name: SombrasController
   m_TagString: Untagged
@@ -126,6 +127,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b9d20ab9-34f3-4cb7-a4ed-005177e4d16e
+    m_ActionName: 'Player/ResetLevel[/Keyboard/r]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -145,3 +150,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sombrasPrefab: {fileID: 1388279535486550557, guid: ba4572d907251ab4085c97176416578e, type: 3}
   _maxRecords: 0
+  _sombrasActivas: []
+  _sombrasIndices: 
+--- !u!114 &3070222071143371738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639751535704168337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c75f21809ed1a498c83e89098a8305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
