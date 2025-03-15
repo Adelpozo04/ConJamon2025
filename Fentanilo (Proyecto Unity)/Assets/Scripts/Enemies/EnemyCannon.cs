@@ -8,64 +8,87 @@ public class EnemyCannon : MonoBehaviour
     [SerializeField] GameObject _shotPrefab;
     [SerializeField] Transform _spawnPoint;
 
-    [SerializeField] int _burstCount; //Count of shots
-    [SerializeField] float _shootingDelay; //Time between shots in burst
-    [SerializeField] float _burstDelay; //Time between bursts
-    public float _speed;
-    private bool _lookingRight = true;
+    [SerializeField] float _shootingDelay; // Tiempo entre disparos
+    [SerializeField] float _shotSpeed; // Velocidad del disparo
+    [SerializeField] float _raycastDistance; // Distancia del raycast
+    [SerializeField] float _flipDelay; // Tiempo de espera antes de girar
+    [SerializeField] LayerMask _playerLayer; // Capa del player para el raycast
+
+    private Coroutine _flipCoroutine;
     private Vector2 _initPos;
- 
+    private bool _lookingRight = true;
+    private bool _playerDetected = false;
+    private float _lastShootTime = 0f; // Última vez que disparó
+
     private void Start()
     {
-        StartCoroutine(CanonSequence());
         _initPos.x = transform.position.x;
     }
 
     private void Update()
     {
         transform.position = new Vector2(_initPos.x, transform.position.y);
+        DetectPlayer();
 
-        if (transform.position.x < _player.transform.position.x && _lookingRight == false)
+        // Rotar el cañón en función de la posición del jugador
+        if (transform.position.x < _player.transform.position.x && !_lookingRight)
         {
-            Flip();
+            StartFlipCoroutine();
         }
-        else if (transform.position.x > _player.transform.position.x && _lookingRight == true)
+        else if (transform.position.x > _player.transform.position.x && _lookingRight)
         {
-            Flip();
+            StartFlipCoroutine();
+        }
+    }
+
+    private void DetectPlayer()
+    {
+        Vector2 direction = _lookingRight ? Vector2.right : Vector2.left;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, _raycastDistance, _playerLayer);
+
+        Debug.DrawRay(transform.position, direction * _raycastDistance, Color.red);
+
+        if (hit.collider != null && hit.collider.gameObject == _player)
+        {
+            _playerDetected = true;
+
+            // Disparar solo si ha pasado el tiempo de espera entre disparos
+            if (Time.time >= _lastShootTime + _shootingDelay)
+            {
+                Shoot();
+                _lastShootTime = Time.time; // Actualiza el tiempo del último disparo
+            }
+        }
+        else
+        {
+            _playerDetected = false;
         }
     }
 
     private void Shoot()
     {
-        GameObject instantiatedShot;
-        instantiatedShot = GameObject.Instantiate(_shotPrefab, _spawnPoint.position, _spawnPoint.rotation);
-
-        instantiatedShot.GetComponent<ProyectileBehaviour>().SetSpeed(_speed);
-
-        //instantiatedShot.GetComponent<ProyectileBehaviour>().ChangeParent(transform);
+        GameObject instantiatedShot = Instantiate(_shotPrefab, _spawnPoint.position, _spawnPoint.rotation);
+        instantiatedShot.GetComponent<ProyectileBehaviour>().SetSpeed(_shotSpeed);
     }
 
-    IEnumerator CanonSequence()
+    private void StartFlipCoroutine()
     {
-        while (true) //Repetir bucle infinitamente
+        if (_flipCoroutine == null) // Evita iniciar múltiples veces la misma corrutina
         {
-            //Repetir bucle hasta acabar ráfaga
-            for (int _counter = 0; _counter < _burstCount; _counter++)
-            {
-                //Disparar
-                Shoot();
-                //Esperar entre disparos
-                yield return new WaitForSeconds(_shootingDelay);
-            }
-            //Esperar entre ráfagas
-            yield return new WaitForSeconds(_burstDelay);
+            _flipCoroutine = StartCoroutine(DelayedFlip());
         }
     }
 
-    private void Flip()
+    private IEnumerator DelayedFlip()
     {
+        yield return new WaitForSeconds(_flipDelay);
+
         _lookingRight = !_lookingRight;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
-        _speed *= -1;
+        _shotSpeed *= -1;
+
+        _flipCoroutine = null; // Restablece la variable para permitir nuevas rotaciones
     }
+
+
 }

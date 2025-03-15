@@ -1,8 +1,17 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProyectileBehaviour : MonoBehaviour
 {
+    [SerializeField] private float _selfDestroyTime;
     private float _speed;
+
+    private void Start()
+    {
+        Destroy(gameObject, _selfDestroyTime);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
