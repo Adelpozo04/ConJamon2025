@@ -14,7 +14,7 @@ public class PauseManager : MonoBehaviour
     {
         paused = false;
         input = GetComponent<PlayerInput>();
-        Opciones.SetActive(false);
+        HideAll();
     }
 
     // Update is called once per frame
@@ -31,8 +31,8 @@ public class PauseManager : MonoBehaviour
     void HideAll()
     {
         Opciones.SetActive(false);
-        //Volumen.SetActive(false);
-        //Controles.SetActive(false);
+        Volumen.SetActive(false);
+        Controles.SetActive(false);
     }
 
     public void ShowOptions()
@@ -43,14 +43,14 @@ public class PauseManager : MonoBehaviour
 
     public void ShowVolumen()
     {
-        //HideAll();
-        //Volumen.SetActive(true);
+        HideAll();
+        Volumen.SetActive(true);
     }
 
     public void ShowControles()
     {
-        //HideAll();
-        //Controles.SetActive(true);
+        HideAll();
+        Controles.SetActive(true);
     }
 
     public void Exit()
