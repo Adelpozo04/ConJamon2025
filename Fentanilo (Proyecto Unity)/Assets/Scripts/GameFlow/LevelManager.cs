@@ -13,18 +13,26 @@ using UnityEngine.UI;
 /// </summary>
     public class LevelManager : MonoBehaviour
     {
-        [Header("Entre niveles")]
+        public enum FState
+        {
+            Won, //Cuando el jugador gane la partida
+            Restart, //Cuando se reinicia el 
+            Ramificado //Cuando el enemigo le da a la c o muere
+        }
+
+        private FState state;
         [SerializeField] private Image fadeInImage;
         [SerializeField] private float fadeInDuration;
         [SerializeField] private float fadeOutDuration;
-        
+
+        [Header("Entre niveles")]
+        [SerializeField] private Color colorWon;
+
         [Header("Reinicio del nivel")]
-        [SerializeField] private Image fadeRestart;
-        [SerializeField] private float fadeRestartDuration;
+        [SerializeField] private Color colorRestart;
         
         [Header("Final de iteración")]
-        [SerializeField] private Image fadeEndIteration;
-        [SerializeField] private float fadeEndIterationDuration;
+        [SerializeField] private Color colorRamificar;
         public static LevelManager Instance { get; private set; }
 
         //El awake asegura que la instancia es única y que no se el objeto no se destruye al cambiar de escena
@@ -33,6 +41,7 @@ using UnityEngine.UI;
             if (Instance == null)
             {
                 Instance = this;
+                state = FState.Restart;
                 DontDestroyOnLoad(gameObject);
                 SceneManager.sceneLoaded += OnSceneLoaded;
             }
@@ -48,7 +57,8 @@ using UnityEngine.UI;
         /// </summary>
         public void Won()
         {
-            StartCoroutine(FadeOut());
+            SetState(FState.Won);
+            StartCoroutine(FadeOut(colorWon));
         }
         /// <summary>
         /// Reproduce la animación y cambia a la siguiente escena.
@@ -59,30 +69,32 @@ using UnityEngine.UI;
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
         /// <summary>
         /// Queremos que al iniciar la escena, haga fade in.
         /// </summary>
-        private void OnEnable()
-        {
-            StartCoroutine(FadeIn());
-        }
-
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            StartCoroutine(FadeIn());
+            if (state == FState.Won)
+            {
+                StartCoroutine(FadeIn(colorWon));
+            } else if (state == FState.Ramificado)
+            {
+                StartCoroutine(FadeIn(colorRamificar));
+            }
+            else
+            {
+                StartCoroutine(FadeIn(colorRestart));
+            }
         }
         
         /// <summary>
-        /// Manja el fade in.
+        /// Maneja el fade in.
         /// </summary>
         /// <returns></returns>
-        private IEnumerator FadeIn()
+        private IEnumerator FadeIn(Color color)
         {
             float elapsedTime = 0f;
-            Color color = fadeInImage.color;
-            fadeInImage.gameObject.SetActive(true);
-            
-
             while (elapsedTime < fadeOutDuration)
             {          
                 elapsedTime += Time.deltaTime;
@@ -90,18 +102,15 @@ using UnityEngine.UI;
                 fadeInImage.color = color;
                 yield return null;
             }
-            fadeInImage.gameObject.SetActive(false);
         }
 
         /// <summary>
         /// Procesa el fadeout y una vez termina, lanza la nueva escena.
         /// </summary>
         /// <returns></returns>
-        private IEnumerator FadeOut()
+        private IEnumerator FadeOut(Color color)
         {
             float elapsedTime = 0f;
-            Color color = fadeInImage.color;
-            fadeInImage.gameObject.SetActive(true);
 
             while (elapsedTime < fadeOutDuration)
             {
@@ -110,22 +119,13 @@ using UnityEngine.UI;
                 fadeInImage.color = color;
                 yield return null;
             }
-            NextLevel();
+            if(state == FState.Won) 
+                NextLevel();
         }
         
-        private IEnumerator RestartTransition()
+        //Asigna la situación para que el level manager sepa que tipo de transición hacer
+        public void SetState(FState state)
         {
-            float elapsedTime = 0f;
-            Color color = fadeInImage.color;
-            
-            while (elapsedTime < fadeOutDuration)
-            {
-                elapsedTime += Time.deltaTime;
-                color.a = Mathf.Lerp(0, 1, elapsedTime / fadeInDuration); // Reduce alpha
-                fadeInImage.color = color;
-                yield return null;
-            }
-            NextLevel();
+            this.state = state;
         }
-        
     }
