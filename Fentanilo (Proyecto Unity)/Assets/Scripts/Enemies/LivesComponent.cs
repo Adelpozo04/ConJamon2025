@@ -27,6 +27,36 @@ public class LivesComponent : MonoBehaviour
     }
 
     public void EnemyDie() {
+
+        EnemyMeleeMovement EMM = GetComponent<EnemyMeleeMovement>();
+
+        if(EMM != null)
+        {
+
+            EMM.enabled= false;
+
+        }
+
+        EnemyCannon EC = GetComponent<EnemyCannon>();
+
+        if(EC != null)
+        {
+
+            EC.enabled= false;
+
+        }
+
+        EnemyAirMovement EAM = GetComponent<EnemyAirMovement>();
+
+        if(EAM != null)
+        {
+
+            EAM.enabled= false;
+
+        }
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity= Vector3.zero;
         animator.SetTrigger("Die");
     }
 
