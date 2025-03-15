@@ -149,6 +149,8 @@ MonoBehaviour:
   Opciones: {fileID: 6720216969746185948}
   Volumen: {fileID: 1739357703481437936}
   Controles: {fileID: 6360722543659403171}
+  Music: {fileID: 7793675478711246717}
+  SFX: {fileID: 3609166505966179656}
 --- !u!1 &288230028441350944
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +456,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5013205461092206011}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_MethodName: changeVolMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1405184144918042963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1157,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5013205461092206011}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_MethodName: changeVolSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1833528142300896267
 GameObject:
   m_ObjectHideFlags: 0
