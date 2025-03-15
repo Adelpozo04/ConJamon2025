@@ -78,6 +78,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6660002594039811224, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: infoNSombras
+      value: 
+      objectReference: {fileID: 6252671448358043589}
     - target: {fileID: 7229765729853162222, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_SurfaceArc
       value: 90

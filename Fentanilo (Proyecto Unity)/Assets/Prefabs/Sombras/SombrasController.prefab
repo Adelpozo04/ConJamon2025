@@ -149,9 +149,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sombrasPrefab: {fileID: 1388279535486550557, guid: ba4572d907251ab4085c97176416578e, type: 3}
-  _maxRecords: 0
+  _maxRecords: 5
   _sombrasActivas: []
   _sombrasIndices: 
+  coloresSombras:
+  - {r: 0, g: 0, b: 1, a: 0}
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0, g: 1, b: 0, a: 0}
+  - {r: 1, g: 1, b: 0, a: 0}
+  - {r: 1, g: 0, b: 1, a: 0}
+  - {r: 0, g: 1, b: 1, a: 0}
 --- !u!114 &3070222071143371738
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
@@ -21,9 +22,13 @@ using UnityEngine.UI;
         }
 
         private FState state;
-        [SerializeField] private Image fadeInImage;
+        [SerializeField] private Image fadeInImageColored;
+        [SerializeField] private Image fadeInImageFondo;
         [SerializeField] private float fadeInDuration;
+        [SerializeField] private float fadeInDurationFondo;
+        
         [SerializeField] private float fadeOutDuration;
+        [SerializeField] private float fadeOutDurationFondo;
 
         [Header("Entre niveles")]
         [SerializeField] private Color colorWon;
@@ -99,7 +104,9 @@ using UnityEngine.UI;
             {          
                 elapsedTime += Time.deltaTime;
                 color.a = Mathf.Lerp(1, 0, elapsedTime / fadeInDuration); // Reduce alpha
-                fadeInImage.color = color;
+                fadeInImageColored.color = color;
+                color.a = Mathf.Lerp(1, 0, elapsedTime / fadeInDurationFondo); // Reduce alpha
+                fadeInImageFondo.color = color;
                 yield return null;
             }
         }
@@ -115,8 +122,10 @@ using UnityEngine.UI;
             while (elapsedTime < fadeOutDuration)
             {
                 elapsedTime += Time.deltaTime;
-                color.a = Mathf.Lerp(0, 1, elapsedTime / fadeInDuration); // Reduce alpha
-                fadeInImage.color = color;
+                color.a = Mathf.Lerp(0, 1, elapsedTime / fadeOutDuration); // Reduce alpha
+                fadeInImageColored.color = color;
+                color.a = Mathf.Lerp(0, 1, elapsedTime / fadeOutDurationFondo); // Reduce alpha
+                fadeInImageFondo.color = color;
                 yield return null;
             }
             if(state == FState.Won) 
