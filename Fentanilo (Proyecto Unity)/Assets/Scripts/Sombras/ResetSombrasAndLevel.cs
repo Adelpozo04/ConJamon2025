@@ -13,13 +13,10 @@ public class ResetSombrasAndLevel : MonoBehaviour
         input = GetComponent<PlayerInput>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnReset()
     {
-        if (input.actions["ResetLevel"].IsPressed()) {
-            SombraStorage.Instance.clearRecords();
-            SceneManager.UnloadSceneAsync(gameObject.scene);
-            SceneManager.LoadScene(gameObject.scene.name);
-        }
+        SombraStorage.Instance.clearRecords();
+        LevelManager.Instance.RestartLevel(SceneManager.GetActiveScene().name);
     }
+
 }

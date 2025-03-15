@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyMeleeMovement : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
 
     [SerializeField] private MovementState _currentState; // Estado actual del movimiento
     [SerializeField] private LayerMask _playerLayer; // Capa para detectar al jugador
@@ -10,15 +11,12 @@ public class EnemyMeleeMovement : MonoBehaviour
     [SerializeField] private float _followingRange;  // Distancia del Raycast
     [SerializeField] private float _speed; // Velocidad de movimiento
     
-
     private Transform _playerTransform; // Referencia al transform del jugador
     private bool _lookingRight = true; // Variable para saber si el enemigo está mirando a la derecha
 
     [SerializeField] private Transform[] _patrolPositions;
-    private int _randomNumber;
-    private float _distancePP = 0.25f; //Distancia en la que reconoce que llega al punto de patrullaje
-
-    private Animator _animator;
+    private int _actualPatrolPoint = 0; // Punto de patrullaje actual, empieza en 0 q es la pos del primero en el array
+    private float _distancePP = 0.25f; // Distancia en la que reconoce que llega al punto de patrullaje
 
     public enum MovementState
     {
@@ -29,8 +27,10 @@ public class EnemyMeleeMovement : MonoBehaviour
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _randomNumber = Random.Range(0, _patrolPositions.Length);
-        _animator= GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
+
+        //_actualPatrolPoint = Random.Range(0, _patrolPositions.Length);
+        _actualPatrolPoint = 0;
     }
 
     private void Update()
@@ -48,15 +48,15 @@ public class EnemyMeleeMovement : MonoBehaviour
 
     private void PatrollingState()
     {
-        FlipToTarget(_patrolPositions[_randomNumber].position);
+        FlipToTarget(_patrolPositions[_actualPatrolPoint].position);
 
-        Vector3 _newPos = new Vector3(_patrolPositions[_randomNumber].position.x, transform.position.y, transform.position.z);
+        Vector3 _newPos = new Vector3(_patrolPositions[_actualPatrolPoint].position.x, transform.position.y, transform.position.z);
         transform.position = Vector2.MoveTowards(transform.position, _newPos, _speed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, _patrolPositions[_randomNumber].position) < _distancePP ||
-            transform.position.x == _patrolPositions[_randomNumber].position.x)
+        if (Vector2.Distance(transform.position, _patrolPositions[_actualPatrolPoint].position) < _distancePP ||
+            transform.position.x == _patrolPositions[_actualPatrolPoint].position.x)
         {
-            _randomNumber = Random.Range(0, _patrolPositions.Length);
+            if (_actualPatrolPoint < _patrolPositions.Length - 1) { _actualPatrolPoint++; } else { _actualPatrolPoint = 0; }
         }
 
         // Determinar la dirección del raycast: hacia la derecha o izquierda dependiendo de si el enemigo está mirando a la derecha

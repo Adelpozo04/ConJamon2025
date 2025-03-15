@@ -14,6 +14,9 @@ using UnityEngine.UI;
 /// </summary>
     public class LevelManager : MonoBehaviour
     {
+        [SerializeField] private String[] levels;
+        private int _currentLevel;
+        private ResetSombrasAndLevel _resetSombrasAndLevel;
         public enum FState
         {
             Won, //Cuando el jugador gane la partida
@@ -21,7 +24,7 @@ using UnityEngine.UI;
             Ramificado //Cuando el enemigo le da a la c o muere
         }
 
-        private FState state;
+        public FState state;
         [SerializeField] private Image fadeInImageColored;
         [SerializeField] private Image fadeInImageFondo;
         [SerializeField] private float fadeInDuration;
@@ -55,16 +58,7 @@ using UnityEngine.UI;
                 Destroy(gameObject);
             }
         }
-
-        /// <summary>
-        /// A ser llamado cuando el jugador gana el nivel.
-        /// Activa un fade out.
-        /// </summary>
-        public void Won()
-        {
-            SetState(FState.Won);
-            StartCoroutine(FadeOut(colorWon));
-        }
+        
         /// <summary>
         /// Reproduce la animación y cambia a la siguiente escena.
         /// Las escenas de Niveles deben estar ordenadas en los ajustes de la build.
@@ -72,14 +66,32 @@ using UnityEngine.UI;
         /// </summary>
         private void NextLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (_currentLevel < levels.Length)
+            {
+                _currentLevel++;
+                SceneManager.LoadScene(levels[_currentLevel]);
+            }
+            else
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
 
+        /// <summary>
+        /// Para cargar directamente un nivel.
+        /// </summary>
+        /// <param name="lvl">El número del nivel (en el array de levels)</param>
+        public void LoadLevel(int lvl)
+        {
+            _currentLevel = lvl;
+            SceneManager.LoadScene(levels[lvl]);
+        }
         /// <summary>
         /// Queremos que al iniciar la escena, haga fade in.
         /// </summary>
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            
             if (state == FState.Won)
             {
                 StartCoroutine(FadeIn(colorWon));
@@ -115,26 +127,51 @@ using UnityEngine.UI;
         /// Procesa el fadeout y una vez termina, lanza la nueva escena.
         /// </summary>
         /// <returns></returns>
-        private IEnumerator FadeOut(Color color)
+        private IEnumerator FadeOut(Color color, string sceneName)
         {
             float elapsedTime = 0f;
 
-            while (elapsedTime < fadeOutDuration)
+            float lDuration = fadeOutDuration;
+            float lDurationFondo = fadeInDurationFondo;
+            if (state != FState.Won)
+            {
+                lDuration /= 5;
+                lDurationFondo /= 5;
+            }
+            while (elapsedTime < lDuration)
             {
                 elapsedTime += Time.deltaTime;
-                color.a = Mathf.Lerp(0, 1, elapsedTime / fadeOutDuration); // Reduce alpha
+                color.a = Mathf.Lerp(0, 1, elapsedTime / lDuration); // Increase alpha
                 fadeInImageColored.color = color;
-                color.a = Mathf.Lerp(0, 1, elapsedTime / fadeOutDurationFondo); // Reduce alpha
+                color.a = Mathf.Lerp(0, 1, elapsedTime / lDurationFondo); // Increase alpha
                 fadeInImageFondo.color = color;
                 yield return null;
             }
-            if(state == FState.Won) 
+            //Cutrísimo esto. Lo siento, es una jam.
+            if (state == FState.Won)
+            {
                 NextLevel();
+            }
+            else
+            {
+                SceneManager.UnloadSceneAsync(sceneName);
+                SceneManager.LoadScene(sceneName);
+            }
+        }
+
+        public void RestartLevel(string sceneName)
+        {
+            state = FState.Restart;
+            StartCoroutine(FadeOut(colorRestart, sceneName));
         }
         
-        //Asigna la situación para que el level manager sepa que tipo de transición hacer
-        public void SetState(FState state)
+        /// <summary>
+        /// A ser llamado cuando el jugador gana el nivel.
+        /// Activa un fade out.
+        /// </summary>
+        public void Won()
         {
-            this.state = state;
+            state = FState.Won;
+            StartCoroutine(FadeOut(colorWon, "wo"));
         }
     }
