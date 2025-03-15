@@ -43,6 +43,7 @@ public abstract class Activador : MonoBehaviour
     protected void Switch()
     {        
         isPressed = !isPressed;
+
         if (alwaysSendTrueToActivators)
         {
             SendToActivables(true);
