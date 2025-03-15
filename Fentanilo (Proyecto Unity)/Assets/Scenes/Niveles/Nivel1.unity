@@ -39623,10 +39623,9 @@ MonoBehaviour:
   fadeInImage: {fileID: 830908909}
   fadeInDuration: 1
   fadeOutDuration: 1
-  fadeRestart: {fileID: 830908909}
-  fadeRestartDuration: 1
-  fadeEndIteration: {fileID: 1925332521}
-  fadeEndIterationDuration: 1
+  colorWon: {r: 0, g: 0, b: 0, a: 0}
+  colorRestart: {r: 0, g: 0, b: 0, a: 0}
+  colorRamificar: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &617380360
 Transform:
   m_ObjectHideFlags: 0
@@ -40284,17 +40283,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82a59d855721362488b0ced16e84a5e0, type: 3}
---- !u!114 &1925332521 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4812026755701533177, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
-  m_PrefabInstance: {fileID: 200422855}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &248594400046026753
 PrefabInstance:
   m_ObjectHideFlags: 0
