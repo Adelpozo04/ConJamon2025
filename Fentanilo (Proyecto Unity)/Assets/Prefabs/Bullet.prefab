@@ -164,10 +164,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 704
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 14775
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
