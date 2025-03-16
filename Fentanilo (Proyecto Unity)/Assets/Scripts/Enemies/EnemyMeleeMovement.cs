@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class EnemyMeleeMovement : MonoBehaviour
@@ -22,6 +23,8 @@ public class EnemyMeleeMovement : MonoBehaviour
     AudioSource audioSource2;
     private float startVolume1;
     private float startVolume2;
+
+    private float timer = 0;
     public enum MovementState
     {
         Patrolling,
@@ -61,6 +64,14 @@ public class EnemyMeleeMovement : MonoBehaviour
             case MovementState.Following:
                 FollowingState();
                 break;
+        }
+
+        timer -= Time.deltaTime;
+
+        if (timer < 0)
+        {
+            audioSource2.Play();
+            timer = audioSource2.clip.length;
         }
     }
 

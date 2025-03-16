@@ -89,6 +89,17 @@ public class AudioManager : MonoBehaviour
                 return null;
         }
     }
+
+    private void CallOnRestartScene()
+    {
+        // ALUCINAS CANTIDUBI BRO PERO SON LAS 15:00 Y QUEDA 5 HORAS
+        GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (var obj in allObjects)
+        {
+            obj.BroadcastMessage("UpdateSFXVolume", SFXVolume, SendMessageOptions.DontRequireReceiver);
+        }
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -104,12 +115,14 @@ public class AudioManager : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         audioSource.loop = true;
+        CallOnRestartScene();
     }
 
 }
