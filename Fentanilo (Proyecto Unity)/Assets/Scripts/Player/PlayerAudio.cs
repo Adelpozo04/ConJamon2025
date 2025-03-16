@@ -4,9 +4,11 @@ public class PlayerAudio : MonoBehaviour
 {
     private AudioSource audioSource;
 
+    private bool playedRestart = false;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        playedRestart = false;
     }
     public void PlayJump()
     {
@@ -20,8 +22,12 @@ public class PlayerAudio : MonoBehaviour
     }
     public void PlayRestart()
     {
-        audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.PLAYER_RESTART);
-        audioSource.Play();
+        if (!playedRestart)
+        {
+            audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.PLAYER_RESTART);
+            audioSource.Play();
+            playedRestart = true;
+        }
     }
     public void PlayShoot()
     {

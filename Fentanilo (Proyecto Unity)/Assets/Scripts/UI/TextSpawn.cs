@@ -48,6 +48,8 @@ public class TextSpawn : MonoBehaviour
 
             yield return null;
         }
+
+        textTMPRO.text = textTMPRO.text.Replace('#', '\n'); ;
     }
 
     IEnumerator Glitch()
