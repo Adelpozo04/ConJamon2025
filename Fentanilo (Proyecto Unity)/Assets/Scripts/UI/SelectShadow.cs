@@ -98,22 +98,31 @@ public class SelectShadow : MonoBehaviour
 
     public void OnSelect(InputAction.CallbackContext callback)
     {
-        //desactivar el objeto
-        gameObject.SetActive(false);
+        if (callback.started) {
 
-        //continuar el tiempo
-        Time.timeScale = 1.0f;
+            //desactivar el objeto
+            gameObject.SetActive(false);
 
-        //asignar el current al controller
-        _sombrasController._currentRecordIndex = _currentSelected;
-        //encender el controller
-        _sombrasController.gameObject.SetActive(true);
-
-        SombraStorage.Instance._usedSombras[_currentSelected] = false;
+            //continuar el tiempo
+            Time.timeScale = 1.0f;
 
 
-        //activar el level manager para el fade in
-        LevelManager.Instance.gameObject.SetActive(true);
+            //marcar la actual como no usado
+            SombraStorage.Instance._usedSombras[_currentSelected] = false;
+
+            print("setear a false");
+
+            //asignar el current al controller
+            _sombrasController._currentRecordIndex = _currentSelected;
+            //encender el controller
+            _sombrasController.gameObject.SetActive(true);
+
+
+
+            //activar el level manager para el fade in
+            LevelManager.Instance.gameObject.SetActive(true);
+        }
+
 
     }
 

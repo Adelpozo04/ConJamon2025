@@ -54,7 +54,7 @@ public class SombrasController : MonoBehaviour
             //si no esamos usando la sombra, no hacemos nada y pasamos
             if (!SombraStorage.Instance._usedSombras[i]) continue;
 
-            //print("lanzoooo");
+            print("lanzoooo");
 
 
             //si estamos usando la sombra, la creamos 
