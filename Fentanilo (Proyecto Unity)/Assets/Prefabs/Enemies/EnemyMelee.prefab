@@ -215,7 +215,7 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 128
-  _followingRange: 0
+  _followingRange: 4.5
   _speed: 5
   _patrolPositions:
   - {fileID: 8415559935138092281}
