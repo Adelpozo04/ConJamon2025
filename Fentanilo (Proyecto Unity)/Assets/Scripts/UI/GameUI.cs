@@ -1,8 +1,7 @@
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using UnityEditorInternal;
+
 public enum TipoPerk { }
 public class GameUI : MonoBehaviour
 {
