@@ -117,7 +117,7 @@ public class SelectShadow : MonoBehaviour
             //encender el controller
             _sombrasController.gameObject.SetActive(true);
 
-
+            CameraFollow.Instance.destroyGoalTransform();
 
             //activar el level manager para el fade in
             LevelManager.Instance.gameObject.SetActive(true);
