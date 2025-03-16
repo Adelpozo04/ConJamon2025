@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
@@ -43,9 +40,7 @@ using UnityEngine.UI;
         [Header("Final de iteración")]
         [SerializeField] private Color colorRamificar;
         public static LevelManager Instance { get; private set; }
-
-
-
+        
         // ejecute solo una vez la primera cancion
         private bool playStartSong;
 
@@ -59,6 +54,7 @@ using UnityEngine.UI;
                 DontDestroyOnLoad(gameObject);
                 SceneManager.sceneLoaded += OnSceneLoaded;
                 playStartSong = true;
+                updateCurrentLevel();
             }
             else
             {
@@ -73,14 +69,6 @@ using UnityEngine.UI;
             AudioManager.Instance.PlaySong(1);
             playStartSong = false;
         }
-
-        updateCurrentLevel();
-
-    }
-
-    private void Update()
-    {
-        updateCurrentLevel();
     }
 
 
@@ -97,6 +85,7 @@ using UnityEngine.UI;
                 break;
             }
         }
+        Debug.Log("current level" + _currentLevel);
     }
  
 
@@ -109,6 +98,7 @@ using UnityEngine.UI;
     {
         if (_currentLevel < levels.Length)
         {
+            SceneManager.UnloadSceneAsync(levels[_currentLevel]);
             _currentLevel++;
             LoadLevel(_currentLevel);
         }
@@ -121,7 +111,7 @@ using UnityEngine.UI;
     public void NextIterationLoad()
     {
         state = FState.Ramificado;
-        LoadLevel(_currentLevel);
+        StartCoroutine(FadeOut(colorRamificar));
     }
 
         /// <summary>
@@ -130,9 +120,7 @@ using UnityEngine.UI;
         /// <param name="lvl">El número del nivel (en el array de levels)</param>
         public void LoadLevel(int lvl)
         {
-
             _currentLevel = lvl;
-            SceneManager.UnloadSceneAsync(levels[lvl]);
             SceneManager.LoadScene(levels[lvl]);
         }
         /// <summary>
@@ -140,7 +128,6 @@ using UnityEngine.UI;
         /// </summary>
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            
             if (state == FState.Won)
             {
                 StartCoroutine(FadeIn(colorWon));
@@ -180,9 +167,9 @@ using UnityEngine.UI;
         /// Procesa el fadeout y una vez termina, lanza la nueva escena.
         /// </summary>
         /// <returns></returns>
-        private IEnumerator FadeOut(Color color, string sceneName)
+        private IEnumerator FadeOut(Color color)
         {        
-        float elapsedTime = 0f;
+            float elapsedTime = 0f;
 
             float lDuration = fadeOutDuration;
             float lDurationFondo = fadeInDurationFondo;
@@ -207,15 +194,15 @@ using UnityEngine.UI;
             }
             else
             {
-                SceneManager.UnloadSceneAsync(sceneName);
-                SceneManager.LoadScene(sceneName);
+                SceneManager.UnloadSceneAsync(levels[_currentLevel]);
+                LoadLevel(_currentLevel);
             }
         }
 
-        public void RestartLevel(string sceneName)
+        public void RestartLevel()
         {
             state = FState.Restart;
-            StartCoroutine(FadeOut(colorRestart, sceneName));
+            StartCoroutine(FadeOut(colorRestart));
         }
         
         /// <summary>
@@ -225,14 +212,14 @@ using UnityEngine.UI;
         public void Won()
         {
             state = FState.Won;
-            StartCoroutine(FadeOut(colorWon, ""));
+            StartCoroutine(FadeOut(colorWon));
         }
 
         public bool checkGoalTransform()
         {
             if(lastGoal == _currentLevel) return false;
             else
-            {            
+            {
                 lastGoal = _currentLevel;
                 return true;
             }
