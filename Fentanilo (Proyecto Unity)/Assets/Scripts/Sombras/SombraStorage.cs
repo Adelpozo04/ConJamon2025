@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -59,6 +60,12 @@ public class SombraStorage : MonoBehaviour
         public Vector3 position;
     }
 
+    public struct StopMovingState
+    {
+        public bool isInContact;
+        public Vector3 position;
+
+    }
 
     //guarda el callback original, el momento en que se ejecutó y el tipo de accion que fue
     public struct SombraAction
@@ -71,6 +78,7 @@ public class SombraStorage : MonoBehaviour
         public PlatformState platformState;
         public DoorState doorState;
         public RocaState rocaState;
+        public StopMovingState stopMovingState;
 
     }
 
@@ -103,7 +111,7 @@ public class SombraStorage : MonoBehaviour
         if (target._copyPosition)
         {
             if (comparePlatformInfo(sombraAction, target) && compareDoorInfo(sombraAction,target) &&
-                compareRockInfo(sombraAction, target))
+                compareRockInfo(sombraAction, target) && compareStopInfo(sombraAction,target))
             {
                 target.transform.position = sombraAction.position;
             }
@@ -271,6 +279,20 @@ public class SombraStorage : MonoBehaviour
 
         bool bothPos = Vector3.Distance(sombraAction.rocaState.position, target._contactRock.transform.position) < positionCompareUmbral;
 
+
+        return bothContact && bothPos;
+    }
+
+
+    public static bool compareStopInfo(SombraAction sombraAction, PlayerMovement target)
+    {
+        bool bothContact = sombraAction.stopMovingState.isInContact == (target._contactStopMoving != null);
+        bool noContact = !sombraAction.stopMovingState.isInContact && (target._contactStopMoving == null);
+
+        if (noContact) return true;
+        if (!bothContact) return false;
+
+        bool bothPos = Vector3.Distance(sombraAction.stopMovingState.position, target._contactStopMoving.transform.position) < positionCompareUmbral;
 
         return bothContact && bothPos;
     }
