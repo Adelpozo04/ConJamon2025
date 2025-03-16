@@ -57,6 +57,8 @@ MonoBehaviour:
   playerDisparar: {fileID: 8300000, guid: 045beca43a1c0ec41b0a876a00c6a745, type: 3}
   meleeAndar: {fileID: 8300000, guid: bcf23394a1058e34391f6e5741ed5649, type: 3}
   enemyHurt: {fileID: 8300000, guid: 9b7a4a7eba8ea4142886eea6d4185b20, type: 3}
+  pasarNivel: {fileID: 8300000, guid: 44a6d4815c31f2744b2cad1be375f943, type: 3}
+  audioSource: {fileID: 0}
 --- !u!82 &8254904477235980570
 AudioSource:
   m_ObjectHideFlags: 0

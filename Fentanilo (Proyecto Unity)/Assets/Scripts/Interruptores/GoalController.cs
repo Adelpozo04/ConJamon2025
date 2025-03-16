@@ -6,13 +6,22 @@ using UnityEngine;
 /// Script para el objeto al que hay que llegar para pasar al siguiente nivel
 /// </summary>
 public class GoalController : MonoBehaviour
-{   
+{
+
+    private AudioSource audioSource;
+    private float startVolume;
+    public void UpdateSFXVolume(float volume)
+    {
+        audioSource.volume = Mathf.Lerp(0, startVolume, volume);
+    }
     void Start()
     {
         if(CameraFollow.Instance != null)
         {
             CameraFollow.Instance.setGoalTransform(GetComponent<Transform>());
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -28,6 +37,9 @@ public class GoalController : MonoBehaviour
             other.gameObject.GetComponent<PlayerMovement>().enabled = false;
             SombraStorage.Instance.clearRecords();
             LevelManager.Instance.Won();
+
+            audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.PASAR_NIVEL);
+            audioSource.Play();
         }
         else
         {
