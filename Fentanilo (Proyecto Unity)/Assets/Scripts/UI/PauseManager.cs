@@ -70,6 +70,8 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+        SombraStorage.Instance.clearRecords();
+        LevelManager.Instance.state = LevelManager.FState.InMenu;
     }
 
     public void changeVolMusic()
