@@ -63,7 +63,7 @@ using UnityEngine.UI;
 
     private void Start()
     {
-        if (playStartSong)
+        if (playStartSong && AudioManager.Instance != null)
         {
             AudioManager.Instance.PlayRandomSong();
             playStartSong = false;
@@ -222,5 +222,11 @@ using UnityEngine.UI;
                 lastGoal = _currentLevel;
                 return true;
             }
+        }
+
+        public void LoadFromMenu(int i)
+        {
+            SceneManager.UnloadSceneAsync("LevelSelection");
+            LoadLevel(i);
         }
     }
