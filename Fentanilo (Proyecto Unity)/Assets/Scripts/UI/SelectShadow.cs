@@ -20,7 +20,7 @@ public class SelectShadow : MonoBehaviour
 
     public int _currentSelected;
 
-
+    public GameObject textoEligeTuRama;
 
     private void Awake()
     {
@@ -121,6 +121,8 @@ public class SelectShadow : MonoBehaviour
 
             //activar el level manager para el fade in
             LevelManager.Instance.gameObject.SetActive(true);
+
+            textoEligeTuRama.SetActive(false);
         }
 
 
