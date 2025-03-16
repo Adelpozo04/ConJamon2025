@@ -141,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
 
     public MovingPlatformController _contactPlatform;
     public DoorController _contactDoor;
+    public TheRockController _contactRock;
 
     public bool _copyPosition = true;
 
@@ -577,7 +578,22 @@ public class PlayerMovement : MonoBehaviour
         {
             sombraAction.doorState.isInContact = true;
             sombraAction.doorState.flag = _contactDoor.flag;
+            sombraAction.doorState.position = _contactDoor.transform.position;
+
         }
+
+
+        //info de la roca
+        if(_contactRock == null)
+        {
+            sombraAction.rocaState.isInContact = false;
+        }
+        else
+        {
+            sombraAction.rocaState.isInContact = true;
+            sombraAction.rocaState.position = _contactRock.transform.position;
+        }
+
 
 
         _controller._currentRecord.Add(sombraAction);
@@ -608,6 +624,13 @@ public class PlayerMovement : MonoBehaviour
             _contactDoor = door;
         }
 
+        var rock = collision.gameObject.GetComponent<TheRockController>();
+
+        if (rock != null) { 
+            _contactRock = rock;
+        }
+
+
 
     }
 
@@ -627,6 +650,15 @@ public class PlayerMovement : MonoBehaviour
         {
             _contactDoor = null;
         }
+
+
+        var rock = collision.gameObject.GetComponent<TheRockController>();
+
+        if (rock != null)
+        {
+            _contactRock = null;
+        }
+
 
     }
 
