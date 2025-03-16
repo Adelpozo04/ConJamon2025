@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
@@ -63,6 +64,11 @@ public class PauseManager : MonoBehaviour
         HideAll();
         Time.timeScale = 1;
         paused = false;
+    }
+
+    public void VueltaMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void changeVolMusic()
