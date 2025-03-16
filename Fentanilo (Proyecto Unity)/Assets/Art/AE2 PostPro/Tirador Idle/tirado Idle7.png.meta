@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tirado Idle7_0: 392861602922199443
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

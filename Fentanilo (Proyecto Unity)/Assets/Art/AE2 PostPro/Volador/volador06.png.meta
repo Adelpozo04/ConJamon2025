@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      volador06_0: 991259679677310637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
