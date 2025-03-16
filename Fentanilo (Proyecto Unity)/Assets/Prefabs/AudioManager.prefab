@@ -53,7 +53,7 @@ MonoBehaviour:
   mecanismoDesactivar: {fileID: 8300000, guid: 22b238e89a221604293942aca0725138, type: 3}
   saltar: {fileID: 8300000, guid: 985f5bd24e5c7614f9bfe2b3ab08a067, type: 3}
   playerMuerte: {fileID: 8300000, guid: 7d4216500db667f46aa300f9b00dc470, type: 3}
-  playerRestart: {fileID: 0}
+  playerRestart: {fileID: 8300000, guid: 7d4216500db667f46aa300f9b00dc470, type: 3}
   playerDisparar: {fileID: 8300000, guid: 045beca43a1c0ec41b0a876a00c6a745, type: 3}
   meleeAndar: {fileID: 8300000, guid: bcf23394a1058e34391f6e5741ed5649, type: 3}
   enemyHurt: {fileID: 8300000, guid: 9b7a4a7eba8ea4142886eea6d4185b20, type: 3}
@@ -69,8 +69,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ac3da4089b3c58f4398380305dd9998e, type: 3}
+  m_Resource: {fileID: 8300000, guid: ac3da4089b3c58f4398380305dd9998e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

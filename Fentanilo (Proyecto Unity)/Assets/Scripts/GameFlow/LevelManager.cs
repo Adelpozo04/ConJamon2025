@@ -40,9 +40,9 @@ using UnityEngine.UI;
         [Header("Final de iteración")]
         [SerializeField] private Color colorRamificar;
         public static LevelManager Instance { get; private set; }
-        
-        // ejecute solo una vez la primera cancion
-        private bool playStartSong;
+
+    // ejecute solo una vez la primera cancion
+        private bool playStartSong = true;
 
         //El awake asegura que la instancia es única y que no se el objeto no se destruye al cambiar de escena
         private void Awake()
@@ -53,7 +53,6 @@ using UnityEngine.UI;
                 state = FState.Restart;
                 DontDestroyOnLoad(gameObject);
                 SceneManager.sceneLoaded += OnSceneLoaded;
-                playStartSong = true;
                 updateCurrentLevel();
             }
             else
@@ -66,7 +65,7 @@ using UnityEngine.UI;
     {
         if (playStartSong)
         {
-            AudioManager.Instance.PlaySong(1);
+            AudioManager.Instance.PlayRandomSong();
             playStartSong = false;
         }
     }
@@ -85,7 +84,6 @@ using UnityEngine.UI;
                 break;
             }
         }
-        Debug.Log("current level" + _currentLevel);
     }
  
 
@@ -101,6 +99,7 @@ using UnityEngine.UI;
             SceneManager.UnloadSceneAsync(levels[_currentLevel]);
             _currentLevel++;
             LoadLevel(_currentLevel);
+            AudioManager.Instance.PlayRandomSong();
         }
         else
         {
