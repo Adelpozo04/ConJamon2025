@@ -99,6 +99,8 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

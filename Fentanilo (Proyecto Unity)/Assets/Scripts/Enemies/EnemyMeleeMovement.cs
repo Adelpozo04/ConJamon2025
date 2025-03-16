@@ -39,8 +39,8 @@ public class EnemyMeleeMovement : MonoBehaviour
         audioSource1 = GetComponents<AudioSource>()[0];
         audioSource2 = GetComponents<AudioSource>()[1];
 
-        audioSource1.clip = AudioManager.Instance.GetAudioClip(SoundSFX.MELEE_WALK);
-        audioSource2.clip = AudioManager.Instance.GetAudioClip(SoundSFX.ENEMY_HURT);
+        audioSource1.clip = AudioManager.Instance.GetAudioClip(SoundSFX.ENEMY_HURT);
+        audioSource2.clip = AudioManager.Instance.GetAudioClip(SoundSFX.MELEE_WALK);
         startVolume1 = audioSource1.volume;
         startVolume2 = audioSource2.volume;
     }
