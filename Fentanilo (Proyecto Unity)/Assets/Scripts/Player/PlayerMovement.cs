@@ -403,7 +403,8 @@ public class PlayerMovement : MonoBehaviour
 
     void askInput()
     {
-        if (SombraStorage.Instance._records[_controllerIndex].Count >  _controller._sombrasIndices[_controllerIndex])
+
+        if (SombraStorage.Instance._records[_controllerIndex].Count > _controller._sombrasIndices[_controllerIndex])
         {
 
             double currTime = Time.fixedTime - _startTime;
@@ -413,14 +414,14 @@ public class PlayerMovement : MonoBehaviour
             //print("ActionTime: "+  actionTime);
 
 
-            while(currTime >= actionTime && _controller._sombrasIndices[_controllerIndex] < SombraStorage.Instance._records[_controllerIndex].Count)
+            while (currTime >= actionTime && _controller._sombrasIndices[_controllerIndex] < SombraStorage.Instance._records[_controllerIndex].Count)
             {
                 actionTime = SombraStorage.Instance._records[_controllerIndex][_controller._sombrasIndices[_controllerIndex]].time;
                 SombraStorage.runAction(SombraStorage.Instance._records[_controllerIndex][_controller._sombrasIndices[_controllerIndex]], _controller._sombrasActivas[_controllerIndex]);
                 _controller._sombrasIndices[_controllerIndex]++;
             }
         }
-        else if (SombraStorage.Instance._records[_controllerIndex].Count ==  _controller._sombrasIndices[_controllerIndex]) //cuando se ha dejado de detectar el input
+        else if (SombraStorage.Instance._records[_controllerIndex].Count == _controller._sombrasIndices[_controllerIndex]) //cuando se ha dejado de detectar el input
         {
             //cancelar todos los inputs
             if (_controller._sombrasActivas[_controllerIndex] != null)
@@ -429,6 +430,7 @@ public class PlayerMovement : MonoBehaviour
                 _controller._sombrasIndices[_controllerIndex]++;
             }
         }
+        
 
     }
 
