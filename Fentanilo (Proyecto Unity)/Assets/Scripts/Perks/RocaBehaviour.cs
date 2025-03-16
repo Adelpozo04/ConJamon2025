@@ -7,6 +7,6 @@ public class RocaBehaviour : PerkBehaviour
     {;
         GameObject go = Instantiate(rocaPrefab);
         go.transform.position = transform.position;
-        GameUI.Instance.RemovePerk();
+        //GameUI.Instance.RemovePerk();
     }
 }

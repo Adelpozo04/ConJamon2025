@@ -14,7 +14,7 @@ public class ImpulsoBehaviour : PerkBehaviour
         GameObject go = Instantiate(ImpulsoPrefab);
         go.transform.position = transform.position;
 
-        GameUI.Instance.RemovePerk();
+        //GameUI.Instance.RemovePerk();
 
         Destroy(gameObject);
     }
