@@ -7,11 +7,12 @@ public class LivesComponent : MonoBehaviour
 
     private Animator animator;
 
+    private AudioSource audioSource;
     private void Start()
     {
         
         animator= GetComponent<Animator>();
-
+        audioSource = GetComponents<AudioSource>()[1];
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,6 +31,8 @@ public class LivesComponent : MonoBehaviour
         {
             EnemyDie();
         }
+
+        audioSource.Play();
     }
 
     public void EnemyDie() {
