@@ -139,9 +139,10 @@ public class PlayerMovement : MonoBehaviour
     PlayerInput input;
     Shoot shoot;
 
-    public MovingPlatformController _contactPlatform;
-    public DoorController _contactDoor;
-    public TheRockController _contactRock;
+    public MovingPlatformController _contactPlatform = null;
+    public DoorController _contactDoor = null;
+    public TheRockController _contactRock = null;
+    public StopMoving _contactStopMoving = null;
 
     public bool _copyPosition = true;
 
@@ -596,6 +597,16 @@ public class PlayerMovement : MonoBehaviour
             sombraAction.rocaState.position = _contactRock.transform.position;
         }
 
+        //info del stop moving
+        if (_contactRock == null)
+        {
+            sombraAction.stopMovingState.isInContact = false;
+        }
+        else
+        {
+            sombraAction.stopMovingState.isInContact = true;
+            sombraAction.stopMovingState.position = _contactStopMoving.transform.position;
+        }
 
 
         _controller._currentRecord.Add(sombraAction);
@@ -632,6 +643,12 @@ public class PlayerMovement : MonoBehaviour
             _contactRock = rock;
         }
 
+        var stop = collision.gameObject.GetComponent<StopMoving>();
+
+        if (stop != null)
+        {
+            _contactStopMoving = stop;
+        }
 
 
     }
@@ -661,6 +678,12 @@ public class PlayerMovement : MonoBehaviour
             _contactRock = null;
         }
 
+        var stop = collision.gameObject.GetComponent<StopMoving>();
+
+        if (stop != null)
+        {
+            _contactStopMoving = null;
+        }
 
     }
 

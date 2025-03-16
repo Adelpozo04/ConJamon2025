@@ -100,7 +100,7 @@ public class MovingPlatformController : Activable
     
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerMovement>() != null)
+        if (other.GetComponent<PlayerMovement>() != null && other.transform.parent == transform)
         {
             other.transform.SetParent(null);
         }
