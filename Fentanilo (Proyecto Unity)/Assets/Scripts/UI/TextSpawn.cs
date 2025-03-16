@@ -49,7 +49,7 @@ public class TextSpawn : MonoBehaviour
             yield return null;
         }
 
-        textTMPRO.text = text;
+        textTMPRO.text = textTMPRO.text.Replace('#', '\n'); ;
     }
 
     IEnumerator Glitch()
