@@ -78,6 +78,12 @@ using UnityEngine.UI;
 
     }
 
+    private void Update()
+    {
+        updateCurrentLevel();
+    }
+
+
     void updateCurrentLevel()
     {
         string name = SceneManager.GetActiveScene().name;
