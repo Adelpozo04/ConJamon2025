@@ -141,6 +141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SombrasController
       objectReference: {fileID: 0}
+    - target: {fileID: 3639751535704168337, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6595220251888434290, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -187,15 +191,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_ActionId
       value: 1989eab7-aba0-47b3-a121-2d10ca5f0616
       objectReference: {fileID: 0}
     - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
+      value: 6ad696aa-f61c-4a4f-9532-8fc9bd1242b8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_ActionName
       value: 'Player/Pause[/Keyboard/p]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
+      value: 'Player/SelectOption[/Keyboard/enter]'
       objectReference: {fileID: 0}
     - target: {fileID: 7788937038313678388, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
@@ -320,6 +332,10 @@ PrefabInstance:
     - target: {fileID: 639054840885063388, guid: c3b0f013e4b2e7b439ca25d2893f093f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315228958666741754, guid: c3b0f013e4b2e7b439ca25d2893f093f, type: 3}
+      propertyPath: maxSombras
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
