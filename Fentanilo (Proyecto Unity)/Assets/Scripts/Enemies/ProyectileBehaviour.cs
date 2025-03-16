@@ -41,7 +41,7 @@ public class ProyectileBehaviour : MonoBehaviour
                 playerMovement._controller.stopRecording();
             }
 
-            Destroy(playerMovement.gameObject);
+            playerMovement.OnDeath();
         }
     }
 }

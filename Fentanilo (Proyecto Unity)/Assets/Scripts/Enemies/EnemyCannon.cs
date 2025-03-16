@@ -22,10 +22,21 @@ public class EnemyCannon : MonoBehaviour
     private float _lastShootTime = 0f;
     private Transform _detectedPlayerTransform;
 
+
+    private AudioSource audioSource;
+    private float startVolume;
+
+    public void UpdateSFXVolume(float volume)
+    {
+        audioSource.volume = Mathf.Lerp(0, startVolume, volume);
+    }
     private void Start()
     {
         _anim = GetComponent<Animator>();
         _initPos.x = transform.position.x;
+
+        audioSource = GetComponent<AudioSource>();
+        startVolume = audioSource.volume;
     }
 
     private void Update()
@@ -71,6 +82,9 @@ public class EnemyCannon : MonoBehaviour
         {
             _anim.SetBool("_isShooting", true);
             _lastShootTime = Time.time;
+
+            audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.SHOOT);
+            audioSource.Play();
         }
     }
 

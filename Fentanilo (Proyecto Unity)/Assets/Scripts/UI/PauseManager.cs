@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
@@ -70,6 +71,12 @@ public class PauseManager : MonoBehaviour
     }
     public void changeVolSFX()
     {
-        BroadcastMessage("updateSFXVolume", SFX.value);        
+        // ALUCINAS CANTIDUBI BRO PERO SON LAS 15:00 Y QUEDA 5 HORAS
+        GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (var obj in allObjects)
+        {
+            obj.BroadcastMessage("UpdateSFXVolume", SFX.value, SendMessageOptions.DontRequireReceiver);
+        }
     }
 }

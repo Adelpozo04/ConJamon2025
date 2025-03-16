@@ -10,9 +10,8 @@ public class LivesComponent : MonoBehaviour
     private AudioSource audioSource;
     private void Start()
     {
-        
         animator= GetComponent<Animator>();
-        audioSource = GetComponents<AudioSource>()[1];
+        audioSource = GetComponents<AudioSource>()[0];
     }
 
     private void OnTriggerEnter2D(Collider2D other)
