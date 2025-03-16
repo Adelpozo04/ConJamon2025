@@ -11,6 +11,8 @@ using UnityEngine.UI;
 /// </summary>
     public class LevelManager : MonoBehaviour
     {
+        bool lanzarCorrutina = false;
+
         [SerializeField] private String[] levels;
         private int _currentLevel;
         private int lastGoal = -1;
@@ -128,10 +130,21 @@ using UnityEngine.UI;
         /// </summary>
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            lanzarCorrutina = true;
+            
+        }
+
+    private void OnEnable()
+    {
+        if (lanzarCorrutina)
+        {
+            lanzarCorrutina = false;
+
             if (state == FState.Won)
             {
                 StartCoroutine(FadeIn(colorWon));
-            } else if (state == FState.Ramificado)
+            }
+            else if (state == FState.Ramificado)
             {
                 StartCoroutine(FadeIn(colorRamificar));
             }
@@ -145,12 +158,13 @@ using UnityEngine.UI;
                 fadeInImageFondo.color = Color.clear;
             }
         }
-        
-        /// <summary>
-        /// Maneja el fade in.
-        /// </summary>
-        /// <returns></returns>
-        private IEnumerator FadeIn(Color color)
+    }
+
+    /// <summary>
+    /// Maneja el fade in.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FadeIn(Color color)
         {        
             float elapsedTime = 0f;
             while (elapsedTime < fadeInDuration)

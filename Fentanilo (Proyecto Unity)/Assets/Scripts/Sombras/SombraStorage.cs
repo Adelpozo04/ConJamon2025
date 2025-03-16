@@ -13,6 +13,7 @@ public class SombraStorage : MonoBehaviour
     //IMPORTANTEEEEE: SI LAS SOMBRAS FALLAN PROBAR A CAMBIAR  ESTO
     public static  float positionCompareUmbral = 0.5f;
 
+    public int maxSombras;
 
 
     //singleton para manejar una sola instancia
@@ -20,6 +21,10 @@ public class SombraStorage : MonoBehaviour
 
     //lista de todas las grabaciones
     public List<List<SombraAction>> _records = new List<List<SombraAction>>();
+
+    //lista de las usadas, SombrasController lo usa para saber cual crear
+    public List<bool> _usedSombras = new List<bool>();
+
 
     //wrapper de callbackContext
     public struct CustomCallbackContext
@@ -68,6 +73,7 @@ public class SombraStorage : MonoBehaviour
     }
 
     //guarda el callback original, el momento en que se ejecutó y el tipo de accion que fue
+    [System.Serializable]
     public struct SombraAction
     {
         public CustomCallbackContext callback;
@@ -91,6 +97,16 @@ public class SombraStorage : MonoBehaviour
             //para conservar entre escenas
             gameObject.transform.parent = null;
             DontDestroyOnLoad(gameObject);
+
+
+            //rellenar las listas con el numero maximo, tamaño fijo
+            for(int i = 0; i < maxSombras; i++)
+            {
+                _records.Add(null);
+                _usedSombras.Add(false);
+            }
+
+
         }   
         else
         {
@@ -234,6 +250,8 @@ public class SombraStorage : MonoBehaviour
     }
 
 
+    #region Metodos de comparacion
+
     //true equals, false algo distinto
     public static bool comparePlatformInfo(SombraAction sombraAction, PlayerMovement target)
     {
@@ -298,11 +316,23 @@ public class SombraStorage : MonoBehaviour
     }
 
 
+    #endregion
 
-    //limpia la lista de fantasmas
+
+
+    //limpia la lista Toda la lista de fantasmas
     public void clearRecords()
     {
-        _records.Clear();
+        //print("clear redords");
+
+        //reseteamos la lsita poniendo false y null (asi el SombrasController no creara nada)
+        for(int i = 0;i < maxSombras; i++)
+        {
+            _records[i] = null;
+            _usedSombras[i] = false;
+        }
+
+        //_records.Clear();
     }
     
 }

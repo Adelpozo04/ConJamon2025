@@ -9,14 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 4c2719dcc399e764da3703776503896f
   - enabled: 1
-    path: Assets/Scenes/Menus/Options.unity
-    guid: dee7bf0a4cda3bd4ab1b5e8e07e4b139
-  - enabled: 1
-    path: Assets/Scenes/Menus/Volume.unity
-    guid: 28c517c0fd0304f46915f4365c358d1c
-  - enabled: 1
-    path: Assets/Scenes/Menus/Controls.unity
-    guid: 46da7a388a3c11c499913b26a461b6f2
+    path: Assets/Scenes/Menus/OptionsMenu.unity
+    guid: c415546f712b77446a484ad924ded3b7
   - enabled: 1
     path: Assets/Scenes/Menus/LevelSelection.unity
     guid: c347b522db94a62499e114b985e7cf34

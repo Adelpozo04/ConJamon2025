@@ -80,6 +80,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectOption"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ad696aa-f61c-4a4f-9532-8fc9bd1242b8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +342,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21fc7d2f-e460-467c-94c4-546c69bf24d2"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectOption"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -926,6 +946,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_NextIteration = m_Player.FindAction("NextIteration", throwIfNotFound: true);
         m_Player_ResetLevel = m_Player.FindAction("ResetLevel", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_SelectOption = m_Player.FindAction("SelectOption", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1011,6 +1032,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_NextIteration;
     private readonly InputAction m_Player_ResetLevel;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_SelectOption;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1021,6 +1043,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @NextIteration => m_Wrapper.m_Player_NextIteration;
         public InputAction @ResetLevel => m_Wrapper.m_Player_ResetLevel;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @SelectOption => m_Wrapper.m_Player_SelectOption;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1048,6 +1071,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @SelectOption.started += instance.OnSelectOption;
+            @SelectOption.performed += instance.OnSelectOption;
+            @SelectOption.canceled += instance.OnSelectOption;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1070,6 +1096,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @SelectOption.started -= instance.OnSelectOption;
+            @SelectOption.performed -= instance.OnSelectOption;
+            @SelectOption.canceled -= instance.OnSelectOption;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1258,6 +1287,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnNextIteration(InputAction.CallbackContext context);
         void OnResetLevel(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnSelectOption(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -11,7 +11,7 @@ public class SombrasController : MonoBehaviour
 
     //maximas sombras esta escena
     [SerializeField]
-    int _maxRecords;
+    public int _maxRecords;
 
 
     //grabacion actual
@@ -24,38 +24,71 @@ public class SombrasController : MonoBehaviour
 
     private bool stoppedRecording = false;
 
+
+
+    //el indice de la sombra que se va a estar grabando esta iteracion
+    public int _currentRecordIndex;
+
+
     private bool done = false;
+
     private void Start()
     {
+        //inicializar las listas segun el storage
+
+        for(int i = 0; i < SombraStorage.Instance.maxSombras; i++)
+        {
+            //creamos las listas con tama�o adecuado y vacias
+            _sombrasActivas.Add(null);
+            _sombrasIndices.Add(0);
+        }
+
+
+
         //crear las sombras
 
-        for (int i = 0; i < SombraStorage.Instance._records.Count; i++)
+        //para cada posible sombra
+        for (int i = 0; i < SombraStorage.Instance.maxSombras; i++)
         {
+            //print("intento lanzar sombra");
+            //si no esamos usando la sombra, no hacemos nada y pasamos
+            if (!SombraStorage.Instance._usedSombras[i]) continue;
+
+            print("lanzoooo");
+
+
+            //si estamos usando la sombra, la creamos 
             GameObject newSombra = Instantiate(sombrasPrefab, transform.position, Quaternion.identity);
 
-            _sombrasIndices.Add(0);
-            _sombrasActivas.Add(newSombra.GetComponent<PlayerMovement>());
+            //el indice de _sombrasIndices ya esta en 0,  (se ha inicializado asi) 
 
+            //asignamos la sombra activa
+            _sombrasActivas[i] = (newSombra.GetComponent<PlayerMovement>());
+
+            //le asignamos su indice
             newSombra.GetComponent<PlayerMovement>()._controllerIndex = i;  
 
-
+            //para que las sombras no cambien
             newSombra.GetComponent<PlayerMovement>().setRecording(false);
             newSombra.GetComponent<PlayerInput>().enabled = false;
 
+            //cambiarles el color
             newSombra.GetComponentInChildren<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f,1);
             newSombra.GetComponentInChildren<ColorIndicator>().SetColor(i);
 
+            //para que solo haya un audio listener
             Destroy(newSombra.GetComponent<AudioListener>());
         }
 
         //print("starttt" + _sombrasIndices.Count);
+
 
         _startTime = Time.time;
 
         //print("start , sombras indices size" + _sombrasIndices.Count);
 
 
-        GameUI.Instance.StartUI(_maxRecords, SombraStorage.Instance._records.Count);
+        //GameUI.Instance.StartUI(_maxRecords, SombraStorage.Instance._records.Count);
     }
 
 
@@ -120,11 +153,24 @@ public class SombrasController : MonoBehaviour
         }
     }
 
+    //cuando se pulsa parar de grabar (solo hay uno, las sombras no tienen un SombrasController, solo lo tiene el prefab de Player y Sombras)
+    //guarda la grabacion en el slot de _currentRecordIndex
     public void stopRecording()
     {
-        if (SombraStorage.Instance._records.Count < _maxRecords && !stoppedRecording)
+
+        //print("stop recording");
+
+        if (!stoppedRecording)
         {
-            SombraStorage.Instance._records.Add(new List<SombraStorage.SombraAction>(_currentRecord));
+            //guardamos esta sombra en el indice indicado en _currentRecordIndex
+            SombraStorage.Instance._records[_currentRecordIndex] = (new List<SombraStorage.SombraAction>(_currentRecord));
+
+            //print("antes: " + SombraStorage.Instance._usedSombras[_currentRecordIndex]);
+            //asignamos que estamos usando esta sombra a partir de ahora (para que luego se creen)
+            SombraStorage.Instance._usedSombras[_currentRecordIndex] = true;
+            //print("despues: " + SombraStorage.Instance._usedSombras[_currentRecordIndex]);
+
+
             _currentRecord.Clear();
         }
         stoppedRecording = true;
@@ -141,7 +187,6 @@ public class SombrasController : MonoBehaviour
             LevelManager.Instance.NextIterationLoad();
             done = true;
         }
-
     }
 
 
