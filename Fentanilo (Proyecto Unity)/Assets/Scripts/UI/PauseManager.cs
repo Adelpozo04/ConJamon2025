@@ -66,10 +66,10 @@ public class PauseManager : MonoBehaviour
 
     public void changeVolMusic()
     {
-        AudioManager.Instance.SongVolume = Music.value;        
+        AudioManager.Instance.updateSongVolume(Music.value);        
     }
     public void changeVolSFX()
     {
-        AudioManager.Instance.SFXVolume = SFX.value;        
+        BroadcastMessage("updateSFXVolume", SFX.value);        
     }
 }

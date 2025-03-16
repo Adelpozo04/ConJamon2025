@@ -8,6 +8,7 @@ public class VolumeMenu : MonoBehaviour
 
     public void ChangeAudio()
     {
+        Debug.Log(sfxSlider.value);
         BroadcastMessage("UpdateSFXVolume", sfxSlider.value);
         BroadcastMessage("UpdateSongVolume", musicSlider.value);
     }

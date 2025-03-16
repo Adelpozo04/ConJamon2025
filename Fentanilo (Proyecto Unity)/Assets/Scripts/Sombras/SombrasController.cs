@@ -125,8 +125,6 @@ public class SombrasController : MonoBehaviour
         {
             SombraStorage.Instance._records.Add(new List<SombraStorage.SombraAction>(_currentRecord));
             _currentRecord.Clear();
-            stoppedRecording = true;
-            Invoke("reloadScene", 0.767f);
         }
         stoppedRecording = true;
         Invoke("reloadScene", 0.767f);
@@ -137,14 +135,8 @@ public class SombrasController : MonoBehaviour
     //controller
     void reloadScene()
     {
-        //por si acaso, si falla LevelManager mirar aqui
-        if(LevelManager.Instance != null)
-        {
-            LevelManager.Instance.state = LevelManager.FState.Ramificado;
-        }
-        
-        SceneManager.UnloadSceneAsync(gameObject.scene);
-        SceneManager.LoadScene(gameObject.scene.name);
+        LevelManager.Instance.NextIterationLoad();
+
     }
 
 

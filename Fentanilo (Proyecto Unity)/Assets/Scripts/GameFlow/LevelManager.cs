@@ -100,17 +100,23 @@ using UnityEngine.UI;
     /// Llama a un fade in.
     /// </summary>
     private void NextLevel()
+    {
+        if (_currentLevel < levels.Length)
         {
-            if (_currentLevel < levels.Length)
-            {
-                _currentLevel++;
-                LoadLevel(_currentLevel);
-            }
-            else
-            {
-                SceneManager.LoadScene("MainMenu");
-            }
+            _currentLevel++;
+            LoadLevel(_currentLevel);
         }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
+
+    public void NextIterationLoad()
+    {
+        state = FState.Ramificado;
+        LoadLevel(_currentLevel);
+    }
 
         /// <summary>
         /// Para cargar directamente un nivel.
@@ -118,7 +124,9 @@ using UnityEngine.UI;
         /// <param name="lvl">El número del nivel (en el array de levels)</param>
         public void LoadLevel(int lvl)
         {
+
             _currentLevel = lvl;
+            SceneManager.UnloadSceneAsync(levels[lvl]);
             SceneManager.LoadScene(levels[lvl]);
         }
         /// <summary>
@@ -211,7 +219,7 @@ using UnityEngine.UI;
         public void Won()
         {
             state = FState.Won;
-            StartCoroutine(FadeOut(colorWon, "wo"));
+            StartCoroutine(FadeOut(colorWon, ""));
         }
 
         public bool checkGoalTransform()
