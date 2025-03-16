@@ -136,7 +136,12 @@ using UnityEngine.UI;
 
     private void OnEnable()
     {
-        if (lanzarCorrutina)
+        if (state == FState.InMenu)
+        {
+            fadeInImageColored.color = Color.clear;
+            fadeInImageFondo.color = Color.clear;
+        }
+        else if (lanzarCorrutina)
         {
             lanzarCorrutina = false;
 
@@ -152,11 +157,6 @@ using UnityEngine.UI;
             {
                 StartCoroutine(FadeIn(colorRestart));
             }
-            else //Caso InMenu
-            {
-                fadeInImageColored.color = Color.clear;
-                fadeInImageFondo.color = Color.clear;
-            }
         }
     }
 
@@ -167,7 +167,7 @@ using UnityEngine.UI;
     private IEnumerator FadeIn(Color color)
         {        
             float elapsedTime = 0f;
-            while (elapsedTime < fadeInDuration)
+            while (elapsedTime < fadeOutDuration)
             {          
                 elapsedTime += Time.deltaTime;
                 color.a = Mathf.Lerp(1, 0, elapsedTime / fadeInDuration); // Reduce alpha
