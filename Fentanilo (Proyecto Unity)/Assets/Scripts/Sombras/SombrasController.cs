@@ -50,11 +50,11 @@ public class SombrasController : MonoBehaviour
         //para cada posible sombra
         for (int i = 0; i < SombraStorage.Instance.maxSombras; i++)
         {
-            print("intento lanzar sombra");
+            //print("intento lanzar sombra");
             //si no esamos usando la sombra, no hacemos nada y pasamos
             if (!SombraStorage.Instance._usedSombras[i]) continue;
 
-            print("lanzoooo");
+            //print("lanzoooo");
 
 
             //si estamos usando la sombra, la creamos 
@@ -158,13 +158,17 @@ public class SombrasController : MonoBehaviour
     public void stopRecording()
     {
 
-        if (SombraStorage.Instance._records.Count < _maxRecords && !stoppedRecording)
+        //print("stop recording");
+
+        if (!stoppedRecording)
         {
             //guardamos esta sombra en el indice indicado en _currentRecordIndex
             SombraStorage.Instance._records[_currentRecordIndex] = (new List<SombraStorage.SombraAction>(_currentRecord));
 
+            //print("antes: " + SombraStorage.Instance._usedSombras[_currentRecordIndex]);
             //asignamos que estamos usando esta sombra a partir de ahora (para que luego se creen)
             SombraStorage.Instance._usedSombras[_currentRecordIndex] = true;
+            //print("despues: " + SombraStorage.Instance._usedSombras[_currentRecordIndex]);
 
 
             _currentRecord.Clear();
@@ -183,7 +187,6 @@ public class SombrasController : MonoBehaviour
             LevelManager.Instance.NextIterationLoad();
             done = true;
         }
-
     }
 
 

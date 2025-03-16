@@ -33,7 +33,7 @@ public class SelectShadow : MonoBehaviour
 
 
         LevelManager.Instance.gameObject.SetActive(false);   
-        print("aqui");
+        //print("aqui");
         _maxRecords = _sombrasController._maxRecords;
 
         //activar y desactivar segun los datos
@@ -42,6 +42,18 @@ public class SelectShadow : MonoBehaviour
             if(i < _maxRecords){
 
                 //elegir que sprite poner segun si se ha grabado o no
+
+                //si esta usado
+                if (SombraStorage.Instance._usedSombras[i])
+                {
+                    _iconButtons[i].GetComponent<Image>().color = _colorButtons[i];
+                }
+                else
+                {
+                    _iconButtons[i].GetComponent<Image>().color = Color.white;
+
+                }
+
 
             }
             else //poner sprite bloqueado
@@ -96,6 +108,8 @@ public class SelectShadow : MonoBehaviour
         _sombrasController._currentRecordIndex = _currentSelected;
         //encender el controller
         _sombrasController.gameObject.SetActive(true);
+
+        SombraStorage.Instance._usedSombras[_currentSelected] = false;
 
 
         //activar el level manager para el fade in

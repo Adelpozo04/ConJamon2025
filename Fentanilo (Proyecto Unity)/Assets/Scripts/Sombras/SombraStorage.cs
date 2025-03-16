@@ -323,6 +323,8 @@ public class SombraStorage : MonoBehaviour
     //limpia la lista Toda la lista de fantasmas
     public void clearRecords()
     {
+        //print("clear redords");
+
         //reseteamos la lsita poniendo false y null (asi el SombrasController no creara nada)
         for(int i = 0;i < maxSombras; i++)
         {
