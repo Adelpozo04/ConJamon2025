@@ -208,7 +208,12 @@ MonoBehaviour:
   - Nivel3
   - Nivel4
   - Nivel5
+  - Nivel6
+  - Nivel7
+  - Nivel8
   - Nivel9
+  - Nivel10
+  state: 0
   fadeInImageColored: {fileID: 5511156307654079313}
   fadeInImageFondo: {fileID: 6702641413121454903}
   fadeInDuration: 1.3
