@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-public enum SoundSFX { MECANISMO_ACTIVAR, MECANISMO_DESACTIVAR, JUMP, PLAYER_DEATH, PLAYER_RESTART, PLAYER_SHOOT, MELEE_WALK, MELEE_HURT }
+public enum SoundSFX { MECANISMO_ACTIVAR, MECANISMO_DESACTIVAR, JUMP, PLAYER_DEATH, PLAYER_RESTART, PLAYER_SHOOT, MELEE_WALK, ENEMY_HURT }
 
 public class AudioManager : MonoBehaviour
 {   
@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip playerRestart;
     [SerializeField] private AudioClip playerDisparar;
     [SerializeField] private AudioClip meleeAndar;
-    [SerializeField] private AudioClip meleeHurt;
+    [SerializeField] private AudioClip enemyHurt;
 
     private AudioSource audioSource;
 
@@ -30,11 +30,11 @@ public class AudioManager : MonoBehaviour
     public float getSongVolume() { return SongVolume; }
     public float getSFXVolume() { return SFXVolume; }
     
-    public void setSFXVolume(float sfxVolume)
+    public void updateSFXVolume(float sfxVolume)
     {
         SFXVolume = sfxVolume;
     }
-    public void setSongVolume(float songVolume)
+    public void updateSongVolume(float songVolume)
     {
         SongVolume = songVolume;
         audioSource.volume = SongVolume;
@@ -49,6 +49,8 @@ public class AudioManager : MonoBehaviour
             audioSource.clip = song1;
         else if (numSong == 2)
             audioSource.clip = song2;
+
+        audioSource.volume = SongVolume;
 
         audioSource.Stop();
         audioSource.PlayScheduled(AudioSettings.dspTime);
@@ -78,8 +80,8 @@ public class AudioManager : MonoBehaviour
                 return playerDisparar;
             case SoundSFX.MELEE_WALK:
                 return meleeAndar;
-            case SoundSFX.MELEE_HURT:
-                return meleeHurt;
+            case SoundSFX.ENEMY_HURT:
+                return enemyHurt;
             default:
                 return null;
         }
