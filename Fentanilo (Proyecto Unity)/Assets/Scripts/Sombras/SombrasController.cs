@@ -11,7 +11,7 @@ public class SombrasController : MonoBehaviour
 
     //maximas sombras esta escena
     [SerializeField]
-    int _maxRecords;
+    public int _maxRecords;
 
 
     //grabacion actual
@@ -50,8 +50,11 @@ public class SombrasController : MonoBehaviour
         //para cada posible sombra
         for (int i = 0; i < SombraStorage.Instance.maxSombras; i++)
         {
+            print("intento lanzar sombra");
             //si no esamos usando la sombra, no hacemos nada y pasamos
             if (!SombraStorage.Instance._usedSombras[i]) continue;
+
+            print("lanzoooo");
 
 
             //si estamos usando la sombra, la creamos 
@@ -85,7 +88,7 @@ public class SombrasController : MonoBehaviour
         //print("start , sombras indices size" + _sombrasIndices.Count);
 
 
-        GameUI.Instance.StartUI(_maxRecords, SombraStorage.Instance._records.Count);
+        //GameUI.Instance.StartUI(_maxRecords, SombraStorage.Instance._records.Count);
     }
 
 
