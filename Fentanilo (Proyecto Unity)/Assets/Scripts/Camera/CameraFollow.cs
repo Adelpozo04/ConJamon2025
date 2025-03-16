@@ -53,9 +53,15 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //print("target:" + target);
+        //print("goaltransform" + goalTransform);
+
         if (target != null || goalTransform != null)
         {
+            //print("antes");
             TPinitPos();
+            //print("deespues");
+
 
             Vector3 myPos = new Vector3(myTransform.position.x, myTransform.position.y);
             Vector3 targetPos = goalTransform == null ? target.position : goalTransform.position;
@@ -73,7 +79,7 @@ public class CameraFollow : MonoBehaviour
 
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, lerpTime);
 
-            
+            //print("Aaaaaaaaaa");
         }
     }
 
@@ -93,7 +99,7 @@ public class CameraFollow : MonoBehaviour
 
     public void TPinitPos()
     {
-        if (done != true)
+        if (!done)
         {
             Vector2 move = _input.actions["Move"].ReadValue<Vector2>();
             if (move.x != 0)
