@@ -138,8 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: text
-      value: 'UNA RAMA COPIA TUS MOVIMIENTOS.#Cuando ACABAN PUEDES USAR SU CABEZA
-        COMO# PLATAFORMA !!! '
+      value: CADA CRONORAMA COPIA TUS MOVIMIENTOS.#USALAS PARA SUBIR
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: time
@@ -218,17 +217,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1833528142300896267, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1941977587227505270, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1941977587227505270, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1941977587227505270, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1997662785332818111, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_Pivot.x
@@ -312,31 +315,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4153824849467151206, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4153824849467151206, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4290051822056551780, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4290051822056551780, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025159842232448547, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025159842232448547, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025159842232448547, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -68274,7 +68277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: text
-      value: CREA AQUI TU RAMA# Y APOYATE EN ELLA# PARA SUBIR
+      value: CREA AQUI UNA#CRONORAMA Y#USALA PARA SUBIR
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: time
@@ -68729,7 +68732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: text
-      value: "\xA1USA LA RAMIFICACI\xD3N!"
+      value: "\xA1USA LA CRONORAMA!"
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: time
@@ -69049,6 +69052,10 @@ PrefabInstance:
     - target: {fileID: 5818326868148823338, guid: 205c132df67ad4d4bad8a2436b15a45c, type: 3}
       propertyPath: m_Name
       value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5818326868148823338, guid: 205c132df67ad4d4bad8a2436b15a45c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -70226,7 +70233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7648017534994431828, guid: c1043de4f37b39c47a64533913c8de10, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7648017534994431828, guid: c1043de4f37b39c47a64533913c8de10, type: 3}
       propertyPath: m_Color.r
