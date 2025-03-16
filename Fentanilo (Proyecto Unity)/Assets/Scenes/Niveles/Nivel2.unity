@@ -138,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: text
-      value: CADA CRONORAMA COPIA TUS MOVIMIENTOS.#USALAS PARA SUBIR
+      value: CADA CRONORAMA COPIA TUS MOVIMIENTOS.#USALAS PARA SUBIR.
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: time
@@ -219,19 +219,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1833528142300896267, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1941977587227505270, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1941977587227505270, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1941977587227505270, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1997662785332818111, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_Pivot.x
@@ -315,31 +315,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4153824849467151206, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4153824849467151206, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4290051822056551780, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4290051822056551780, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025159842232448547, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025159842232448547, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025159842232448547, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -68493,7 +68493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: text
-      value: CREA AQUI UNA#CRONORAMA Y#USALA PARA SUBIR
+      value: CREA AQUI UNA#CRONORAMA Y#USALA PARA SUBIR.
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: time
@@ -68594,8 +68594,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -349.15, y: -205.62}
-  m_SizeDelta: {x: 13.7395, y: 2}
+  m_AnchoredPosition: {x: -353.54, y: -206.2}
+  m_SizeDelta: {x: 27.3, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &443962552
 MonoBehaviour:
@@ -68771,7 +68771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: text
-      value: PULSA C / K PARA#CREAR UNA RAMA
+      value: PULSA C / K PARA#CREAR UNA RAMA.
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: time
@@ -69271,7 +69271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5818326868148823338, guid: 205c132df67ad4d4bad8a2436b15a45c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -69537,8 +69537,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -362.35, y: -195.8}
-  m_SizeDelta: {x: 13.7395, y: 2}
+  m_AnchoredPosition: {x: -359.3, y: -195.97}
+  m_SizeDelta: {x: 20.42, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1568942757
 MonoBehaviour:
@@ -69587,8 +69587,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.5
-  m_fontSizeBase: 1.5
+  m_fontSize: 1
+  m_fontSizeBase: 1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -69625,7 +69625,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 2.7959836, w: 0}
+  m_margin: {x: 0, y: 0, z: 1.7013295, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -69844,7 +69844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8368091215653118897, guid: f605033494b37284da4611152c4dc927, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -195.76
+      value: -196.3
       objectReference: {fileID: 0}
     - target: {fileID: 8368091215653118897, guid: f605033494b37284da4611152c4dc927, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -70104,7 +70104,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -327.6, y: -198.24}
+  m_AnchoredPosition: {x: -327.53, y: -198.7501}
   m_SizeDelta: {x: 13.7395, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1974523162
@@ -70154,8 +70154,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.5
-  m_fontSizeBase: 1.5
+  m_fontSize: 1
+  m_fontSizeBase: 1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -70220,7 +70220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: text
-      value: TAMBIEN SIRVEN PARA#ACTIVAR MECANISMOS
+      value: LAS RAMAS TAMBIEN SIRVEN#PARA ACTIVAR MECANISMOS.
       objectReference: {fileID: 0}
     - target: {fileID: 4790497860033251275, guid: f0f0487b03c22884b9b53d453e1cfd2c, type: 3}
       propertyPath: time
@@ -70318,15 +70318,15 @@ RectTransform:
   m_GameObject: {fileID: 2030533343}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4175116, y: 1.4175116, z: 1.4175116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1663225475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -326.38, y: -187.45}
-  m_SizeDelta: {x: 13.7395, y: 2}
+  m_AnchoredPosition: {x: -324.67, y: -187.38}
+  m_SizeDelta: {x: 19.05, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2030533345
 MonoBehaviour:
@@ -70375,8 +70375,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 1.04
+  m_fontSizeBase: 1.04
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
