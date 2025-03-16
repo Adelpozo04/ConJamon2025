@@ -21,8 +21,6 @@ public abstract class Activador : MonoBehaviour
     /// 
 
     // para el sfx
-    public AudioClip activateSFX;
-    public AudioClip deactivateSFX;
     private AudioSource audioSource;
     protected void SendToActivables(bool state)
     {
@@ -54,7 +52,7 @@ public abstract class Activador : MonoBehaviour
 
     protected void PlayAudioSFX()
     {
-        audioSource.clip = isPressed ? activateSFX : deactivateSFX;
+        audioSource.clip = isPressed ? AudioManager.Instance.GetAudioClip(SoundSFX.MECANISMO_ACTIVAR) : AudioManager.Instance.GetAudioClip(SoundSFX.MECANISMO_DESACTIVAR);
         audioSource.Play();
     }
 }

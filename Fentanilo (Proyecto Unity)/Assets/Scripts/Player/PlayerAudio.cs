@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    [SerializeField] private AudioClip jumpAudio;
-    [SerializeField] private AudioClip deathAudio;
-
     private AudioSource audioSource;
 
     private void Start()
@@ -13,12 +10,22 @@ public class PlayerAudio : MonoBehaviour
     }
     public void PlayJump()
     {
-        audioSource.clip = jumpAudio;
+        audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.JUMP);
         audioSource.Play();
     }
     public void PlayDeath()
     {
-        audioSource.clip = deathAudio;
+        audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.PLAYER_DEATH);
+        audioSource.Play();
+    }
+    public void PlayRestart()
+    {
+        audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.PLAYER_RESTART);
+        audioSource.Play();
+    }
+    public void PlayShoot()
+    {
+        audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.PLAYER_SHOOT);
         audioSource.Play();
     }
 }
