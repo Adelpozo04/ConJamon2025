@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5198887303896797666}
   - component: {fileID: 6304068311543901513}
   - component: {fileID: 7260395336222840812}
+  - component: {fileID: 6996607087036440076}
   m_Layer: 10
   m_Name: EnemyShooter
   m_TagString: Untagged
@@ -209,6 +210,19 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &6996607087036440076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316607972227992168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790b30f89046e7343873fc4df71374f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 1
 --- !u!1 &7159975756943312259
 GameObject:
   m_ObjectHideFlags: 0
