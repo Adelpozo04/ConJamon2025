@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip meleeAndar;
     [SerializeField] private AudioClip enemyHurt;
 
-    private AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
 
     public static AudioManager Instance = null;
 
@@ -104,7 +104,6 @@ public class AudioManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         audioSource.loop = true;
     }
 
