@@ -187,7 +187,7 @@ using UnityEngine.UI;
                 fadeInImageFondo.color = color;
                 yield return null;
             }
-            //Cutrísimo esto. Lo siento, es una jam.
+        //Cutrísimo esto. Lo siento, es una jam.
             if (state == FState.Won)
             {
                 NextLevel();

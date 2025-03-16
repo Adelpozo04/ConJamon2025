@@ -24,6 +24,7 @@ public class SombrasController : MonoBehaviour
 
     private bool stoppedRecording = false;
 
+    private bool done = false;
     private void Start()
     {
         //crear las sombras
@@ -127,7 +128,7 @@ public class SombrasController : MonoBehaviour
             _currentRecord.Clear();
         }
         stoppedRecording = true;
-        Invoke("reloadScene", 0.767f);
+        reloadScene();
     }
 
 
@@ -135,7 +136,11 @@ public class SombrasController : MonoBehaviour
     //controller
     void reloadScene()
     {
-        LevelManager.Instance.NextIterationLoad();
+        if (!done)
+        {
+            LevelManager.Instance.NextIterationLoad();
+            done = true;
+        }
 
     }
 
