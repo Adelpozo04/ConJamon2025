@@ -13,7 +13,7 @@ public class ExplosionBehaviour : PerkBehaviour
         // Instanciamos el efecto visual de la explosión, si se ha asignado
         if (explosionEffectPrefab != null) {
             Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-            GameUI.Instance.RemovePerk();
+            //GameUI.Instance.RemovePerk();
         }
 
         // Obtenemos todos los colliders dentro del radio de la explosión en las capas definidas
