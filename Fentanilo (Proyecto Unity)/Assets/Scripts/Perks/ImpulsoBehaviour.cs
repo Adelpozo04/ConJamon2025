@@ -15,5 +15,7 @@ public class ImpulsoBehaviour : PerkBehaviour
         go.transform.position = transform.position;
 
         GameUI.Instance.RemovePerk();
+
+        Destroy(gameObject);
     }
 }
