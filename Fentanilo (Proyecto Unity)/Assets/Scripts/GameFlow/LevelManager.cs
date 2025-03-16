@@ -64,10 +64,10 @@ using UnityEngine.UI;
 
     private void Start()
     {
-        if (playStartSong)
+        if (playStartSong && AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlaySong(1);
-            playStartSong = false;
+                AudioManager.Instance.PlaySong(1);
+                playStartSong = false;
         }
     }
 
@@ -223,5 +223,11 @@ using UnityEngine.UI;
                 lastGoal = _currentLevel;
                 return true;
             }
+        }
+
+        public void LoadFromMenu(int i)
+        {
+            SceneManager.UnloadSceneAsync("LevelSelection");
+            LoadLevel(i);
         }
     }
