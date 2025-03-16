@@ -18,11 +18,16 @@ public class LivesComponent : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Bullet>() != null)
         {
-            lives--;
-            if (lives <= 0)
-            {
-                EnemyDie();
-            }            
+            Hit();            
+        }
+    }
+
+    public void Hit()
+    {
+        lives--;
+        if (lives <= 0)
+        {
+            EnemyDie();
         }
     }
 
