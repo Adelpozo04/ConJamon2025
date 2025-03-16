@@ -122,7 +122,7 @@ public class EnemyCannon : MonoBehaviour
                 playerMovement._controller.stopRecording();
             }
 
-            Destroy(playerMovement.gameObject);
+            playerMovement.OnDeath();
         }
     }
 }

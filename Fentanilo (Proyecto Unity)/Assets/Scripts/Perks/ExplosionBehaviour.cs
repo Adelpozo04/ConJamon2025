@@ -32,6 +32,13 @@ public class ExplosionBehaviour : PerkBehaviour
                 }
             }
         }
+
+        Invoke("KillSelf", 0.5f);
+    }
+
+    private void KillSelf()
+    {
+        Destroy(gameObject);
     }
 
     // Dibujar la esfera de explosión en el editor para visualizar el área de efecto
