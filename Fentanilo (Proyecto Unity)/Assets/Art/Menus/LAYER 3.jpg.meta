@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 89e6353d746d2444fb0c779fe7093fec
+guid: 1d03ab8491ad8434f8970bc9ba9c3a30
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3644295785975174505
-    second: LOGOS_0
-  - first:
-      213: -234633875196500029
-    second: LOGOS_1
-  - first:
-      213: 6286771017760231354
-    second: LOGOS_2
+      213: 660365227529240142
+    second: LAYER 3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LOGOS_0
+      name: LAYER 3_0
       rect:
         serializedVersion: 2
-        x: 27
+        x: 0
         y: 0
-        width: 1512
-        height: 1797
+        width: 3840
+        height: 2170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 965d08385b3239230800000000000000
-      internalID: 3644295785975174505
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LOGOS_1
-      rect:
-        serializedVersion: 2
-        x: 1533
-        y: 635
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3c7a3a0dbb96ebcf0800000000000000
-      internalID: -234633875196500029
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LOGOS_2
-      rect:
-        serializedVersion: 2
-        x: 1540
-        y: 629
-        width: 17
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: abfc1d19ee81f3750800000000000000
-      internalID: 6286771017760231354
+      spriteID: e4e76e8fca61a2900800000000000000
+      internalID: 660365227529240142
       vertices: []
       indices: 
       edges: []
@@ -197,10 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      LOGOS_0: 3644295785975174505
-      LOGOS_1: -234633875196500029
-      LOGOS_2: 6286771017760231354
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

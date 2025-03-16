@@ -168,10 +168,10 @@ using UnityEngine.UI;
     private IEnumerator FadeIn(Color color)
         {        
             float elapsedTime = 0f;
-            while (elapsedTime < fadeOutDuration)
+            while (elapsedTime < fadeInDuration)
             {          
                 elapsedTime += Time.deltaTime;
-                color.a = Mathf.Lerp(1, 0, elapsedTime / fadeInDuration); // Reduce alpha
+                color.a = Mathf.Lerp(0.1f, 0, elapsedTime / fadeInDuration); // Reduce alpha
                 fadeInImageColored.color = color;
                 color.a = Mathf.Lerp(1, 0, elapsedTime / fadeInDurationFondo); // Reduce alpha
                 fadeInImageFondo.color = color;
@@ -201,9 +201,9 @@ using UnityEngine.UI;
             while (elapsedTime < lDuration)
             {
                 elapsedTime += Time.deltaTime;
-                color.a = Mathf.Lerp(0, 1, elapsedTime / lDuration); // Increase alpha
+                color.a = Mathf.Lerp(0, 0.1f, elapsedTime / lDuration); // Increase alpha
                 fadeInImageColored.color = color;
-                color.a = Mathf.Lerp(0, 1, elapsedTime / lDurationFondo); // Increase alpha
+                color.a = Mathf.Lerp(0, 1f, elapsedTime / lDurationFondo); // Increase alpha
                 fadeInImageFondo.color = color;
                 yield return null;
             }
