@@ -115,12 +115,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -726,7 +726,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -735,7 +735,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Front 1_0: 8415957082118024711
+      Front 1_1: -4554901937345385029
+      Front 1_10: -3981637061882873565
+      Front 1_11: 7233930056244013737
+      Front 1_12: 4340886593403616670
+      Front 1_13: -3019738032412605001
+      Front 1_14: -5803656518716531473
+      Front 1_15: -3784968540387195099
+      Front 1_16: 8979900356765176435
+      Front 1_17: 2061526746537449261
+      Front 1_18: 913746395436132024
+      Front 1_19: 5852575939408190395
+      Front 1_2: -8671680796042331194
+      Front 1_20: -5642415312396882855
+      Front 1_21: -698785880634683835
+      Front 1_22: 3411688552013082580
+      Front 1_23: 2663365929929752777
+      Front 1_3: -2555477139001813897
+      Front 1_4: -7106933287468871039
+      Front 1_5: -7432735181504696173
+      Front 1_6: -6253942578507785580
+      Front 1_7: -2207197331588507526
+      Front 1_8: 7503220198320480376
+      Front 1_9: -2159027056422303399
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
