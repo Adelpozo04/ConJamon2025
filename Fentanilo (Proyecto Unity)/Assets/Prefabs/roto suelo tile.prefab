@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4324680987686714007}
   - component: {fileID: 2752792427117714980}
   - component: {fileID: 6550784109103889920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: roto suelo tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
