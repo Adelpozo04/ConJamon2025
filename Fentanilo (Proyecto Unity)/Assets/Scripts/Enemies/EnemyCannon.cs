@@ -83,7 +83,7 @@ public class EnemyCannon : MonoBehaviour
             _anim.SetBool("_isShooting", true);
             _lastShootTime = Time.time;
 
-            audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.PLAYER_SHOOT);
+            audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.SHOOT);
             audioSource.Play();
         }
     }
