@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-public enum SoundSFX { MECANISMO_ACTIVAR, MECANISMO_DESACTIVAR, JUMP, PLAYER_DEATH, PLAYER_RESTART, PLAYER_SHOOT }
+public enum SoundSFX { MECANISMO_ACTIVAR, MECANISMO_DESACTIVAR, JUMP, PLAYER_DEATH, PLAYER_RESTART, PLAYER_SHOOT, MELEE_WALK, MELEE_HURT }
 
 public class AudioManager : MonoBehaviour
 {   
@@ -76,6 +76,10 @@ public class AudioManager : MonoBehaviour
                 return playerRestart;
             case SoundSFX.PLAYER_SHOOT:
                 return playerDisparar;
+            case SoundSFX.MELEE_WALK:
+                return meleeAndar;
+            case SoundSFX.MELEE_HURT:
+                return meleeHurt;
             default:
                 return null;
         }
