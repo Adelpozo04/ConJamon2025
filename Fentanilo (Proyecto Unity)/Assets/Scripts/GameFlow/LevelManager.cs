@@ -123,7 +123,11 @@ using UnityEngine.UI;
         public void LoadLevel(int lvl)
         {
             _currentLevel = lvl;
-            SceneManager.LoadScene(levels[lvl]);
+            if (lvl > 9)
+                _currentLevel = 0;
+            else
+                SceneManager.LoadScene(levels[lvl]);
+            
         }
         /// <summary>
         /// Queremos que al iniciar la escena, haga fade in.
