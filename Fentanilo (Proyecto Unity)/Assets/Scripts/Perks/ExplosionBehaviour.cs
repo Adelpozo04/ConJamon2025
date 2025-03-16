@@ -33,7 +33,7 @@ public class ExplosionBehaviour : PerkBehaviour
             }
         }
 
-        Invoke("KillSelf", 0.5f);
+        Invoke("KillSelf", 0.5f);   
     }
 
     private void KillSelf()

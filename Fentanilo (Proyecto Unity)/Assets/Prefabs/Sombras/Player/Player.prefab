@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1238601057760024346, guid: c07bc66c4ba78c34ead5512bfbf46054, type: 3}
+  m_Sprite: {fileID: -2707312235955725739, guid: c07bc66c4ba78c34ead5512bfbf46054, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 14.12, y: 15.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -327,6 +327,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1989eab7-aba0-47b3-a121-2d10ca5f0616
     m_ActionName: 'Player/Pause[/Keyboard/p]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6ad696aa-f61c-4a4f-9532-8fc9bd1242b8
+    m_ActionName: 'Player/SelectOption[/Keyboard/enter]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
