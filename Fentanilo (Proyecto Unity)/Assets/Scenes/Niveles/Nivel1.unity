@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1833528142300896267, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1941977587227505270, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -295,6 +299,10 @@ PrefabInstance:
     - target: {fileID: 4290051822056551780, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754498933272440330, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025159842232448547, guid: 0327558f05ae6a94bbf6151b00c17f46, type: 3}
       propertyPath: m_AnchorMax.x
@@ -67820,12 +67828,20 @@ PrefabInstance:
       value: Camera Buena
       objectReference: {fileID: 0}
     - target: {fileID: 8266989483476262026, guid: e2c8c376b9afedd4cbd76d9f129ff012, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3596361
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266989483476262026, guid: e2c8c376b9afedd4cbd76d9f129ff012, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 1.0061857
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266989483476262026, guid: e2c8c376b9afedd4cbd76d9f129ff012, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 8266989483476262026, guid: e2c8c376b9afedd4cbd76d9f129ff012, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 18.3
       objectReference: {fileID: 0}
     - target: {fileID: 8474789665374543840, guid: e2c8c376b9afedd4cbd76d9f129ff012, type: 3}
       propertyPath: target
@@ -68153,6 +68169,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3146086416870203800, guid: 205c132df67ad4d4bad8a2436b15a45c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5488955875674156968, guid: 205c132df67ad4d4bad8a2436b15a45c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -68248,6 +68268,10 @@ PrefabInstance:
     - target: {fileID: 5818326868148823338, guid: 205c132df67ad4d4bad8a2436b15a45c, type: 3}
       propertyPath: m_Name
       value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5818326868148823338, guid: 205c132df67ad4d4bad8a2436b15a45c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -68575,6 +68599,10 @@ PrefabInstance:
     - target: {fileID: 3388951085930515299, guid: de2a860b0e980f3449db40c7182c6e8f, type: 3}
       propertyPath: m_Name
       value: BackgroundParallax
+      objectReference: {fileID: 0}
+    - target: {fileID: 3388951085930515299, guid: de2a860b0e980f3449db40c7182c6e8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4970823480392046494, guid: de2a860b0e980f3449db40c7182c6e8f, type: 3}
       propertyPath: cameraTransform
