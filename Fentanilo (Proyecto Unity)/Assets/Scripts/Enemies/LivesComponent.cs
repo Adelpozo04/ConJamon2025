@@ -19,8 +19,8 @@ public class LivesComponent : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Bullet>() != null)
         {
-            Hit();
             Destroy(other.gameObject);
+            Hit();
         }
     }
 
