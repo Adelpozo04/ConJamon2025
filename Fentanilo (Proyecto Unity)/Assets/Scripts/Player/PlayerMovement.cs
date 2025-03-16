@@ -405,6 +405,10 @@ public class PlayerMovement : MonoBehaviour
     void askInput()
     {
 
+        if (_controller == null) return;
+        if (SombraStorage.Instance._records[_controllerIndex] == null) return;
+
+
         //si el indice de la accion a mirar ahora mismo es valido (menor que el tamaño de la lista)
         if (SombraStorage.Instance._records[_controllerIndex].Count > _controller._sombrasIndices[_controllerIndex])
         {
