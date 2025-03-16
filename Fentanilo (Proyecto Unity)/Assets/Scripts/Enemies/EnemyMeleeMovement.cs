@@ -31,6 +31,8 @@ public class EnemyMeleeMovement : MonoBehaviour
 
         //_actualPatrolPoint = Random.Range(0, _patrolPositions.Length);
         _actualPatrolPoint = 0;
+
+        GetComponent<AudioSource>().clip = AudioManager.Instance.GetAudioClip(SoundSFX.);
     }
 
     private void Update()
