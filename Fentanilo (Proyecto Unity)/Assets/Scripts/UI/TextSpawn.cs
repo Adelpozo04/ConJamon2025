@@ -29,6 +29,8 @@ public class TextSpawn : MonoBehaviour
     private bool canWrite = true;
 
     private float timer = 0;
+
+    public bool textoTalCual = false;
     IEnumerator appearText(float totalTime)
     {
         int index = 1;
@@ -39,7 +41,8 @@ public class TextSpawn : MonoBehaviour
             if (time >= timeToType)
             {
                 textTMPRO.text = text.Substring(0, index++);
-                textTMPRO.text = textTMPRO.text.Replace('#', '\n');
+                if (!textoTalCual)
+                    textTMPRO.text = textTMPRO.text.Replace('#', '\n');
 
                 timeToType = time + (totalTime / text.Length); 
             }
@@ -49,7 +52,7 @@ public class TextSpawn : MonoBehaviour
             yield return null;
         }
 
-        textTMPRO.text = textTMPRO.text.Replace('#', '\n'); ;
+        textTMPRO.text = text.Replace('#', '\n');
     }
 
     IEnumerator Glitch()

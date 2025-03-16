@@ -68,4 +68,19 @@ public class EnemyAirMovement : MonoBehaviour
         _onCooldown = true; // Activar cooldown
         _cooldownTimer = _cooldown; // Reiniciar temporizador
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var playerMovement = collision.collider.gameObject.GetComponent<PlayerMovement>();
+
+        if (playerMovement != null)
+        {
+            if (playerMovement._recording)
+            {
+                playerMovement._controller.stopRecording();
+            }
+
+            playerMovement.OnDeath();
+        }
+    }
 }

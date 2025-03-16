@@ -1,4 +1,3 @@
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class EnemyMeleeMovement : MonoBehaviour
@@ -30,8 +29,7 @@ public class EnemyMeleeMovement : MonoBehaviour
         Patrolling,
         Following,
     }
-
-    private void Awake()
+    private void Start()
     {
         audioSource1 = GetComponents<AudioSource>()[0];
         audioSource2 = GetComponents<AudioSource>()[1];
@@ -40,9 +38,7 @@ public class EnemyMeleeMovement : MonoBehaviour
         audioSource2.clip = AudioManager.Instance.GetAudioClip(SoundSFX.MELEE_WALK);
         startVolume1 = audioSource1.volume;
         startVolume2 = audioSource2.volume;
-    }
-    private void Start()
-    {
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
 

@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayRandomSong()
     {
-        int random = Random.Range(1, 2);
+        int random = Random.Range(1, 3);
 
         PlaySong(random);
     }

@@ -606,7 +606,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //info del stop moving
-        if (_contactRock == null)
+        if (_contactStopMoving == null)
         {
             sombraAction.stopMovingState.isInContact = false;
         }

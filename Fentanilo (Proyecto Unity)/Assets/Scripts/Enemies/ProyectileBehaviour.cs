@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class ProyectileBehaviour : MonoBehaviour
 {
+    SpriteRenderer _spriteRenderer;
     [SerializeField] private float _selfDestroyTime;
     private float _speed;
 
     private void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         Destroy(gameObject, _selfDestroyTime);
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(this.gameObject);
     }
 
     private void Update()
@@ -23,6 +19,15 @@ public class ProyectileBehaviour : MonoBehaviour
         Vector3 _position = transform.localPosition;
         _position = new Vector3(_position.x + _speed * Time.deltaTime, _position.y, _position.z);
         transform.position = _position;
+
+        if (_speed < 0)
+        {
+            _spriteRenderer.flipX = true;
+        }
+        else
+        {
+            _spriteRenderer.flipX = false;
+        }
     }
 
     public void SetSpeed(float _newSpeed)
@@ -43,5 +48,7 @@ public class ProyectileBehaviour : MonoBehaviour
 
             playerMovement.OnDeath();
         }
+
+        Destroy(gameObject);
     }
 }
