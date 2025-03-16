@@ -25,12 +25,14 @@ public class SelectShadow : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 0;
-        LevelManager.Instance.gameObject.SetActive(false);   
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+
+        LevelManager.Instance.gameObject.SetActive(false);   
         print("aqui");
         _maxRecords = _sombrasController._maxRecords;
 
