@@ -754,8 +754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4db070d7ed89d843b27f4298163fe22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpAudio: {fileID: 8300000, guid: 985f5bd24e5c7614f9bfe2b3ab08a067, type: 3}
-  deathAudio: {fileID: 8300000, guid: 7d4216500db667f46aa300f9b00dc470, type: 3}
 --- !u!82 &5018160041830600595
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1022,6 +1020,7 @@ MonoBehaviour:
     m_Bits: 7031
   aimDirection: {x: 1, y: 0}
   playerMovement: {fileID: 1149719708052113280}
+  playerAudio: {fileID: 6015049429883696381}
 --- !u!1 &8687843034767242567
 GameObject:
   m_ObjectHideFlags: 0

@@ -171,12 +171,14 @@ public class PlayerMovement : MonoBehaviour
     public void OnRestart()
     {
         animator.SetTrigger("Restart");
+        playerAudio.PlayRestart();
         Invoke("DestroySelf", 0.767f);
     }
 
     public void OnDeath()
     {
         animator.SetTrigger("Death");
+        playerAudio.PlayDeath();
         Invoke("DestroySelf", 0.767f);
     }
 

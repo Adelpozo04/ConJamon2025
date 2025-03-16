@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Timeline;
 
 
 public class Shoot : MonoBehaviour
@@ -41,9 +42,11 @@ public class Shoot : MonoBehaviour
     [SerializeField]
     private PlayerMovement playerMovement;
 
-
+    [SerializeField]
+    private PlayerAudio playerAudio;
     private void Awake() {
         playerRb = GetComponent<Rigidbody2D>();
+        
     }
 
     public void OnShoot(InputAction.CallbackContext context) {
@@ -128,6 +131,8 @@ public class Shoot : MonoBehaviour
             return;
 
         ShootBullet();
+        playerAudio.PlayShoot();
+        
         lastShotTime = Time.time;
     }
 

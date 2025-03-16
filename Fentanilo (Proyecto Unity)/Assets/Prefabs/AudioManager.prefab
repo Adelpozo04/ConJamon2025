@@ -49,6 +49,12 @@ MonoBehaviour:
   SFXVolume: 1
   song1: {fileID: 8300000, guid: ac3da4089b3c58f4398380305dd9998e, type: 3}
   song2: {fileID: 8300000, guid: fc2abb2441d12ed4880c9bb56786fca5, type: 3}
+  mecanismoActivar: {fileID: 8300000, guid: 5a11e1ff092734449b6d5d27f387538a, type: 3}
+  mecanismoDesactivar: {fileID: 8300000, guid: 22b238e89a221604293942aca0725138, type: 3}
+  saltar: {fileID: 8300000, guid: 985f5bd24e5c7614f9bfe2b3ab08a067, type: 3}
+  playerMuerte: {fileID: 8300000, guid: 7d4216500db667f46aa300f9b00dc470, type: 3}
+  playerRestart: {fileID: 0}
+  playerDisparar: {fileID: 8300000, guid: 045beca43a1c0ec41b0a876a00c6a745, type: 3}
 --- !u!82 &8254904477235980570
 AudioSource:
   m_ObjectHideFlags: 0
