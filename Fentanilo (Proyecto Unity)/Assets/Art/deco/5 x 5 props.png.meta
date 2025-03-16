@@ -192,12 +192,12 @@ TextureImporter:
       name: 5 x 5 props_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 1667
-        width: 354
-        height: 264
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 37
+        y: 1668
+        width: 351
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -214,12 +214,12 @@ TextureImporter:
       name: 5 x 5 props_1
       rect:
         serializedVersion: 2
-        x: 462
-        y: 1654
-        width: 277
-        height: 306
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 463
+        y: 1655
+        width: 275
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,12 +236,12 @@ TextureImporter:
       name: 5 x 5 props_2
       rect:
         serializedVersion: 2
-        x: 828
-        y: 1643
-        width: 377
-        height: 399
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 860
+        y: 1810
+        width: 107
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -258,12 +258,12 @@ TextureImporter:
       name: 5 x 5 props_3
       rect:
         serializedVersion: 2
-        x: 916
-        y: 1795
-        width: 100
-        height: 107
+        x: 917
+        y: 1796
+        width: 97
+        height: 105
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -280,12 +280,12 @@ TextureImporter:
       name: 5 x 5 props_4
       rect:
         serializedVersion: 2
-        x: 1022
-        y: 1800
-        width: 91
-        height: 118
+        x: 1023
+        y: 1801
+        width: 88
+        height: 116
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: 5 x 5 props_5
       rect:
         serializedVersion: 2
-        x: 1114
-        y: 1791
-        width: 93
-        height: 209
+        x: 1115
+        y: 1792
+        width: 91
+        height: 207
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -324,12 +324,12 @@ TextureImporter:
       name: 5 x 5 props_6
       rect:
         serializedVersion: 2
-        x: 1273
-        y: 1681
-        width: 334
-        height: 333
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1274
+        y: 1682
+        width: 332
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -346,12 +346,12 @@ TextureImporter:
       name: 5 x 5 props_7
       rect:
         serializedVersion: 2
-        x: 1672
-        y: 1667
-        width: 360
-        height: 306
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1673
+        y: 1668
+        width: 358
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -368,12 +368,12 @@ TextureImporter:
       name: 5 x 5 props_8
       rect:
         serializedVersion: 2
-        x: 846
-        y: 1656
-        width: 93
-        height: 141
+        x: 847
+        y: 1657
+        width: 91
+        height: 139
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -390,12 +390,12 @@ TextureImporter:
       name: 5 x 5 props_9
       rect:
         serializedVersion: 2
-        x: 939
-        y: 1647
-        width: 108
-        height: 134
+        x: 941
+        y: 1648
+        width: 105
+        height: 131
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -412,12 +412,12 @@ TextureImporter:
       name: 5 x 5 props_10
       rect:
         serializedVersion: 2
-        x: 1050
-        y: 1658
-        width: 123
-        height: 125
+        x: 1051
+        y: 1659
+        width: 121
+        height: 123
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -434,12 +434,12 @@ TextureImporter:
       name: 5 x 5 props_11
       rect:
         serializedVersion: 2
-        x: 101
-        y: 408
-        width: 233
-        height: 1118
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 102
+        y: 409
+        width: 231
+        height: 1116
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -456,12 +456,12 @@ TextureImporter:
       name: 5 x 5 props_12
       rect:
         serializedVersion: 2
-        x: 473
-        y: 408
-        width: 218
-        height: 1116
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 474
+        y: 409
+        width: 215
+        height: 1113
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -478,12 +478,12 @@ TextureImporter:
       name: 5 x 5 props_13
       rect:
         serializedVersion: 2
-        x: 891
-        y: 1225
-        width: 265
-        height: 381
+        x: 892
+        y: 1226
+        width: 263
+        height: 379
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -500,12 +500,12 @@ TextureImporter:
       name: 5 x 5 props_14
       rect:
         serializedVersion: 2
-        x: 1277
-        y: 1243
-        width: 696
-        height: 383
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1278
+        y: 1244
+        width: 694
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -522,12 +522,12 @@ TextureImporter:
       name: 5 x 5 props_15
       rect:
         serializedVersion: 2
-        x: 874
-        y: 816
-        width: 266
-        height: 385
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 875
+        y: 817
+        width: 264
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -544,12 +544,12 @@ TextureImporter:
       name: 5 x 5 props_16
       rect:
         serializedVersion: 2
-        x: 1259
-        y: 870
-        width: 329
-        height: 319
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1260
+        y: 871
+        width: 327
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -566,12 +566,12 @@ TextureImporter:
       name: 5 x 5 props_17
       rect:
         serializedVersion: 2
-        x: 1702
-        y: 816
-        width: 252
-        height: 397
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1703
+        y: 817
+        width: 250
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -588,12 +588,12 @@ TextureImporter:
       name: 5 x 5 props_18
       rect:
         serializedVersion: 2
-        x: 45
-        y: 0
-        width: 272
-        height: 404
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 889
+        y: 405
+        width: 1136
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -610,12 +610,12 @@ TextureImporter:
       name: 5 x 5 props_19
       rect:
         serializedVersion: 2
-        x: 888
-        y: 404
-        width: 1138
-        height: 389
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 46
+        y: 0
+        width: 270
+        height: 403
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -632,12 +632,12 @@ TextureImporter:
       name: 5 x 5 props_20
       rect:
         serializedVersion: 2
-        x: 433
+        x: 434
         y: 0
-        width: 373
-        height: 248
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 371
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -654,12 +654,12 @@ TextureImporter:
       name: 5 x 5 props_21
       rect:
         serializedVersion: 2
-        x: 885
+        x: 886
         y: 0
-        width: 1122
-        height: 252
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 1120
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -668,28 +668,6 @@ TextureImporter:
       bones: []
       spriteID: b7f6a0cc9cb52dfe0800000000000000
       internalID: -1165768431265747077
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 5 x 5 props_22
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 2048
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 873f6119d077d5e40ab621182e163909
-      internalID: 95898911
       vertices: []
       indices: 
       edges: []
@@ -723,7 +701,6 @@ TextureImporter:
       5 x 5 props_2: 5762142285085461446
       5 x 5 props_20: -4464454018459323848
       5 x 5 props_21: -1165768431265747077
-      5 x 5 props_22: 95898911
       5 x 5 props_3: 174537327445730679
       5 x 5 props_4: -9095110207396078967
       5 x 5 props_5: -4751187795910079591
