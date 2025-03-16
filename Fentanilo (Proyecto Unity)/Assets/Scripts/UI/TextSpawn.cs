@@ -48,6 +48,8 @@ public class TextSpawn : MonoBehaviour
 
             yield return null;
         }
+
+        textTMPRO.text = text;
     }
 
     IEnumerator Glitch()
