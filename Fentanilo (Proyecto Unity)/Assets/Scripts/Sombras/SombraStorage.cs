@@ -48,11 +48,16 @@ public class SombraStorage : MonoBehaviour
 
     public struct DoorState
     {
-        //todo
         public bool isInContact;
         public bool flag;
+        public Vector3 position;
     }
 
+    public struct RocaState
+    {
+        public bool isInContact;
+        public Vector3 position;
+    }
 
 
     //guarda el callback original, el momento en que se ejecutó y el tipo de accion que fue
@@ -65,7 +70,7 @@ public class SombraStorage : MonoBehaviour
 
         public PlatformState platformState;
         public DoorState doorState;
-
+        public RocaState rocaState;
 
     }
 
@@ -97,7 +102,8 @@ public class SombraStorage : MonoBehaviour
 
         if (target._copyPosition)
         {
-            if (comparePlatformInfo(sombraAction, target) && compareDoorInfo(sombraAction,target))
+            if (comparePlatformInfo(sombraAction, target) && compareDoorInfo(sombraAction,target) &&
+                compareRockInfo(sombraAction, target))
             {
                 target.transform.position = sombraAction.position;
             }
@@ -248,8 +254,25 @@ public class SombraStorage : MonoBehaviour
         if (!bothContact) return false;
 
         bool bothFlag = sombraAction.doorState.flag == target._contactDoor.flag;
-       
-        return bothContact && bothFlag;
+        bool bothPos = Vector3.Distance(sombraAction.doorState.position, target._contactDoor.transform.position) < positionCompareUmbral;
+
+
+        return bothContact && bothFlag  && bothPos;
+    }
+
+
+    public static bool compareRockInfo(SombraAction sombraAction, PlayerMovement target)
+    {
+        bool bothContact = sombraAction.rocaState.isInContact == (target._contactRock != null);
+        bool noContact = !sombraAction.rocaState.isInContact && (target._contactRock == null);
+
+        if (noContact) return true;
+        if (!bothContact) return false;
+
+        bool bothPos = Vector3.Distance(sombraAction.rocaState.position, target._contactRock.transform.position) < positionCompareUmbral;
+
+
+        return bothContact && bothPos;
     }
 
 
