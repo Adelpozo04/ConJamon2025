@@ -405,20 +405,27 @@ public class PlayerMovement : MonoBehaviour
     void askInput()
     {
 
+        //si el indice de la accion a mirar ahora mismo es valido (menor que el tamaño de la lista)
         if (SombraStorage.Instance._records[_controllerIndex].Count > _controller._sombrasIndices[_controllerIndex])
         {
 
+            //mediciones d etiempo
             double currTime = Time.fixedTime - _startTime;
             double actionTime = SombraStorage.Instance._records[_controllerIndex][_controller._sombrasIndices[_controllerIndex]].time;
 
             //print("CurrTime: " + currTime);
             //print("ActionTime: "+  actionTime);
 
-
+            //while para lanzar todas las acciones por si se han encolado varias
             while (currTime >= actionTime && _controller._sombrasIndices[_controllerIndex] < SombraStorage.Instance._records[_controllerIndex].Count)
             {
+                //asignar actionTime con el momento de la accion
                 actionTime = SombraStorage.Instance._records[_controllerIndex][_controller._sombrasIndices[_controllerIndex]].time;
+                
+                //ejecutar la accion
                 SombraStorage.runAction(SombraStorage.Instance._records[_controllerIndex][_controller._sombrasIndices[_controllerIndex]], _controller._sombrasActivas[_controllerIndex]);
+                
+                //actualizar el indice por el que vamos en la lista de acciones
                 _controller._sombrasIndices[_controllerIndex]++;
             }
         }
@@ -427,6 +434,7 @@ public class PlayerMovement : MonoBehaviour
             //cancelar todos los inputs
             if (_controller._sombrasActivas[_controllerIndex] != null)
             {
+                //activar el coliderOnDead cuando la sombra ha dejado de consumir el input
                 _controller._sombrasActivas[_controllerIndex].colliderOnDead.SetActive(true);
                 _controller._sombrasIndices[_controllerIndex]++;
             }
@@ -608,7 +616,7 @@ public class PlayerMovement : MonoBehaviour
             sombraAction.stopMovingState.position = _contactStopMoving.transform.position;
         }
 
-
+        //agregar la accion a la grabacion actual (no se necesita el index, SombrasController ya lo gestiona)
         _controller._currentRecord.Add(sombraAction);
     }
 

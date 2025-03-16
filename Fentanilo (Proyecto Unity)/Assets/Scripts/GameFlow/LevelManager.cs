@@ -80,7 +80,7 @@ using UnityEngine.UI;
 
     private void Update()
     {
-        updateCurrentLevel();
+        updateCurrentLevel();   
     }
 
 
