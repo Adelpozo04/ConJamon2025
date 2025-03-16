@@ -233,6 +233,7 @@ MonoBehaviour:
   _controllerIndex: 0
   _contactPlatform: {fileID: 0}
   _contactDoor: {fileID: 0}
+  _contactRock: {fileID: 0}
   _copyPosition: 1
   animator: {fileID: 6810654089794804502}
   renderer: {fileID: 7642938239527298099}
@@ -647,8 +648,8 @@ Transform:
   m_GameObject: {fileID: 3213378487001099424}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.127, y: 1.01, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 2.42, y: 2.25, z: 0}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1788957049855241508}
@@ -1048,7 +1049,7 @@ Transform:
   m_GameObject: {fileID: 8687843034767242567}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: 0}
+  m_LocalPosition: {x: -0.136, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
