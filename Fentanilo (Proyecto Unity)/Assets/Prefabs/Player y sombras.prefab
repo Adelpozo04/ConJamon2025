@@ -50,6 +50,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4283956050942433436, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.9999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283956050942433436, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.9999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283956050942433436, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.9999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283956050942433436, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283956050942433436, guid: ba4572d907251ab4085c97176416578e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.64
+      objectReference: {fileID: 0}
     - target: {fileID: 6093296139257805459, guid: ba4572d907251ab4085c97176416578e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -211,7 +231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7932213793077487095, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: _maxRecords
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7932213793077487095, guid: 0c2d14b6f7c430c498c6462b90f5e512, type: 3}
       propertyPath: sombrasPrefab

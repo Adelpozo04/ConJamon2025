@@ -25,7 +25,7 @@ public class PlayerAudio : MonoBehaviour
     }
     public void PlayShoot()
     {
-        audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.PLAYER_SHOOT);
+        audioSource.clip = AudioManager.Instance.GetAudioClip(SoundSFX.SHOOT);
         audioSource.Play();
     }
 }

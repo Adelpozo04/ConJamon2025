@@ -25,9 +25,12 @@ public class SombrasController : MonoBehaviour
     private bool stoppedRecording = false;
 
 
+
     //el indice de la sombra que se va a estar grabando esta iteracion
     public int _currentRecordIndex;
 
+
+    private bool done = false;
 
     private void Start()
     {
@@ -35,7 +38,7 @@ public class SombrasController : MonoBehaviour
 
         for(int i = 0; i < SombraStorage.Instance.maxSombras; i++)
         {
-            //creamos las listas con tamaño adecuado y vacias
+            //creamos las listas con tamaï¿½o adecuado y vacias
             _sombrasActivas.Add(null);
             _sombrasIndices.Add(0);
         }
@@ -164,7 +167,7 @@ public class SombrasController : MonoBehaviour
             _currentRecord.Clear();
         }
         stoppedRecording = true;
-        Invoke("reloadScene", 0.767f);
+        reloadScene();
     }
 
 
@@ -172,7 +175,12 @@ public class SombrasController : MonoBehaviour
     //controller
     void reloadScene()
     {
-        LevelManager.Instance.NextIterationLoad();
+        if (!done)
+        {
+            LevelManager.Instance.NextIterationLoad();
+            done = true;
+        }
+
     }
 
 

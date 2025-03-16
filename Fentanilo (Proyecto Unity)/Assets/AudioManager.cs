@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-public enum SoundSFX { MECANISMO_ACTIVAR, MECANISMO_DESACTIVAR, JUMP, PLAYER_DEATH, PLAYER_RESTART, PLAYER_SHOOT, MELEE_WALK, ENEMY_HURT }
+public enum SoundSFX { MECANISMO_ACTIVAR, MECANISMO_DESACTIVAR, JUMP, PLAYER_DEATH, PLAYER_RESTART, SHOOT, MELEE_WALK, ENEMY_HURT, PASAR_NIVEL }
 
 public class AudioManager : MonoBehaviour
 {   
@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip playerDisparar;
     [SerializeField] private AudioClip meleeAndar;
     [SerializeField] private AudioClip enemyHurt;
+    [SerializeField] private AudioClip pasarNivel;
 
     [SerializeField] AudioSource audioSource;
 
@@ -76,14 +77,27 @@ public class AudioManager : MonoBehaviour
                 return playerMuerte;
             case SoundSFX.PLAYER_RESTART:
                 return playerRestart;
-            case SoundSFX.PLAYER_SHOOT:
+            case SoundSFX.SHOOT:
                 return playerDisparar;
             case SoundSFX.MELEE_WALK:
                 return meleeAndar;
             case SoundSFX.ENEMY_HURT:
                 return enemyHurt;
+            case SoundSFX.PASAR_NIVEL:
+                return pasarNivel;
             default:
                 return null;
+        }
+    }
+
+    private void CallOnRestartScene()
+    {
+        // ALUCINAS CANTIDUBI BRO PERO SON LAS 15:00 Y QUEDA 5 HORAS
+        GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (var obj in allObjects)
+        {
+            obj.BroadcastMessage("UpdateSFXVolume", SFXVolume, SendMessageOptions.DontRequireReceiver);
         }
     }
     private void Awake()
@@ -99,12 +113,16 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         audioSource.loop = true;
+        CallOnRestartScene();
     }
 
 }

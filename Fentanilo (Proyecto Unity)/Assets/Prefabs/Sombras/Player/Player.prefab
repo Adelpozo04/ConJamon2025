@@ -234,6 +234,7 @@ MonoBehaviour:
   _contactPlatform: {fileID: 0}
   _contactDoor: {fileID: 0}
   _contactRock: {fileID: 0}
+  _contactStopMoving: {fileID: 0}
   _copyPosition: 1
   animator: {fileID: 6810654089794804502}
   renderer: {fileID: 7642938239527298099}
@@ -777,9 +778,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 15
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -812,7 +813,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
