@@ -96,7 +96,7 @@ using UnityEngine.UI;
     /// </summary>
     private void NextLevel()
     {
-        if (_currentLevel < levels.Length)
+        if (_currentLevel < levels.Length - 1)
         {
             SceneManager.UnloadSceneAsync(levels[_currentLevel]);
             _currentLevel++;
@@ -123,10 +123,7 @@ using UnityEngine.UI;
         public void LoadLevel(int lvl)
         {
             _currentLevel = lvl;
-            if (lvl > 9)
-                _currentLevel = 0;
-            else
-                SceneManager.LoadScene(levels[lvl]);
+            SceneManager.LoadScene(levels[lvl]);
             
         }
         /// <summary>
