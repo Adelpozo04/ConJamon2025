@@ -68,6 +68,7 @@ public class PauseManager : MonoBehaviour
 
     public void VueltaMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 
