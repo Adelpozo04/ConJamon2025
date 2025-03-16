@@ -31,6 +31,16 @@ public class EnemyMeleeMovement : MonoBehaviour
         Following,
     }
 
+    private void Awake()
+    {
+        audioSource1 = GetComponents<AudioSource>()[0];
+        audioSource2 = GetComponents<AudioSource>()[1];
+
+        audioSource1.clip = AudioManager.Instance.GetAudioClip(SoundSFX.ENEMY_HURT);
+        audioSource2.clip = AudioManager.Instance.GetAudioClip(SoundSFX.MELEE_WALK);
+        startVolume1 = audioSource1.volume;
+        startVolume2 = audioSource2.volume;
+    }
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -39,13 +49,6 @@ public class EnemyMeleeMovement : MonoBehaviour
         //_actualPatrolPoint = Random.Range(0, _patrolPositions.Length);
         _actualPatrolPoint = 0;
 
-        audioSource1 = GetComponents<AudioSource>()[0];
-        audioSource2 = GetComponents<AudioSource>()[1];
-
-        audioSource1.clip = AudioManager.Instance.GetAudioClip(SoundSFX.ENEMY_HURT);
-        audioSource2.clip = AudioManager.Instance.GetAudioClip(SoundSFX.MELEE_WALK);
-        startVolume1 = audioSource1.volume;
-        startVolume2 = audioSource2.volume;
     }
 
     public void UpdateSFXVolume(float volume)
