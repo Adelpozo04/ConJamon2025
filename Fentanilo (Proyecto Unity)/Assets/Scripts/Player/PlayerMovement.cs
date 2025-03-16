@@ -146,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
     public SpriteRenderer renderer;
+    private bool stopShootingCalled = false;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -186,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
     private void DeactivateShootingAnimator()
     {
         animator.SetBool("Shooting", false);
+        stopShootingCalled = false;
     }
 
     public void DisableMovement()
@@ -340,7 +342,11 @@ public class PlayerMovement : MonoBehaviour
         if (shootContext.started)
         {
             animator.SetBool("Shooting", true);
-            Invoke("DeactivateShootingAnimator", shoot.fireRate);
+            if (!stopShootingCalled)
+            {
+                Invoke("DeactivateShootingAnimator", shoot.fireRate);
+                stopShootingCalled = true;
+            }
         }
 
         //getAim

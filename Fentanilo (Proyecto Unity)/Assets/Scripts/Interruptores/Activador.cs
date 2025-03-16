@@ -32,7 +32,7 @@ public abstract class Activador : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
@@ -54,8 +54,7 @@ public abstract class Activador : MonoBehaviour
 
     protected void PlayAudioSFX()
     {
-        /*
         audioSource.clip = isPressed ? activateSFX : deactivateSFX;
-        audioSource.Play();*/
+        audioSource.Play();
     }
 }

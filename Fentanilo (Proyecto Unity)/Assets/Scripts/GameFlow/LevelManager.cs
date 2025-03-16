@@ -71,6 +71,7 @@ using UnityEngine.UI;
             {
                 _currentLevel++;
                 SceneManager.LoadScene(levels[_currentLevel]);
+                AudioManager.Instance.PlaySong(1);
             }
             else
             {
