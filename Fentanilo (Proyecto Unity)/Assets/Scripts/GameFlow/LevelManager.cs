@@ -13,13 +13,13 @@ using UnityEngine.UI;
     {
         [SerializeField] private String[] levels;
         private int _currentLevel;
-        private ResetSombrasAndLevel _resetSombrasAndLevel;
         private int lastGoal = -1;
         public enum FState
         {
             Won, //Cuando el jugador gane la partida
             Restart, //Cuando se reinicia el 
-            Ramificado //Cuando el enemigo le da a la c o muere
+            Ramificado, //Cuando el enemigo le da a la c o muere
+            InMenu
         }
 
         public FState state;
@@ -50,7 +50,7 @@ using UnityEngine.UI;
             if (Instance == null)
             {
                 Instance = this;
-                state = FState.Restart;
+                state = FState.InMenu;
                 DontDestroyOnLoad(gameObject);
                 SceneManager.sceneLoaded += OnSceneLoaded;
                 updateCurrentLevel();
@@ -103,6 +103,7 @@ using UnityEngine.UI;
         }
         else
         {
+            state = FState.InMenu;
             SceneManager.LoadScene("MainMenu");
         }
     }
@@ -134,9 +135,14 @@ using UnityEngine.UI;
             {
                 StartCoroutine(FadeIn(colorRamificar));
             }
-            else
+            else if(state == FState.Restart)
             {
                 StartCoroutine(FadeIn(colorRestart));
+            }
+            else //Caso InMenu
+            {
+                fadeInImageColored.color = Color.clear;
+                fadeInImageFondo.color = Color.clear;
             }
         }
         
@@ -147,7 +153,7 @@ using UnityEngine.UI;
         private IEnumerator FadeIn(Color color)
         {        
             float elapsedTime = 0f;
-            while (elapsedTime < fadeOutDuration)
+            while (elapsedTime < fadeInDuration)
             {          
                 elapsedTime += Time.deltaTime;
                 color.a = Mathf.Lerp(1, 0, elapsedTime / fadeInDuration); // Reduce alpha
@@ -171,7 +177,7 @@ using UnityEngine.UI;
             float elapsedTime = 0f;
 
             float lDuration = fadeOutDuration;
-            float lDurationFondo = fadeInDurationFondo;
+            float lDurationFondo = fadeOutDurationFondo;
             if (state != FState.Won)
             {
                 lDuration /= 5;
@@ -217,11 +223,8 @@ using UnityEngine.UI;
         public bool checkGoalTransform()
         {
             if(lastGoal == _currentLevel) return false;
-            else
-            {
-                lastGoal = _currentLevel;
-                return true;
-            }
+            lastGoal = _currentLevel;
+            return true;
         }
 
         public void LoadFromMenu(int i)
