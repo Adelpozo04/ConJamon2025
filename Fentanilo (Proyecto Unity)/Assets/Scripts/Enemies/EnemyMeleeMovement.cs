@@ -18,8 +18,10 @@ public class EnemyMeleeMovement : MonoBehaviour
     private int _actualPatrolPoint = 0; // Punto de patrullaje actual, empieza en 0 q es la pos del primero en el array
     private float _distancePP = 0.25f; // Distancia en la que reconoce que llega al punto de patrullaje
 
-    [SerializeField] AudioSource audioSource1;
-    [SerializeField] AudioSource audioSource2;
+    AudioSource audioSource1;
+    AudioSource audioSource2;
+    private float startVolume1;
+    private float startVolume2;
     public enum MovementState
     {
         Patrolling,
@@ -34,14 +36,19 @@ public class EnemyMeleeMovement : MonoBehaviour
         //_actualPatrolPoint = Random.Range(0, _patrolPositions.Length);
         _actualPatrolPoint = 0;
 
+        audioSource1 = GetComponents<AudioSource>()[0];
+        audioSource2 = GetComponents<AudioSource>()[1];
+
         audioSource1.clip = AudioManager.Instance.GetAudioClip(SoundSFX.MELEE_WALK);
-        audioSource2.clip = AudioManager.Instance.GetAudioClip(SoundSFX.MELEE_HURT);
+        audioSource2.clip = AudioManager.Instance.GetAudioClip(SoundSFX.ENEMY_HURT);
+        startVolume1 = audioSource1.volume;
+        startVolume2 = audioSource2.volume;
     }
 
     public void UpdateSFXVolume(float volume)
     {
-        audioSource1.volume = volume;
-        audioSource2.volume = volume;
+        audioSource1.volume = Mathf.Lerp(0, startVolume1, volume);
+        audioSource2.volume = Mathf.Lerp(0, startVolume2, volume);
     }
 
     private void Update()
@@ -146,7 +153,7 @@ public class EnemyMeleeMovement : MonoBehaviour
                 playerMovement._controller.stopRecording();
             }
 
-            Destroy(playerMovement.gameObject);
+            playerMovement.OnDeath();
         }
     }
 }

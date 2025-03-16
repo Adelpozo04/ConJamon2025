@@ -73,7 +73,26 @@ using UnityEngine.UI;
             AudioManager.Instance.PlaySong(1);
             playStartSong = false;
         }
+
+        updateCurrentLevel();
+
     }
+
+    void updateCurrentLevel()
+    {
+        string name = SceneManager.GetActiveScene().name;
+
+        for (int i = 0; i < levels.Length; i++)
+        {
+
+            if (levels[i] == name)
+            {
+                _currentLevel = i;
+                break;
+            }
+        }
+    }
+ 
 
     /// <summary>
     /// Reproduce la animación y cambia a la siguiente escena.
