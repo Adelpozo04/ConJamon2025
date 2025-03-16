@@ -284,7 +284,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      suicide10_0: 3848599633767854527
+      suicide10_1: -8975876474506319264
+      suicide10_2: -732570868240610921
+      suicide10_3: 6670221713708512389
+      suicide10_4: 851770095471203304
+      suicide10_5: -7175201201294964553
+      suicide10_6: 1770382887753206507
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
