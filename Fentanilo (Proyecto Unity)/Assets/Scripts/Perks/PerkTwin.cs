@@ -13,7 +13,7 @@ public class PerkTwin : MonoBehaviour
     void Start()
     {
         startY = transform.position.y;
-        StartCoroutine(FloatEffect());
+        //StartCoroutine(FloatEffect());
     }
 
     IEnumerator FloatEffect()

@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ea22cf6ca60874eb6fb7f45460bea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 10
-  explosionEffectPrefab: {fileID: 0}
+  explosionRadius: 30
+  explosionEffectPrefab: {fileID: 6927569464768627335}
 --- !u!95 &5495498494212890345
 Animator:
   serializedVersion: 7
