@@ -96,7 +96,7 @@ using UnityEngine.UI;
     /// </summary>
     private void NextLevel()
     {
-        if (_currentLevel < levels.Length)
+        if (_currentLevel < levels.Length - 1)
         {
             SceneManager.UnloadSceneAsync(levels[_currentLevel]);
             _currentLevel++;
@@ -124,6 +124,7 @@ using UnityEngine.UI;
         {
             _currentLevel = lvl;
             SceneManager.LoadScene(levels[lvl]);
+            
         }
         /// <summary>
         /// Queremos que al iniciar la escena, haga fade in.
